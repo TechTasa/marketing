@@ -224,17 +224,13 @@ gap: 2rem;
         <form id="register-form" method="POST" action="/register">
         <h1 class="singn">signup</h1>
             <button class="btn login"><a href="/loginpage.html" style="text-decoration:none;color: white;">VISITOR LOGINS</a></button>
-            <input type="text" id="name" name="name" placeholder="Enter Your Name"/>
-            <input type="text" id="comName" name="companyName" placeholder="Enter Company Name"/>
-            <input type="email" id="email" name="email" placeholder="Enter Email"/>
-            <input type="password" id="password" name="password" placeholder="Enter Password"/>
-            <input type="text" id="domain" name="domainName" placeholder="Enter Domain Name"/>
-            <input type="text" id="website" name="websiteName" placeholder="Enter Website Name"/>
-            <input type="Number" id="mobile" name="phone" placeholder="Enter Phone Number"/>
-            <input type="address" id="address" name="address" placeholder="Enter Address"/>
-            <input type="text" id="position" name="position" placeholder="Position In Company"/>
-            <input type="email" id="ceo" name="ceomail" placeholder="CEO Email For Backup"/>
-            <input  type="text" id="role" name="role" value="company" readonly>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" required/>
+            <input type="text" id="password" name="password" placeholder="Enter Your Password" required/>
+            <input type="Number" id="mobile" name="phone" placeholder="Enter Phone Number" required/>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required/>
+            <input type="text" id="comName" name="companyName" placeholder="Enter Company Name" required/>
+            <input type="text" id="username" name="username" placeholder="Enter username" required/>
+            <input  type="text" id="role" name="role" value="visitor" readonly>
             <input type="submit"  class="btn signup" value="Create Account">
             <p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p>
             <hr/>

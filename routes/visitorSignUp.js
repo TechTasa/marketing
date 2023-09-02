@@ -14,14 +14,14 @@ const path = require('path');
 
 
     // Define the /register endpoint for GET requests
-    router.get("/register", (req, res) => {
+    router.get("/visitorSignUp", (req, res) => {
        // Display the login File
-       res.sendFile(path.join(__dirname, '..', 'public', 'pages', 'register.html'));
+       res.sendFile(path.join(__dirname, '..', 'public', 'pages', 'visitorSignUp.html'));
     });
 
 
     // Define the /register endpoint for POST requests
-    router.post("/register", async (req, res) => {
+    router.post("/visitorSignUp", async (req, res) => {
         // Get the data from the request body
         const data = req.body;
   

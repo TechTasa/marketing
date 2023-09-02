@@ -4,17 +4,17 @@ const { MongoClient } = require("mongodb");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { connect, getCollection } = require("../db");
-const path = require('path');
+const path = require("path");
 
 (async () => {
   try {
-     // Get a reference to the users collection
-     const userCollection = await getCollection("users");
+    // Get a reference to the users collection
+    const userCollection = await getCollection("users");
 
     // Define the /login endpoint for GET requests
     router.get("/login", (req, res) => {
       // Display the login File
-      res.sendFile(path.join(__dirname, '..', 'public', 'pages', 'login.html'));
+      res.sendFile(path.join(__dirname, "..", "public", "pages", "login.html"));
     });
 
     // Define the /login endpoint for POST requests
@@ -26,25 +26,34 @@ const path = require('path');
       const user = await userCollection.findOne({ name: data.name });
       if (user && (await bcrypt.compare(data.password, user.password))) {
         console.log(true);
-        if(user.role=="admin"){
-            console.log(`This is a Admin Account And Will Be Redirected To Admin Dashboard ${user.role}`)
-            res.redirect("/dashboard");
-        }
-        else{
-            if(user.role=="visitor"){
-                console.log(`This is a Visitor Account And Will Be Redirected To Visitor Dashboard ${user.role}`)
-                res.redirect("/visitor");
+        if (user.role == "admin") {
+          console.log(
+            `This is a Admin Account And Will Be Redirected To Admin Dashboard ${user.role}`
+          );
+          res.redirect("/dashboard");
+        } else {
+          if (user.role == "visitor") {
+            console.log(
+              `This is a Visitor Account And Will Be Redirected To Landing With Visitor Options ${user.role}`
+            );
+            res.redirect("/");
+          }
+          else{
+            if(user.role=="company"){
+              console.log(
+                `This is a Company Account And Will Be Redirected To Landing With Company Options ${user.role}`
+              );
+              res.redirect("/");
             }
+          }
         }
       } else {
-        console.log("User Is Not Found",data)
-        
-        
+        console.log("User Is Not Found", data);
       }
     });
   } finally {
-  
   }
 })();
 
 module.exports = router;
+
