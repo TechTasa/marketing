@@ -22,23 +22,36 @@ const path = require("path");
     router.post("/login", async (req, res) => {
       const data = req.body;
       const user = await userCollection.findOne({ name: data.name });
-    
-      if (user && (await bcrypt.compare(data.password, user.password))) {
-        console.log(true);
-        if (user.role == "admin") {
-          console.log(`Admin account redirected to dashboard ${user.role}`);
-          res.redirect("/dashboard");
-        } else if (user.role == "visitor") {
-          console.log(`Visitor account redirected to landing ${user.role}`);
-          res.redirect("/");
-        } else if (user.role == "company") {
-          console.log(`Company account redirected to landing ${user.role}`);
-          res.redirect("/");
-        }
-      } else {
-        console.log("User not found", data);
+
+      if(!user){
+        return res.status(401).send("Invalid username or password");
       }
+
+      const isPasswordValid = await bcrypt.compare(data.password, user.password);
+
+      if(!isPasswordValid){
+        return res.status(401).send("Invalid username or password"); 
+      }
+    
+      console.log("Username and Password validated");
+      req.session.isAuthenticated = true;
+      req.session.username = data.name;
+      req.session.role = user.role
+
+      if(user.role == "admin"){
+        console.log(`Admin account redirected to dashboard ${user.role}`);
+        res.redirect("/dashboard");
+      } else if( user.role == "visitor"){
+        console.log(`Visitor account redirected to landing ${user.role}`);
+        res.redirect("/");
+      } else if (user.role == "company") {
+        console.log(`Company account redirected to landing ${user.role}`);
+        res.redirect("/");
+      } 
     });
+  } catch (error) {
+    console.error("Error in login route:", error);
+    res.status(500).send("Internal server error");
   } finally {
   }
 })();

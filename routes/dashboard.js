@@ -9,7 +9,16 @@ const { connect, getCollection } = require("../db");
     // Get a reference to the users collection
     const userCollection = await getCollection("users");
     router.get("/dashboard", (req, res) => {
-      res.send(`<h1>ADMIN DASHBOARD</h1>`);
+      if (req.session.isAuthenticated && req.session.role == "admin") {
+        const username = req.session.username;
+        // Access session data here, e.g., username
+        res.send(`<h1>ADMIN DASHBOARD</h1>`);
+        //res.render("dashboard", { username });
+      } else {
+        // Redirect or handle unauthenticated access
+        res.redirect("/login");
+      }
+      
     });
   } finally {
   }
