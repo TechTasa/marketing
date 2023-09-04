@@ -1,3 +1,4 @@
+//More Readable Login.js
 const express = require("express");
 const { redirect } = require("express/lib/response");
 const { MongoClient } = require("mongodb");
@@ -19,36 +20,23 @@ const path = require("path");
 
     // Define the /login endpoint for POST requests
     router.post("/login", async (req, res) => {
-      // Get the data from the request body
       const data = req.body;
-
-      // Check if the user is present in the system
       const user = await userCollection.findOne({ name: data.name });
+    
       if (user && (await bcrypt.compare(data.password, user.password))) {
         console.log(true);
         if (user.role == "admin") {
-          console.log(
-            `This is a Admin Account And Will Be Redirected To Admin Dashboard ${user.role}`
-          );
+          console.log(`Admin account redirected to dashboard ${user.role}`);
           res.redirect("/dashboard");
-        } else {
-          if (user.role == "visitor") {
-            console.log(
-              `This is a Visitor Account And Will Be Redirected To Landing With Visitor Options ${user.role}`
-            );
-            res.redirect("/");
-          }
-          else{
-            if(user.role=="company"){
-              console.log(
-                `This is a Company Account And Will Be Redirected To Landing With Company Options ${user.role}`
-              );
-              res.redirect("/");
-            }
-          }
+        } else if (user.role == "visitor") {
+          console.log(`Visitor account redirected to landing ${user.role}`);
+          res.redirect("/");
+        } else if (user.role == "company") {
+          console.log(`Company account redirected to landing ${user.role}`);
+          res.redirect("/");
         }
       } else {
-        console.log("User Is Not Found", data);
+        console.log("User not found", data);
       }
     });
   } finally {
@@ -56,4 +44,3 @@ const path = require("path");
 })();
 
 module.exports = router;
-
