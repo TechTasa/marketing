@@ -7,6 +7,7 @@ const signUpSelectRouter = require("./routes/signUpSelect");
 const registerRouter = require("./routes/register");
 const visitorSignUpRouter = require("./routes/visitorSignUp");
 const loginRouter = require("./routes/login");
+const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
 const dashboardRouter = require("./routes/dashboard");
 const landingRouter = require("./routes/landing");
@@ -14,6 +15,7 @@ const servicesRouter = require("./routes/services");
 const aboutusRouter = require("./routes/aboutus");
 const careerRouter = require("./routes/career");
 const contactusRouter = require("./routes/contactus");
+const logoutRouter = require("./routes/logout");
 
 
 app.use(express.static('public'));
@@ -39,6 +41,26 @@ app.use(
 // Connect to MongoDB
 connect();
 
+
+app.post('/user',(req,res) => {
+  if(req.body.username == myusername && req.body.password == mypassword){
+      session=req.session;
+      session.userid=req.body.username;
+      console.log(req.session)
+      res.send(`Hey there, welcome <a href=\'/logout'>click to logout</a>`);
+  }
+  else{
+      res.send('Invalid username or password');
+  }
+})
+
+
+app.get('/logout',(req,res) => {
+  req.session.destroy();
+  res.redirect('/');
+});
+
+
 // Use the signUpSelectRouter router to handle requests to /signUpSelect
 app.use(signUpSelectRouter);
 
@@ -50,6 +72,9 @@ app.use(visitorSignUpRouter);
 
 // Use the login router to handle requests to /login
 app.use(loginRouter);
+
+// Use the auth router to handle requests to /auth
+app.use(authRouter);
 
 // Use the user router to handle requests to /users
 app.use(userRouter);
@@ -71,6 +96,9 @@ app.use(careerRouter);
 
 // Use the user router to handle requests to /Contact
 app.use(contactusRouter);
+
+// Use the user router to handle requests to /Contact
+app.use(logoutRouter);
 
 
 
