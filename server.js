@@ -17,7 +17,6 @@ const careerRouter = require("./routes/career");
 const contactusRouter = require("./routes/contactus");
 const logoutRouter = require("./routes/logout");
 
-
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 const { connect, getCollection } = require("./db");
@@ -99,6 +98,8 @@ app.use(contactusRouter);
 
 // Use the user router to handle requests to /Contact
 app.use(logoutRouter);
+
+
 
 
 
