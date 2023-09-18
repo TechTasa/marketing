@@ -186,6 +186,21 @@
       gap: 2rem;
     }
   }
+  @media only screen and (max-width: 1050px) {
+      .dispaly {
+    display: grid;
+    gap: 7px;
+}
+.navbar {
+    
+    padding: 30px 1px;
+    gap: 2px;
+    
+}
+.logo{
+  font-size: 42px;
+}
+    }
     </style>
 </head>
 <nav class="navbar">
@@ -206,9 +221,11 @@
     <a href="career" class="links">CAREER</a>
     <a href="contactus" class="links">CONTACT US</a>
     </div>
-   
+    <div class="dispaly">
     <a href="/signUpSelect" class="cta">SignUp</a>
     <a href="/login" class="cta">Login</a>
+  </div>
+</nav>
 </nav>
 
 <section>
@@ -320,4 +337,11 @@
 </div>
 <p>Gold Field Plaza, 3 floor, Opp Dhole Patil Chowk / Wadia College, Pune, Maharashtra 411001 <br><span>Design By:TechTasa</span></p>
 </footer>
+<script>
+  const menuBtn = document.getElementById('menu');
+const navLinks = document.querySelector(".nav-links")
+menuBtn.addEventListener("click", function () {
+    navLinks.classList.toggle("active-nav")
+});
+  </script>
 </html>

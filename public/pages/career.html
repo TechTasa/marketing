@@ -284,6 +284,21 @@
   .apply-job-popup-body form input[type="submit"]:hover {
     background-color: #45a049;
   }
+  @media only screen and (max-width: 1050px) {
+      .dispaly {
+    display: grid;
+    gap: 7px;
+}
+.navbar {
+    
+    padding: 30px 1px;
+    gap: 2px;
+    
+}
+.logo{
+  font-size: 42px;
+}
+    }
 </style>
 </head>
 <body>
@@ -305,8 +320,10 @@
         <a href="career" class="links">CAREER</a>
         <a href="contactus" class="links">CONTACT US</a>
           </div>
+          <div class="dispaly">
           <a href="/signUpSelect" class="cta">SignUp</a>
         <a href="/login" class="cta">Login</a>
+          </div>
     </nav>
     <section class="career">
         <div class="apply-job-popup-container" style="display:none">
@@ -467,4 +484,11 @@
   </footer>
   
 </body>
+<script>
+  const menuBtn = document.getElementById('menu');
+const navLinks = document.querySelector(".nav-links")
+menuBtn.addEventListener("click", function () {
+    navLinks.classList.toggle("active-nav")
+});
+  </script>
 </html>
