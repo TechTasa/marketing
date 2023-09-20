@@ -22,15 +22,36 @@ const upload = multer({ storage: storage });
     const userCollection = await getCollection("users");
     const productsCollection = await getCollection("products");
 
+    // router.get("/", async (req, res) => {
+    //   const products = await productsCollection.find().toArray();
+    //   console.log(products);
+    //   if (req.session.username) {
+    //     res.render("company/landingCompany", {
+    //       user: req.session,
+    //       products: products,
+    //     });
+    //   } else {
+    //     res.render("landing", { user: req.session, products: products });
+    //   }
+    // });
     router.get("/", async (req, res) => {
-      // Redirect to /
-      // Get the user id from the request parameters
+      const products = await productsCollection.find().toArray();
+      const users = await userCollection.find({}, { cover: 1 }).toArray();
+      const covers = users
+        .filter((user) => user.cover)
+        .map((user) => user.cover);
       if (req.session.username) {
-        // console.log(req.session);
-        console.log(req.session);
-        res.render("company/landingCompany", { user: req.session });
+        res.render("company/landingCompany", {
+          user: req.session,
+          products: products,
+          covers: covers,
+        });
       } else {
-        res.render("landing", { user: req.session });
+        res.render("landing", {
+          user: req.session,
+          products: products,
+          covers: covers,
+        });
       }
     });
   } finally {

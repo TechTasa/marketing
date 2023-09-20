@@ -38,7 +38,7 @@ const upload = multer({ storage: storage });
         { $set: { cover: coverImage } }
       );
 
-      if (result.modifiedCount === 2) {
+      if (result.modifiedCount === 1) {
         res.redirect(`/cover/${id}`);
       } else {
         res.status(500).send({ message: "Failed to upload cover image" });
