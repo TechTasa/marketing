@@ -3,18 +3,40 @@ const { MongoClient } = require("mongodb");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const { connect, getCollection } = require("../../db");
-const path = require("path");
+const { ObjectId } = require("mongodb");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
 (async () => {
   try {
-    // Get a reference to the users collection
     const userCollection = await getCollection("users");
-    router.get("/", (req, res) => {
-      // Display the Landing File
-      res.sendFile(
-        path.join(__dirname, "..", "../", "public", "pages", "landing.html")
-      );
+    const productsCollection = await getCollection("products");
+
+    router.get("/", async (req, res) => {
+      // Redirect to /
+      // Get the user id from the request parameters
+      if (req.session.username) {
+        // console.log(req.session);
+        console.log(req.session);
+        res.render("company/landingCompany", { user: req.session });
+      } else {
+        res.render("landing", { user: req.session });
+      }
     });
   } finally {
+    // Ensures that the client will close when you finish/error
+    // await client.close();
   }
 })();
+
 module.exports = router;
