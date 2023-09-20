@@ -27,6 +27,7 @@ const path = require("path");
 // Serve static files from the "uploads" directory
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.static("public"));
+app.use(express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
 const { connect, getCollection } = require("./db");
 app.use(express.json());

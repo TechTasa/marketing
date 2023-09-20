@@ -22,7 +22,23 @@
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <!-- Mobile menu button-->
               <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="absolute -inset-0.5"></span>
+                <span id="menuToggle" class="absolute -inset-0.5"></span>
+                <script>
+                  document.getElementById("menuToggle").addEventListener("click",()=>{
+                  document.getElementById("mobileMenu").classList.toggle("show")
+                  })
+                </script>
+                <style>
+                  #mobileMenu{
+                    height: 0;
+                    overflow: hidden;
+                  }
+                  .show{
+                   height: auto !important; 
+                   
+                   transition: all 1s ease-out;
+                  }
+                </style>
                 <span class="sr-only">Open main menu</span>
                 <!--
                   Icon when menu is closed.
@@ -91,7 +107,7 @@
       
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="sm:hidden" id="mobile-menu">
-          <div class="space-y-1 px-2 pb-3 pt-2">
+          <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
             <!-- Current: "bg-white text-white", Default: "text-gray-300 hover:bg-white hover:text-white" -->
             <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
             <a href="/profile/<%= user._id %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Profile</a>
@@ -132,8 +148,9 @@
           <% products.forEach(function(product) { %>
             <div class="group">
               <a href="/product/<%= user._id %>/<%= product._id %>" class="group">
-                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                  <img id="productimage"  src="../<%= product.logo1 %>" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="h-full w-full object-cover object-center group-hover:opacity-75">
+                <div class="flex justify-center aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-700 border-4 border-gray-800 xl:aspect-h-8 xl:aspect-w-7">
+                  <img id="productimage" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="LOGO/Thumbnail">
+
                 </div>
                 <h3 class="mt-4 text-sm text-white"><%= product.name %></h3>
                 <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %></p>
@@ -145,6 +162,14 @@
                 <input class="bg-gray-900 text-white  rounded-md p-2 text-sm font-medium " type="submit" value="DELETE">
             </form>
             </div>
+            <!-- <script>
+              var productImages = ['../<%= product.logo1 %>', '../<%= product.logo2 %>', '../<%= product.logo3 %>'];
+              var currentImageIndex = 0;
+              setInterval(function() {
+                  currentImageIndex = (currentImageIndex + 1) % productImages.length;
+                  document.getElementById('productimage').src = productImages[currentImageIndex];
+              }, 2000);
+          </script> -->
           <% }); %>
         <% } %>
         

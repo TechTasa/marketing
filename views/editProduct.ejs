@@ -106,15 +106,56 @@
       <div class="border-b border-white/10 pb-12">
         <h2 class="text-base font-semibold leading-7 text-white">Product Information</h2>
         <p class="mt-1 text-sm leading-6 text-white">Edit And Make Changes To Your Product</p>
-        <div class="container mx-auto px-4 ">
-            <img src="/<%= product.logo %>" alt="../<%= product.logo %>" class="w-full object-cover mt-4 rounded">
-        </div>
-        <div class="sm:col-span-3">
-          <label for="logo" class=" block text-sm font-medium leading-6 text-white">Change Logo</label>
-          <div class="mt-2">
-            <input type="file" name="logo" class="bg-gray-900  border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-700"/>
+        <div class="flex flex-wrap">
+          <div class="sm:col-span-1">
+            <label for="logo1" class="block text-sm font-medium leading-6 text-white">Logo/Thumbnail</label>
+            <div class="mt-2">
+                <input id="logo1" type="file" name="logo1" class="hidden" />
+                <label for="logo1">
+                    <img id="preview1" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="Add logo 1" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
+                </label>
+            </div>
           </div>
-        </div>
+          
+          <div class="sm:col-span-1">
+            <label for="logo2" class="block text-sm font-medium leading-6 text-white">Picture 1</label>
+            <div class="mt-2">
+                <input id="logo2" type="file" name="logo2" class="hidden" />
+                <label for="logo2">
+                    <img id="preview2" src="<%= product.logo2 ? '/' + product.logo2 : 'https://i.ibb.co/hdMGGR4/carousel-1-1.png' %>" alt="Add logo 2" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
+                </label>
+            </div>
+          </div>
+          
+          <div class="sm:col-span-1">
+            <label for="logo3" class="block text-sm font-medium leading-6 text-white">Picture 2</label>
+            <div class="mt-2">
+                <input id="logo3" type="file" name="logo3" class="hidden" />
+                <label for="logo3">
+                    <img id="preview3" src="<%= product.logo3 ? '/' + product.logo3 : 'https://i.ibb.co/hdMGGR4/carousel-1-1.png' %>" alt="Add logo 3" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
+                </label>
+            </div>
+          </div>
+         </div>
+        
+        <script>
+          
+          
+        document.querySelectorAll('input[type=file]').forEach(input => {
+          input.addEventListener('change', function() {
+              const file = this.files[0];
+              const reader = new FileReader();
+              reader.onloadend = function() {
+                  document.querySelector(`#preview${input.id.slice(-1)}`).src = reader.result;
+              }
+              if (file) {
+                  reader.readAsDataURL(file);
+              } else {
+                  document.querySelector(`#preview${input.id.slice(-1)}`).src = "/views/images/AddLogo.svg";
+              }
+          });
+        });
+        </script>
        
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
