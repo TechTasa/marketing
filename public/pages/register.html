@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat|Quicksand');
+
+*{
+    font-family: 'quicksand',Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+  background: #ebebeb;
+}
+h1.singn {
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+}
+.form-modal{
+    position:relative;
+    width:50%;
+    height:auto;
+    margin-top:4em;
+    left:50%;
+    transform:translateX(-50%);
+    background:#fff;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow:0 3px 20px 0px rgba(0, 0, 0, 0.1)
+}
+.form-modal button{
+  cursor: pointer;
+  position: relative;
+  text-transform: capitalize;
+  font-size:1em;
+  z-index: 2;
+  outline: none;
+  background:#fff;
+  transition:0.2s;
+}
+
+.form-modal .btn{
+  border-radius: 20px;
+  border:none;
+  font-weight: bold;
+  font-size:1.2em;
+  padding:0.8em 1em 0.8em 1em!important;
+  transition:0.5s;
+  border:1px solid #ebebeb;
+  margin-bottom:0.5em;
+  margin-top:0.5em;
+}
+.form-modal .login , .form-modal .signup{
+background:#57b846;
+color:#fff;
+}
+
+.form-modal .login:hover , .form-modal .signup:hover{
+background:#222;
+}
+
+.form-toggle{
+position: relative;
+width:100%;
+height:auto;
+}
+
+.form-toggle button{
+width:50%;
+float:left;
+padding:1.5em;
+margin-bottom:1.5em;
+border:none;
+transition: 0.2s;
+font-size:1.1em;
+font-weight: bold;
+border-top-right-radius: 20px;
+border-top-left-radius: 20px;
+}
+.form-toggle button:nth-child(1){
+border-bottom-right-radius: 20px;
+}
+
+.form-toggle button:nth-child(2){
+border-bottom-left-radius: 20px;
+}
+
+#login-toggle{
+background:#57b846;
+color:#ffff;
+}
+
+.form-modal form{
+position: relative;
+width:90%;
+height:auto;
+left:50%;
+transform:translateX(-50%);  
+}
+#login-form , #signup-form{
+position:relative;
+width:100%;
+height:auto;
+padding:1px;
+}
+#login-form button , #signup-form button{
+width:100%;
+margin-top:0.5em;
+padding:0.6em;
+}
+.form-modal input{
+position: relative;
+width:100%;
+font-size:1em;
+padding:1.2em 1.7em 1.2em 1.7em;
+margin-top:0.6em;
+margin-bottom:0.6em;
+border-radius: 20px;
+border:none;
+background:#ebebeb;
+outline:none;
+font-weight: bold;
+transition:0.4s;
+}
+.form-modal input:focus , .form-modal input:active{
+transform:scaleX(1.02);
+}
+
+.form-modal input::-webkit-input-placeholder{
+color:#222;
+}
+
+
+.form-modal p{
+font-size:16px;
+font-weight: bold;
+}
+
+.form-modal p a{
+color:#57b846;
+text-decoration: none;
+transition:0.2s;
+}
+
+.form-modal p a:hover{
+color:#222;
+}
+
+
+.form-modal i {
+position: absolute;
+left:10%;
+top:50%;
+transform:translateX(-10%) translateY(-50%); 
+}
+
+.fa-google{
+color:#dd4b39;
+}
+
+.fa-linkedin{
+color:#3b5998;
+}
+
+.fa-windows{
+color:#0072c6;
+}
+
+.-box-sd-effect:hover{
+box-shadow: 0 4px 8px hsla(210,2%,84%,.2);
+}
+
+@media only screen and (max-width:500px){
+.form-modal{
+  width:100%;
+}
+}
+
+@media only screen and (max-width:400px){
+i{
+  display: none!important;
+}
+}
+
+.footer {
+background-color: #000;
+display: flex;
+height: 7rem;
+align-items: center;
+gap: 10rem;
+padding: 1rem;
+margin-top: 60px;
+}
+
+.social-icons svg {
+width: 24px;
+}
+.footer h1,
+.footer h3,
+.footer p {
+color: #fff;
+}
+@media only screen and (max-width: 1000px){
+.footer {
+flex-direction: column;
+align-items: flex-start;
+height: fit-content;
+gap: 2rem;
+}
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="form-modal">
+        <div id="signup-form">
+        <form id="register-form" method="POST" action="/register">
+        <h1 class="singn">signup</h1>
+            <button class="btn login"><a href="/loginpage.html" style="text-decoration:none;color: white;">VISITOR LOGINS</a></button>
+            <input type="text" id="name" name="name" placeholder="Enter Your Name" required/>
+            <input type="text" id="comName" name="companyName" placeholder="Enter Company Name" required/>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required/>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required/>
+            <input type="text" id="domain" name="domainName" placeholder="Enter Domain Name" required/>
+            <input type="text" id="website" name="websiteName" placeholder="Enter Website Name" required/>
+            <input type="Number" id="mobile" name="phone" placeholder="Enter Phone Number" required/>
+            <input type="address" id="address" name="address" placeholder="Enter Address" required/>
+            <input type="text" id="position" name="position" placeholder="Position In Company" required/>
+            <input type="email" id="ceo" name="ceomail" placeholder="CEO Email For Backup" required/>
+            <input  type="text" id="role" name="role" value="company" readonly>
+            <input type="submit"  class="btn signup" value="Create Account">
+            <p>Clicking <strong>create account</strong> means that you are agree to our <a href="javascript:void(0)">terms of services</a>.</p>
+            <hr/>
+            <button type="button" class="btn -box-sd-effect"> <i class="fa fa-google fa-lg" aria-hidden="true"></i> sign up with google</button>
+            <button type="button" class="btn -box-sd-effect"> <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i> sign up with linkedin</button>
+        </form>
+            </div> 
+         </div>
+         <footer class="footer">
+        <div class="social-icons">
+            <a target="https://twitter.com/i/flow/login" href="https://twitter.com/login"><svg
+                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path
+                        d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+                </svg></a>
+            <a target="https://www.facebook.com/login/" href="https://www.facebook.com/login/"><svg
+                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                </svg></a>
+            <a target="https://www.instagram.com/" href="https://www.instagram.com/"> <svg
+                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="16" height="16" rx="4" />
+                    <circle cx="12" cy="12" r="3" />
+                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
+                </svg></a>
+            <a target="https://www.linkedin.com/login" href="https://www.linkedin.com/login"><svg
+                    xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44"
+                    height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <rect x="4" y="4" width="16" height="16" rx="2" />
+                    <line x1="8" y1="11" x2="8" y2="16" />
+                    <line x1="8" y1="8" x2="8" y2="8.01" />
+                    <line x1="12" y1="16" x2="12" y2="11" />
+                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                </svg></a>
+        </div>
+        <div class="foot">
+            <p>Gold Field Plaza, 3 floor, Opp Dhole Patil Chowk / Wadia College, Pune, Maharashtra 411001 <br></p>
+            <div style="text-align: center; color: white;">Design
+                By :     TechTasa</div>
+        </div>
+           <div class="phone">
+            <h1>xxxxxxxxxxxxx</h1>
+            <h3>info@xx.com</h3>
+        </div>
+        </footer>
+</body>
+</html>
