@@ -1,136 +1,120 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Choose A SignUp</title>
-</head>
-<body>
-    <div class="main">
-        <a href="/visitorSignUp">Visitor</a>
-        <a href="/register">Company</a>
-    </div>
-</body>
-</html> -->
+    <title>Document</title>
+    <!-- Include Tailwind CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Andika);
 
-
-
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GetYouth</title>
-<link rel="stylesheet" href="css/login.css">
- <meta name="google-signin-client_id" content="1018566774392-chp7ai8ca5hnch53uau1b7angfmbel35.apps.googleusercontent.com">
-    <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    
-</head>
-<style>
-    body {
-    margin: 0;
-    padding: 0;
+*
+{
+margin:0px;
+padding:0px;
+outline:none;
 }
-header {
-    height: 8vh;
-    width: auto;
+
+html{height:100%}
+ 
+body{
+    background-color:  #374151;
+width: 100vw;
+height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-}
-.logo {
-    color: #3f51b5;
-    font-size: 22px;
-}
-.section {
-    padding: 40px;
-}
-.section {
-    height: 82.5vh;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    background: #ebebeb;
-}
-.wrap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    width: 90%;
-    align-content: space-around;
-    height: 60vh;
-}
-.wrap div {
-    width: 250px;
-    height: 150px;
-    transition: 0.75s ease;
-}
-.employee {
-    background: url(../images/employee.jpg) center no-repeat;
-    background-size: cover;
-}
-.employee a {
-    
-    position: relative;
-    bottom: -165px;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: black;
-    /* font-size: 20px; */
+}
+
+
+#menu
+{
+width: 280px;
+margin: 5% auto;
+position: relative;
+}
+
+#menu:before
+{
+width: 294px;
+padding: 31.5px 0px;
+border-radius: 30px;
+position: absolute;
+background: #fff;
+content: "";
+left: -7px;
+top: -6px;
+z-index: -1;
+opacity: 0.3;
+}
+
+#menu:after
+{
+width: 12px;
+height: 20px;
+padding:0px 4px 0px 4px;
+border-radius: 50%;
+position: absolute;
+background-color: #374151;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d01768', endColorstr='#ea2a72',GradientType=0 ); /* IE6-9 */
+content: "OR";
+left: 46%;
+top: 15px;
+border:1px solid #374151;
+font-size:0.5em;
+color:#374151;
+line-height:20px;
+letter-spacing:-1px;
+}
+
+a{
+font-size:0.7em;
+text-decoration:none;
+display:block;
+float:left;
+padding: 17px 0px;
+width:49.6%;
+text-align:center;
+color:#efdcdc;
+background-color: #374151;
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f73c82', endColorstr='#c21063',GradientType=0 ); /* IE6-9 */
+-webkit-transition:0.5s;
+-moz-transition:0.5s;
+-ms-transition:0.5s;
+-o-transition:0.5s;
+transition:0.5s;
+}
+a:hover
+{
+box-shadow:inset 0px 0px 10px 1px #5a677e;
+-webkit-transition:0.5s;
+-moz-transition:0.5s;
+-ms-transition:0.5s;
+-o-transition:0.5s;
+transition:0.5s;
+}
+
+#menu a:first-child{border-radius: 25px 0px 0px 25px;border-right:1px solid #374151;}
+#menu a:last-child{border-radius: 0px 25px 25px 0px;border-left:1px solid #374151;}
+
+.heading{
+    font-size: large;
     font-weight: 700;
+    color: white;
 }
-.wrap div {
-    width: 250px;
-    height: 150px;
-    transition: 0.75s ease;
-}
-.company {
-    background: url(../images/comapny.jpg) center no-repeat;
-    background-size: cover;
-}
-.company a{
-    position: relative;
-    bottom: -165px;
-    margin: 0 auto;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    font-family: sans-serif;
-    text-decoration: none;
-    color: black;
-    /* font-size: 20px; */
-    font-weight: 700;
+    </style>
+</head>
 
-}
-
-
-
-</style>
 <body>
-    <header>
-        <div class="logo">
-            Marketing Tool
-        </div>
-    </header>
- <div class="section">
-     <div class="wrap">
-        <div class="employee">
+    
+    <div>
+        <h1 class="heading">Choose A SignUp Type</h1>
+        <div id="menu">
             <a href="/visitorSignUp">Visitor</a>
-        </div>
-         <div class="company">
             <a href="/register">Company</a>
         </div>
     </div>
-</div>
-    <script src="js/jquery.js"></script>
-
-</body></html>
+    
+</body>
+</html>
