@@ -56,7 +56,7 @@ const upload = multer({ storage: storage });
       const user = await userCollection.findOne({ _id: new ObjectId(id) });
       user._id = idString;
       // Render the 'cover' view and pass the user data and id to it
-      res.render("cover", { user: user });
+      res.render("company/cover", { user: user });
     });
   } finally {
     // Ensures that the client will close when you finish/error

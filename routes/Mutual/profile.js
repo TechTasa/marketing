@@ -38,6 +38,7 @@ const { ObjectId } = require("mongodb");
         email: data.email,
         phone: data.phone,
         companyName: data.companyname,
+        domainName: data.domainname,
       };
       if (data.password) {
         const hashedPassword = await bcrypt.hash(data.password, 10);

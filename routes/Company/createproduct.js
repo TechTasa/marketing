@@ -29,13 +29,25 @@ const upload = multer({ storage: storage });
 
     router.post(
       "/product/create/:userId",
-      upload.single("logo"),
+      upload.fields([
+        { name: "logo1", maxCount: 1 },
+        { name: "logo2", maxCount: 1 },
+        { name: "logo3", maxCount: 1 },
+      ]),
       async (req, res) => {
         const userId = req.params.userId;
 
         // Assuming 'logo' is the name of the form field in your client-side form
-        req.body.logo = req.file.path;
-
+        // req.body.logo = req.files.map((file) => file.path);
+        if (req.files["logo1"]) {
+          req.body.logo1 = req.files["logo1"][0].path;
+        }
+        if (req.files["logo2"]) {
+          req.body.logo2 = req.files["logo2"][0].path;
+        }
+        if (req.files["logo3"]) {
+          req.body.logo3 = req.files["logo3"][0].path;
+        }
         // Get the product data from the request body
         const newProductData = req.body;
         newProductData.createdBy = userId; // Add the createdBy field
@@ -48,6 +60,28 @@ const upload = multer({ storage: storage });
         res.redirect(`/products/${userId}`);
       }
     );
+
+    // router.post(
+    //   "/product/create/:userId",
+    //   upload.single("logo"),
+    //   async (req, res) => {
+    //     const userId = req.params.userId;
+
+    //     // Assuming 'logo' is the name of the form field in your client-side form
+    //     req.body.logo = req.file.path;
+
+    //     // Get the product data from the request body
+    //     const newProductData = req.body;
+    //     newProductData.createdBy = userId; // Add the createdBy field
+
+    //     // Insert the new product into the database
+    //     const result = await productsCollection.insertOne(newProductData);
+    //     const productId = result.insertedId; // Get the id of the inserted product
+
+    //     // Redirect to the product page (or wherever you want)
+    //     res.redirect(`/products/${userId}`);
+    //   }
+    // );
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
