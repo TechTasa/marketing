@@ -49,15 +49,11 @@ const upload = multer({ storage: storage });
       // Redirect to /
       // Get the user id from the request parameters
       const id = req.params.id;
+      let idString = id.toString();
       const user = await userCollection.findOne({ _id: new ObjectId(id) });
-      res.send(`
-      <button><a href="/">Home</a></button> <br>
-      <img src="../${user.logo}" alt="logoalt">
-      <form action="/logo/${id}" method="post" enctype="multipart/form-data">
-      <input type="file" name="logo" />
-      <input type="submit" value="Upload" />
-    </form>
-    `);
+      user._id = idString;
+      // Render the 'cover' view and pass the user data and id to it
+      res.render("company/logo", { user: user });
     });
   } finally {
     // Ensures that the client will close when you finish/error
