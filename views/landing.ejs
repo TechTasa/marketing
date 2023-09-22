@@ -162,7 +162,7 @@
             <% } else { %>
               <% products.forEach(function(product) { %>
                 <div class="group">
-                  <a href="/" class="group">
+                  <a href="/product/<%= product._id %>" class="group">
                     <div class="flex justify-center aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-700 border-4 border-gray-800 xl:aspect-h-8 xl:aspect-w-7">
                       <img id="productimage" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="LOGO/Thumbnail">
     
