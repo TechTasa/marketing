@@ -11,6 +11,7 @@ const authRouter = require("./routes/ServerRoutes/auth");
 const userRouter = require("./routes/Mutual/profile");
 const coverRouter = require("./routes/Company/coverPicture");
 const logoRouter = require("./routes/Company/logo");
+const productRouter = require("./routes/Mutual/product");
 const productsRouter = require("./routes/Company/products");
 const createproductsRouter = require("./routes/Company/createproduct");
 const editproductsRouter = require("./routes/Company/editproduct");
@@ -76,6 +77,8 @@ app.use(coverRouter);
 app.use(logoRouter);
 
 app.use(productsRouter);
+
+app.use(productRouter);
 
 app.use(createproductsRouter);
 app.use(editproductsRouter);

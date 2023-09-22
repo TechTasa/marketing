@@ -21,19 +21,6 @@ const upload = multer({ storage: storage });
   try {
     const userCollection = await getCollection("users");
     const productsCollection = await getCollection("products");
-
-    // router.get("/", async (req, res) => {
-    //   const products = await productsCollection.find().toArray();
-    //   console.log(products);
-    //   if (req.session.username) {
-    //     res.render("company/landingCompany", {
-    //       user: req.session,
-    //       products: products,
-    //     });
-    //   } else {
-    //     res.render("landing", { user: req.session, products: products });
-    //   }
-    // });
     router.get("/", async (req, res) => {
       const products = await productsCollection.find().toArray();
       const users = await userCollection.find({}, { cover: 1 }).toArray();
