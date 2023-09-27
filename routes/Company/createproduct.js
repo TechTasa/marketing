@@ -48,9 +48,16 @@ const upload = multer({ storage: storage });
         if (req.files["logo3"]) {
           req.body.logo3 = req.files["logo3"][0].path;
         }
+
         // Get the product data from the request body
         const newProductData = req.body;
+
+        let offer = Number(req.body.offer);
+        let price = Number(req.body.price);
+
         newProductData.createdBy = userId; // Add the createdBy field
+        newProductData.price = price; // Add the createdBy field
+        newProductData.offer = offer; // Add the createdBy field
 
         // Insert the new product into the database
         const result = await productsCollection.insertOne(newProductData);

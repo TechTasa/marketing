@@ -1,77 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <style>
-   body{
+  body {
     padding: 1rem;
     background-color: #111827;
-   }
-   #profiledropdown{
-            display:none;
-          }
-          #preview{
-            display: none;
-          }
+  }
+
+  #profiledropdown {
+    display: none;
+  }
+
+  #preview {
+    display: none;
+  }
 </style>
+
 <body>
-    <nav class="bg-gray-800">
-        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div class="relative flex h-16 items-center justify-between">
-            <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-              <!-- Mobile menu button-->
-              <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                <span class="absolute -inset-0.5"></span>
-                <span class="sr-only">Open main menu</span>
-                <!--
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span class="absolute -inset-0.5"></span>
+            <span class="sr-only">Open main menu</span>
+            <!--
                   Icon when menu is closed.
       
                   Menu open: "hidden", Menu closed: "block"
                 -->
-                <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-                <!--
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
                   Icon when menu is open.
       
                   Menu open: "block", Menu closed: "hidden"
                 -->
-                <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="/"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">Home</a>
+                  <a href=" /profile/<%=user %>" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md
+                px-3 py-2 text-sm font-medium"">Profile</a>
+              <a href="/cover/<%= user %>"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cover
+                Picture</a>
+              <a href="/logo/<%= user %>"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logo</a>
+              <a href="/products/<%= user %>"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">My
+                Products</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <!-- Profile dropdown -->
+          <div class="relative ml-3" id="profiledropdown">
+            <div>
+              <button type="button"
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt="">
               </button>
             </div>
-            <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-              <div class="flex flex-shrink-0 items-center">
-                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
-              </div>
-              <div class="hidden sm:ml-6 sm:block">
-                <div class="flex space-x-4">
-                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                  <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">Home</a>
-                  <a href="/profile/<%= user %>" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">Profile</a>
-                  <a href="/cover/<%= user %>" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cover Picture</a>
-                  <a href="/logo/<%= user %>" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logo</a>
-                  <a href="/products/<%= user %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">My Products</a>
-                </div>
-              </div>
-            </div>
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-       <!-- Profile dropdown -->
-              <div class="relative ml-3" id="profiledropdown">
-                <div>
-                  <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                    <span class="absolute -inset-1.5"></span>
-                    <span class="sr-only">Open user menu</span>
-                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
-                  </button>
-                </div>
-      
-                <!--
+
+            <!--
                   Dropdown menu, show/hide based on menu state.
       
                   Entering: "transition ease-out duration-100"
@@ -81,191 +101,174 @@
                     From: "transform opacity-100 scale-100"
                     To: "transform opacity-0 scale-95"
                 -->
-                <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                  <!-- Active: "bg-gray-100", Not Active: "" -->
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
-                  <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
-                </div>
-              </div>
+            <div
+              class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-0">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-1">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-2">Sign out</a>
             </div>
           </div>
         </div>
-      
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden" id="mobile-menu">
-          <div class="space-y-1 px-2 pb-3 pt-2">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
-            <a href="/profile/<%= user._id %>" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Profile</a>
-            <a href="/cover/<%= user._id %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Cover Picture</a>
-            <a href="/logo/<%= user._id %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Logo</a>
-            <a href="/products/<%= user._id %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">My Products</a>
-          </div>
-        </div>
-            </nav>
-<form id="create-form" method="POST" enctype="multipart/form-data"  action="/product/create/<%= user %>">
-      
-      <div class="border-b border-white/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-white">Product Information</h2>
-        <p class="mt-1 text-sm leading-6 text-white">Create Your Product</p>
-        <div class="container mx-auto px-4 ">
-            <img src="" alt="" class="w-full object-cover mt-4 rounded">
-        </div>
+      </div>
+    </div>
 
-        <!-- <div class="sm:col-span-3">
-          <label for="logo" class="block text-sm font-medium leading-6 text-white">ADD Logo</label>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="space-y-1 px-2 pb-3 pt-2">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
+        <a href="/profile/<%= user._id %>"
+          class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+          aria-current="page">Profile</a>
+        <a href="/cover/<%= user._id %>"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Cover
+          Picture</a>
+        <a href="/logo/<%= user._id %>"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Logo</a>
+        <a href="/products/<%= user._id %>"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">My
+          Products</a>
+      </div>
+    </div>
+  </nav>
+  <form id="create-form" method="POST" enctype="multipart/form-data" action="/product/create/<%= user %>">
+
+    <div class="border-b border-white/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-white">Product Information</h2>
+      <p class="mt-1 text-sm leading-6 text-white">Create Your Product</p>
+      <div class="container mx-auto px-4 ">
+        <img src="" alt="" class="w-full object-cover mt-4 rounded">
+      </div>
+      <div class="flex flex-wrap">
+        <div class="sm:col-span-1">
+          <label for="logo1" class="block text-sm font-medium leading-6 text-white">Logo/Thumbnail</label>
           <div class="mt-2">
-              <input id="logo" type="file" name="logo" class="hidden" />
-              <label for="logo" >
-                <svg id="previewContainer" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900" width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_1_2)">
-                  <path d="M298.5 0H1.5C0.671573 0 0 0.671573 0 1.5V298.5C0 299.328 0.671573 300 1.5 300H298.5C299.328 300 300 299.328 300 298.5V1.5C300 0.671573 299.328 0 298.5 0Z" fill="#374151"/>
-                  <path d="M131.109 111C128.703 111 126.75 112.953 126.75 115.359V147.328C126.75 149.735 128.703 151.688 131.109 151.688H168.891C171.297 151.688 173.25 149.735 173.25 147.328V115.359C173.25 112.953 171.297 111 168.891 111H131.109ZM131.109 113.906H140.736C141.036 113.906 141.281 114.152 141.281 114.451V116.268C141.281 116.567 141.036 116.812 140.736 116.812H130.201C129.902 116.812 129.656 116.567 129.656 116.268V115.359C129.656 114.56 130.31 113.906 131.109 113.906ZM169.799 122.625H130.201C129.902 122.625 129.656 122.38 129.656 122.08V118.811C129.656 118.511 129.902 118.266 130.201 118.266H142.734L145.477 114.151C145.577 113.997 145.75 113.906 145.931 113.906H168.891C169.69 113.906 170.344 114.56 170.344 115.359V122.08C170.344 122.38 170.098 122.625 169.799 122.625ZM150 146.602C143.988 146.602 139.102 141.716 139.102 135.703C139.102 129.691 143.988 124.805 150 124.805C156.012 124.805 160.898 129.691 160.898 135.703C160.898 141.716 156.012 146.602 150 146.602ZM150 127.711C145.595 127.711 142.008 131.298 142.008 135.703C142.008 140.108 145.595 143.695 150 143.695C154.405 143.695 157.992 140.108 157.992 135.703C157.992 131.298 154.405 127.711 150 127.711ZM145.641 137.156C144.841 137.156 144.188 136.502 144.188 135.703C144.188 132.497 146.794 129.891 150 129.891C150.799 129.891 151.453 130.545 151.453 131.344C151.453 132.143 150.799 132.797 150 132.797C148.401 132.797 147.094 134.104 147.094 135.703C147.094 136.502 146.44 137.156 145.641 137.156Z" fill="#6B7280"/>
-                  <path d="M100.771 184.344H97.4759L102.497 169.798H106.46L111.474 184.344H108.179L104.536 173.122H104.422L100.771 184.344ZM100.565 178.626H108.349V181.027H100.565V178.626ZM118.381 184.344H113.225V169.798H118.424C119.887 169.798 121.147 170.089 122.202 170.672C123.258 171.25 124.07 172.08 124.638 173.165C125.211 174.249 125.498 175.546 125.498 177.057C125.498 178.572 125.211 179.874 124.638 180.963C124.07 182.052 123.254 182.888 122.188 183.47C121.128 184.053 119.859 184.344 118.381 184.344ZM116.3 181.709H118.254C119.163 181.709 119.927 181.548 120.548 181.226C121.173 180.899 121.641 180.395 121.954 179.713C122.271 179.027 122.43 178.141 122.43 177.057C122.43 175.982 122.271 175.104 121.954 174.422C121.641 173.74 121.175 173.238 120.555 172.916C119.934 172.594 119.17 172.433 118.261 172.433H116.3V181.709ZM132.932 184.344H127.776V169.798H132.975C134.438 169.798 135.697 170.089 136.753 170.672C137.809 171.25 138.621 172.08 139.189 173.165C139.762 174.249 140.049 175.546 140.049 177.057C140.049 178.572 139.762 179.874 139.189 180.963C138.621 182.052 137.804 182.888 136.739 183.47C135.678 184.053 134.409 184.344 132.932 184.344ZM130.851 181.709H132.804C133.713 181.709 134.478 181.548 135.098 181.226C135.723 180.899 136.192 180.395 136.505 179.713C136.822 179.027 136.98 178.141 136.98 177.057C136.98 175.982 136.822 175.104 136.505 174.422C136.192 173.74 135.726 173.238 135.105 172.916C134.485 172.594 133.721 172.433 132.811 172.433H130.851V181.709ZM146.956 184.344V169.798H150.031V181.808H156.267V184.344H146.956ZM171.103 177.071C171.103 178.657 170.803 180.007 170.201 181.119C169.605 182.232 168.79 183.082 167.758 183.669C166.731 184.251 165.575 184.543 164.292 184.543C163 184.543 161.84 184.249 160.812 183.662C159.785 183.075 158.973 182.225 158.376 181.112C157.779 180 157.481 178.652 157.481 177.071C157.481 175.485 157.779 174.135 158.376 173.023C158.973 171.91 159.785 171.062 160.812 170.48C161.84 169.893 163 169.599 164.292 169.599C165.575 169.599 166.731 169.893 167.758 170.48C168.79 171.062 169.605 171.91 170.201 173.023C170.803 174.135 171.103 175.485 171.103 177.071ZM167.985 177.071C167.985 176.044 167.832 175.177 167.524 174.472C167.221 173.766 166.792 173.231 166.238 172.866C165.684 172.502 165.036 172.32 164.292 172.32C163.549 172.32 162.9 172.502 162.346 172.866C161.792 173.231 161.361 173.766 161.054 174.472C160.751 175.177 160.599 176.044 160.599 177.071C160.599 178.098 160.751 178.965 161.054 179.67C161.361 180.376 161.792 180.911 162.346 181.276C162.9 181.64 163.549 181.822 164.292 181.822C165.036 181.822 165.684 181.64 166.238 181.276C166.792 180.911 167.221 180.376 167.524 179.67C167.832 178.965 167.985 178.098 167.985 177.071ZM183.026 174.5C182.927 174.154 182.787 173.849 182.607 173.584C182.427 173.314 182.207 173.087 181.947 172.902C181.691 172.713 181.397 172.568 181.066 172.469C180.739 172.369 180.377 172.32 179.979 172.32C179.236 172.32 178.583 172.504 178.019 172.874C177.46 173.243 177.025 173.78 176.712 174.486C176.4 175.187 176.244 176.044 176.244 177.057C176.244 178.07 176.397 178.932 176.705 179.642C177.013 180.352 177.449 180.894 178.012 181.268C178.576 181.638 179.241 181.822 180.008 181.822C180.704 181.822 181.298 181.699 181.79 181.453C182.288 181.202 182.666 180.849 182.927 180.395C183.192 179.94 183.325 179.403 183.325 178.783L183.95 178.875H180.2V176.56H186.286V178.392C186.286 179.67 186.016 180.769 185.477 181.688C184.937 182.601 184.193 183.307 183.246 183.804C182.299 184.296 181.215 184.543 179.994 184.543C178.63 184.543 177.432 184.242 176.4 183.641C175.368 183.035 174.563 182.175 173.985 181.062C173.412 179.945 173.126 178.619 173.126 177.085C173.126 175.906 173.296 174.855 173.637 173.932C173.983 173.004 174.466 172.218 175.086 171.574C175.706 170.93 176.428 170.44 177.252 170.104C178.076 169.768 178.969 169.599 179.93 169.599C180.754 169.599 181.521 169.72 182.231 169.962C182.941 170.198 183.571 170.535 184.12 170.97C184.674 171.406 185.126 171.924 185.477 172.526C185.827 173.122 186.052 173.78 186.151 174.5H183.026ZM201.963 177.071C201.963 178.657 201.662 180.007 201.061 181.119C200.464 182.232 199.65 183.082 198.618 183.669C197.59 184.251 196.435 184.543 195.152 184.543C193.859 184.543 192.699 184.249 191.672 183.662C190.644 183.075 189.832 182.225 189.235 181.112C188.639 180 188.341 178.652 188.341 177.071C188.341 175.485 188.639 174.135 189.235 173.023C189.832 171.91 190.644 171.062 191.672 170.48C192.699 169.893 193.859 169.599 195.152 169.599C196.435 169.599 197.59 169.893 198.618 170.48C199.65 171.062 200.464 171.91 201.061 173.023C201.662 174.135 201.963 175.485 201.963 177.071ZM198.845 177.071C198.845 176.044 198.691 175.177 198.383 174.472C198.08 173.766 197.652 173.231 197.098 172.866C196.544 172.502 195.895 172.32 195.152 172.32C194.408 172.32 193.76 172.502 193.206 172.866C192.652 173.231 192.221 173.766 191.913 174.472C191.61 175.177 191.458 176.044 191.458 177.071C191.458 178.098 191.61 178.965 191.913 179.67C192.221 180.376 192.652 180.911 193.206 181.276C193.76 181.64 194.408 181.822 195.152 181.822C195.895 181.822 196.544 181.64 197.098 181.276C197.652 180.911 198.08 180.376 198.383 179.67C198.691 178.965 198.845 178.098 198.845 177.071Z" fill="#6B7280"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_1_2">
-                  <rect width="300" height="300" rx="4" fill="white"/>
-                  </clipPath>
-                  </defs>
-                  </svg>
-                  <img id="preview" src="/views/images/AddLogo.svg" alt="Add logo" class="cursor-pointer bg-gray-900 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-700"/>
-              </label>
+            <input id="logo1" type="file" name="logo1" class="hidden" />
+            <label for="logo1">
+              <img id="preview1" src="https://i.ibb.co/kSZwvxX/addLogo.png" alt="Add logo 1"
+                class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900" />
+            </label>
           </div>
-      </div>
-      
-      <script>
-      document.getElementById('logo').addEventListener('change', function() {
-          const file = this.files[0];
-          const reader = new FileReader();
-          reader.onloadend = function() {
-              document.getElementById('preview').src = reader.result;
-              document.getElementById('preview').style.display="block";
-              document.getElementById('previewContainer').style.display="none"
-          }
-          if (file) {
-              reader.readAsDataURL(file);
-          } else {
-              document.getElementById('previewContainer').innerHTML = ` `;
-          }
-      });
-      </script>
- -->
+        </div>
 
- <div class="flex flex-wrap">
-  <div class="sm:col-span-1">
-    <label for="logo1" class="block text-sm font-medium leading-6 text-white">Logo/Thumbnail</label>
-    <div class="mt-2">
-        <input id="logo1" type="file" name="logo1" class="hidden" />
-        <label for="logo1">
-            <img id="preview1" src="https://i.ibb.co/kSZwvxX/addLogo.png" alt="Add logo 1" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
-        </label>
-    </div>
-  </div>
-  
-  <div class="sm:col-span-1">
-    <label for="logo2" class="block text-sm font-medium leading-6 text-white">Picture 1</label>
-    <div class="mt-2">
-        <input id="logo2" type="file" name="logo2" class="hidden" />
-        <label for="logo2">
-            <img id="preview2" src="https://i.ibb.co/hdMGGR4/carousel-1-1.png" alt="Add logo 2" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
-        </label>
-    </div>
-  </div>
-  
-  <div class="sm:col-span-1">
-    <label for="logo3" class="block text-sm font-medium leading-6 text-white">Picture 2</label>
-    <div class="mt-2">
-        <input id="logo3" type="file" name="logo3" class="hidden" />
-        <label for="logo3">
-            <img id="preview3" src="https://i.ibb.co/hdMGGR4/carousel-1-1.png" alt="Add logo 3" class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900"/>
-        </label>
-    </div>
-  </div>
- </div>
-
-<script>
-document.querySelectorAll('input[type=file]').forEach(input => {
-  input.addEventListener('change', function() {
-      const file = this.files[0];
-      const reader = new FileReader();
-      reader.onloadend = function() {
-          document.querySelector(`#preview${input.id.slice(-1)}`).src = reader.result;
-      }
-      if (file) {
-          reader.readAsDataURL(file);
-      } else {
-          document.querySelector(`#preview${input.id.slice(-1)}`).src = "/views/images/AddLogo.svg";
-      }
-  });
-});
-</script>
-
-
-
-
-     
-   
-                  
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-          <div class="sm:col-span-3">
-            <label for="first-name" class=" block text-sm font-medium leading-6 text-white">Name</label>
-            <div class="mt-2">
-              <input type="text" name="name" id="name" autocomplete="given-name" class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
+        <div class="sm:col-span-1">
+          <label for="logo2" class="block text-sm font-medium leading-6 text-white">Picture 1</label>
+          <div class="mt-2">
+            <input id="logo2" type="file" name="logo2" class="hidden" />
+            <label for="logo2">
+              <img id="preview2" src="https://i.ibb.co/hdMGGR4/carousel-1-1.png" alt="Add logo 2"
+                class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900" />
+            </label>
           </div>
-  
-          <div class="sm:col-span-3">
-            <label for="slogan" class="block text-sm font-medium leading-6 text-white">Slogan</label>
-            <div class="mt-2">
-                <input id="slogan" name="slogan" type="slogan"  autocomplete="slogan" class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
-          </div>
+        </div>
 
-          <div class="sm:col-span-4">
-            <label for="websitelink" class="block text-sm font-medium leading-6 text-white">Website</label>
-            <div class="mt-2">
-              <input id="websitelink" name="websitelink" type="text" autocomplete="given-name" class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
+        <div class="sm:col-span-1">
+          <label for="logo3" class="block text-sm font-medium leading-6 text-white">Picture 2</label>
+          <div class="mt-2">
+            <input id="logo3" type="file" name="logo3" class="hidden" />
+            <label for="logo3">
+              <img id="preview3" src="https://i.ibb.co/hdMGGR4/carousel-1-1.png" alt="Add logo 3"
+                class="cursor-pointer bg-gray-700 border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-900" />
+            </label>
           </div>
-
-     
-  
-          <!-- <div class="sm:col-span-3">
-            <label for="country" class="block text-sm font-medium leading-6 text-white">Country</label>
-            <div class="mt-2">
-              <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
-              </select>
-            </div>
-          </div> -->
-  
-          <div class="sm:col-span-3">
-            <label for="companyname" class="block text-sm font-medium leading-6 text-white">Address</label>
-            <div class="mt-2">
-                <input id="text" name="address" type="address" autocomplete="address" class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
-          </div>
-  
-          <div class="sm:col-span-2 sm:col-start-1">
-            <label for="discription" class="block text-sm font-medium leading-6 text-white">Discription</label>
-            <div class="mt-2">
-                <input id="discription" name="discription" type="text"  class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-            </div>
-          </div>
-  
-         
-         
         </div>
       </div>
+
+      <script>
+        document.querySelectorAll('input[type=file]').forEach(input => {
+          input.addEventListener('change', function () {
+            const file = this.files[0];
+            const reader = new FileReader();
+            reader.onloadend = function () {
+              document.querySelector(`#preview${input.id.slice(-1)}`).src = reader.result;
+            }
+            if (file) {
+              reader.readAsDataURL(file);
+            } else {
+              document.querySelector(`#preview${input.id.slice(-1)}`).src = "/views/images/AddLogo.svg";
+            }
+          });
+        });
+      </script>
+
+
+
+
+
+
+
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="sm:col-span-3">
+          <label for="first-name" class=" block text-sm font-medium leading-6 text-white">Name</label>
+          <div class="mt-2">
+            <input type="text" name="name" id="name" autocomplete="given-name"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+
+        <div class="sm:col-span-3">
+          <label for="slogan" class="block text-sm font-medium leading-6 text-white">Slogan</label>
+          <div class="mt-2">
+            <input id="slogan" name="slogan" type="slogan" autocomplete="slogan"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div class="sm:col-span-1">
+          <label for="price" class=" block text-sm font-medium leading-6 text-white">Price</label>
+          <div class="mt-2">
+            <input type="number" name="price" id="price" autocomplete="given-price"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="sm:col-span-1">
+          <label for="offer" class=" block text-sm font-medium leading-6 text-white">Offer</label>
+          <div class="mt-2">
+            <input type="number" name="offer" id="offer" autocomplete="given-offer"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="sm:col-span-4">
+          <label for="websitelink" class="block text-sm font-medium leading-6 text-white">Website</label>
+          <div class="mt-2">
+            <input id="websitelink" name="websitelink" type="text" autocomplete="given-name"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <label for="companyname" class="block text-sm font-medium leading-6 text-white">Address</label>
+          <div class="mt-2">
+            <input id="text" name="address" type="address" autocomplete="address"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </div>
+        </div>
+
+        <div class="sm:col-span-4 sm:col-start-1">
+          <label for="discription" class="block text-sm font-medium leading-6 text-white">Discription</label>
+          <div class="mt-2">
+            <textarea id="discription" name="discription" type="text"
+              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
     <div class="mt-6 flex items-center justify-end gap-x-6">
       <button type="button" class="text-sm font-semibold leading-6 text-white">Cancel</button>
-      <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+      <button type="submit"
+        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>
   </form>
-  
+
 </body>
+
 </html>

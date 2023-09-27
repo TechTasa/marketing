@@ -1,60 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>User Cart</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-    }
-    h1 {
-      color: #333;
-    }
-    h2 {
-      color: #666;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      padding: 10px;
-    }
-    h3 {
-      margin: 0;
-    }
-    p {
-      margin: 5px 0;
-    }
-    img{
-        width: 20vw;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css" />
 </head>
-<body>
-    <a href="/"><button>Home</button></a>
-  <h1>Welcome, <%= user.username %>!</h1>
-  <h2>Your Cart:</h2>
-  <% if (products.length > 0) { %>
-    <ul>
-        <% products.forEach(function(product) { %>
-          <li>
-            <img src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="">
-            <h3>Name:<%= product.name %></h3>
-            <p>Discription:<%= product.discription %></p>
-            <p>WebsiteLink:<%= product.websitelink %></p>
-            <p>Slogan:<%= product.slogan %></p>
-            <p>Price: <%= product.price %></p>
-            <!-- Add a delete button for each product -->
-            <form action="/cart/<%= user._id %>/<%= product._id %>/delete" method="POST">
-              <button type="submit">Delete</button>
-            </form>
-          </li>
-        <% }); %>
-      </ul>      
-  <% } else { %>
-    <p>Your cart is empty.</p>
-  <% } %>
+
+<body class="bg-gray-100">
+  <div class="container mx-auto mt-10">
+    <div class="flex shadow-md my-10">
+      <div class="w-3/4 bg-white px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+        </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
+            Product Details
+          </h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+            Quantity
+          </h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+            Price
+          </h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
+            Total
+          </h3>
+        </div>
+
+        <% if (products.length> 0) { %> <% products.forEach(function(product) { %>
+            <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+              <div class="flex w-2/5">
+                <div class="w-128">
+                  <img class="w-full"
+                    src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="" />
+                </div>
+                <div class="flex flex-col justify-between ml-4 flex-grow">
+                  <span class="font-bold text-sm">
+                    <%= product.name %>
+                  </span>
+                  <span class="text-red-500 text-xs">
+                    <%= product.slogan %>
+                  </span>
+                  <a href="<%= product.websitelink %>"
+                    class="font-semibold hover:text-red-500 text-gray-500 text-xs">Website Link</a>
+                  <form action="/cart/<%= user._id %>/<%= product._id %>/delete" method="POST">
+                    <button class="font-semibold hover:text-red-500 text-gray-500 text-xs" type="submit">Delete</button>
+                  </form>
+
+                </div>
+              </div>
+              <div class="flex justify-center w-1/5">
+                <!-- Quantity input -->
+                <input class="quantity-input mx-2 border text-center w-8" type="text" value="1">
+              </div>
+              <!-- Price -->
+              <span class="product-price text-center w-1/5 font-semibold text-sm">₹<%= product.offer %></span>
+              <!-- Total -->
+              <span class="product-total text-center w-1/5 font-semibold text-sm">₹<%= product.offer %></span>
+            </div>
+            <% }); %>
+              <% } else { %>
+                <p>Your cart is empty.</p>
+                <% } %>
+
+                  <!-- Continue Shopping Button -->
+                  <a href="/" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                    Continue Shopping
+                  </a>
+      </div>
+
+      <!-- Order Summary -->
+      <div id="summary" class="w- 1/4 px- 8 py- 10">
+        <!-- Order Summary Title -->
+        <h1 class="font-semibold text- 2xl border-b pb- 8">Order Summary</h1>
+
+        <!-- Items Count and Total Price -->
+        <div class="flex justify-between mt- 10 mb- 5">
+          <!-- Items Count -->
+          <span class="font-semibold text-sm uppercase">Items <%= products.length %></span>
+
+
+          <span class="font-semibold text-sm">₹<%= total %></span>
+        </div>
+
+        <!-- Promo Code Input -->
+        <div class="py- 10">
+          <label for="promo" class="font-semibold inline-block mb- 3 text-sm uppercase">Promo Code</label>
+          <input type="text" id="promo" placeholder="Enter your code" class="p- 2 text-sm w-full" />
+        </div>
+
+        <!-- Apply Promo Code Button -->
+        <button class="bg-red-500 hover:bg-red-600 px- 5 py- 2 text-sm text-white uppercase">
+          Apply
+        </button>
+
+        <!-- Total Cost -->
+        <div class="border-t mt- 8">
+          <div class="flex font-semibold justify-between py- 6 text-sm uppercase">
+            <span>Total cost</span>
+            <span>₹<%= total %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
+
 </html>

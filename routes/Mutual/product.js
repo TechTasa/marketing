@@ -14,7 +14,7 @@ const { ObjectId } = require("mongodb");
         const product = await productsCollection.findOne({
           _id: new ObjectId(req.params.id),
         });
-        console.log(product);
+        // console.log(product);
         const createdBy = product.createdBy;
         const createdByName = await userCollection.findOne({
           _id: new ObjectId(createdBy),

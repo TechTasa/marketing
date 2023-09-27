@@ -27,7 +27,7 @@ const upload = multer({ storage: storage });
       const covers = users
         .filter((user) => user.cover)
         .map((user) => user.cover);
-      console.log(req.session.role);
+      // console.log(req.session.role);
       req.session.username
         ? req.session.role == "company"
           ? res.render("company/landingCompany", {
@@ -45,29 +45,6 @@ const upload = multer({ storage: storage });
             products: products,
             covers: covers,
           });
-
-      // if (req.session.username) {
-      //   console.log(req.session.role);
-      //   if ((req.session.role = "company")) {
-      //     res.render("company/landingCompany", {
-      //       user: req.session,
-      //       products: products,
-      //       covers: covers,
-      //     });
-      //   } else if ((req.session.role = "visitor")) {
-      //     res.render("visitor/landingvisitor", {
-      //       user: req.session,
-      //       products: products,
-      //       covers: covers,
-      //     });
-      //   }
-      // } else {
-      //   res.render("landing", {
-      //     user: req.session,
-      //     products: products,
-      //     covers: covers,
-      //   });
-      // }
     });
   } finally {
     // Ensures that the client will close when you finish/error

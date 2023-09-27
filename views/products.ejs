@@ -156,7 +156,7 @@
                 <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %></p>
                 <p class="mt-1 text-lg font-medium text-white">Website: <%= product.websitelink %></p>
                 <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %></p>
-                <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p>
+                <!-- <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p> -->
               </a>
               <form action="/product/delete/<%= user._id %>/<%= product._id %>" method="post" onsubmit="return confirm('Are you sure you want to delete this product?')">
                 <input class="bg-gray-900 text-white  rounded-md p-2 text-sm font-medium " type="submit" value="DELETE">

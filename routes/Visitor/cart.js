@@ -23,7 +23,15 @@ const { ObjectId } = require("mongodb");
       const products = await productsCollection
         .find({ _id: { $in: user.cart } })
         .toArray();
-      res.render("visitor/cart", { user: user, products: products });
+
+      let total = 0;
+      products.forEach((product) => (total += product.offer));
+      console.log(total);
+      res.render("visitor/cart", {
+        user: user,
+        products: products,
+        total: total,
+      });
     });
 
     router.post("/cart/:userId/:productId/delete", async (req, res) => {

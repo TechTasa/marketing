@@ -125,7 +125,7 @@
         <img class="rounded-lg" src="<%= product.logo2 ? '/' + product.logo2 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
                     </div>
         
-                    <div x-show="image === 3" class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                    <div x-show="image === 3" class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
                         <img class="rounded-lg" src="<%= product.logo3 ? '/' + product.logo3 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
                     </div>
                   </div>
@@ -144,7 +144,21 @@
               <div class="md:flex-1 px-4">
                 <h2 class="mb-2 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= product.name %></h2>
                 <p class="text-white text-sm">By <p class="text-yellow-600 hover:underline"><%= createdBy.name %></p></p>
-        
+                <div class="flex items-center space-x-4 my-4">
+                  <div>
+                    <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+                      <span class="text-indigo-400 mr-1 mt-1">₹</span>
+                      <span class="font-bold text-indigo-600 text-3xl"><%= product.offer %></span>
+                    </div>
+                  </div>
+                  <div class="flex-1">
+                    <p style="text-decoration: line-through;" class="text-green-500 text-xl font-semibold">₹<%= product.price %></p>
+                  
+                    <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+                   
+                  </div>
+                  <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white" id="add-to-cart-button" data-product-id=<%= product._id %>>Add To Cart</button>
+                </div>
                 <div class="flex items-center space-x-4 my-4">
                   <div>
                     <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %></p>
@@ -152,8 +166,9 @@
                   <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %></p>
                   <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p>
                   </div>
+                  
                 <div class="flex py-4 space-x-4">
-                  <button class="bg-white" id="add-to-cart-button" data-product-id=<%= product._id %>>Add To Cart</button>
+                 
                   <script>
                     document.getElementById('add-to-cart-button').addEventListener('click', function(event) {
   const productId = event.target.getAttribute('data-product-id');
