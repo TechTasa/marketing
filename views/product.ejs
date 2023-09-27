@@ -152,13 +152,29 @@
                   <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %></p>
                   <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p>
                   </div>
-                  
-        
-                 
-        
                 <div class="flex py-4 space-x-4">
-                 
-        
+                  <button class="bg-white" id="add-to-cart-button" data-product-id=<%= product._id %>>Add To Cart</button>
+                  <script>
+                    document.getElementById('add-to-cart-button').addEventListener('click', function(event) {
+  const productId = event.target.getAttribute('data-product-id');
+  
+  fetch(`/add-to-cart/${productId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.message) {
+      alert(data.message);
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+});
+                  </script>
                 </div>
               </div>
             </div>

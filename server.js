@@ -9,6 +9,10 @@ const visitorSignUpRouter = require("./routes/ServerRoutes/visitorSignUp");
 const loginRouter = require("./routes/ServerRoutes/login");
 const authRouter = require("./routes/ServerRoutes/auth");
 const userRouter = require("./routes/Mutual/profile");
+
+const cartRouter = require("./routes/Visitor/cart");
+
+const addtocartRouter = require("./routes/Visitor/addtocart");
 const coverRouter = require("./routes/Company/coverPicture");
 const logoRouter = require("./routes/Company/logo");
 const productRouter = require("./routes/Mutual/product");
@@ -79,6 +83,10 @@ app.use(logoRouter);
 app.use(productsRouter);
 
 app.use(productRouter);
+
+app.use(cartRouter);
+
+app.use(addtocartRouter);
 
 app.use(createproductsRouter);
 app.use(editproductsRouter);

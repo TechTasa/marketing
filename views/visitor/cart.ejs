@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      color: #333;
+    }
+    h2 {
+      color: #666;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    h3 {
+      margin: 0;
+    }
+    p {
+      margin: 5px 0;
+    }
+    img{
+        width: 20vw;
+    }
+  </style>
+</head>
+<body>
+    <a href="/"><button>Home</button></a>
+  <h1>Welcome, <%= user.username %>!</h1>
+  <h2>Your Cart:</h2>
+  <% if (products.length > 0) { %>
+    <ul>
+        <% products.forEach(function(product) { %>
+          <li>
+            <img src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="">
+            <h3>Name:<%= product.name %></h3>
+            <p>Discription:<%= product.discription %></p>
+            <p>WebsiteLink:<%= product.websitelink %></p>
+            <p>Slogan:<%= product.slogan %></p>
+            <p>Price: <%= product.price %></p>
+            <!-- Add a delete button for each product -->
+            <form action="/cart/<%= user._id %>/<%= product._id %>/delete" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </li>
+        <% }); %>
+      </ul>      
+  <% } else { %>
+    <p>Your cart is empty.</p>
+  <% } %>
+</body>
+</html>
