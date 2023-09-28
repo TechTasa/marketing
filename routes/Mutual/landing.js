@@ -27,11 +27,18 @@ const upload = multer({ storage: storage });
       const covers = users
         .filter((user) => user.cover)
         .map((user) => user.cover);
+      let cartItemCount = await userCollection.findOne({
+        _id: new ObjectId(req.session.username),
+      });
+
+      cartItemCount = cartItemCount.cart.length;
+      console.log(cartItemCount);
       res.render("landing", {
         loggedIn: req.session.username ? true : false,
         user: req.session,
         products: products,
         covers: covers,
+        cartCount: cartItemCount,
       });
     });
   } finally {

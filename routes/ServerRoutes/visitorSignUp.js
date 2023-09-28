@@ -37,8 +37,9 @@ const path = require("path");
       const result = await userCollection.insertOne({
         ...data,
         password: hashedPassword,
+        cart: [{}],
       });
-      console.log(`Data inserted with _id: ${result.insertedId}`);
+      console.log(`Data inserted with _id: ${result}`);
       res.redirect("/login");
     });
   } finally {

@@ -19,6 +19,10 @@ const { ObjectId } = require("mongodb");
       const user = await userCollection.findOne({ _id: new ObjectId(id) });
       user._id = idString;
 
+      if (!user.cart) {
+        user.cart = [];
+      }
+
       // Fetch all products in the user's cart
       const products = await productsCollection
         .find({ _id: { $in: user.cart } })

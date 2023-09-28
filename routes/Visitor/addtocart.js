@@ -40,6 +40,7 @@ const { ObjectId } = require("mongodb");
           { _id: userId },
           { $push: { cart: product._id } }
         );
+        res.send({ message: "Succesfully Added To Cart" });
       }
     });
   } finally {
