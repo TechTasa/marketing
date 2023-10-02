@@ -30,8 +30,10 @@ const upload = multer({ storage: storage });
       let cartItemCount = await userCollection.findOne({
         _id: new ObjectId(req.session.username),
       });
+      if (req.session.role == "visitor") {
+        cartItemCount = cartItemCount.cart.length;
+      }
 
-      cartItemCount = cartItemCount.cart.length;
       console.log(cartItemCount);
       res.render("landing", {
         loggedIn: req.session.username ? true : false,
