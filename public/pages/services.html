@@ -1,310 +1,494 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services</title>
-    <style>
-        :root {
-    --primary-color: #5CB3FF;
-    --secondary-color: #2e4862;
-    --bg-color: #d7dde4;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
-  }
-  /* ***************************Nav-Bar**************************** */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px 25px;
-    gap: 25px;
-    background-color: white;
-    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.178);
-    position: relative;
-  }
-  .navbar svg {
-    position: absolute;
-    visibility: hidden;
-  }
-  
-  /* ***************************Nav-Links**************************** */
-   .nav-links {
-    
-    display: flex;
-    justify-content:space-between;
-    width:44rem;
-  }
-  .links {
-    text-decoration: none;
-    color: black;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 10px;
-  }
-  /* ***************************Logo**************************** */
-  .logo {
-    color: var(--primary-color);
-    font-family: "VT323", monospace;
-    font-size: 2rem;
-    text-decoration: none;
-  }
-  
-  /* ***************************Contact-Btn**************************** */
-  .cta {
-    background-color: var(--primary-color);
-    padding: 10px 25px;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.8em;
-    font-weight: 600;
-  }
-  /* ***************************Services**************************** */
-  .col-text {
-    height:20em;
-  }
-  .grid-flex {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    flex-direction: row; 
-    -webkit-flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    -webkit-flex-wrap: wrap;
-    -webkit-justify-content: space-around;
-  }
-  .col {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-  }
-  .col-left {
-    -webkit-box-ordinal-group:-1;
-    -webkit-order: -1;
-    -ms-flex-order: -1;
-    order: -1;
-  }
-  .col-text{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .Aligner-item {
-    width: 60%;
-  }
-  .col-image {
-    background-size: cover;
-    background-position:center center;
-  }
-  
-  @media (max-width: 640px) {
-    .grid-flex {
-      height: 40em;
-      display: -webkit-flex;
-      -webkit-flex-direction: column;
-      flex-direction: column; 
-     }
-    .col {
-      order:vertical;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>services</title>
+  <style>
+    :root {
+      --primary-color: #5CB3FF;
+      --secondary-color: #2e4862;
+      --bg-color: #d7dde4;
     }
-    .col-left {
-      -webkit-box-ordinal-group:0;
-      -webkit-order: 0;
-      -ms-flex-order: 0;
-      order: 0;
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
     }
-    .col-text div p {
-      padding: 1em;
+
+
+    /* ***************************Title**************************** */
+
+    /* ***************************Content**************************** */
+
+    section.tab {
+      width: 100%;
+      height: 100%;
     }
-    .Aligner-item {
-      width: 90%;
-    }
-  }
-  
-  
-  
-  /* ***************************Footer**************************** */
-  .footer {
-    background-color: #585050;
-    display: flex;
-    height: 7rem;
-    align-items: center;
-    gap: 10rem;
-    padding: 1rem;
-  }
-  
-  .social-icons svg {
-    width: 24px;
-  }
-  .footer h1,
-  .footer h3,
-  .footer p {
-    color: white;
-  }
-  @media only screen and (max-width: 1050px) {
-    .nav-links {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 70px;
-      left: 0px;
-      background-color: white;
-      width: 100vw;
-      padding-left: 30px;
-      padding-bottom: 10px;
-      z-index: 1;
-      border-bottom: 5px solid var(--primary-color);
-    }
-    .active-nav {
-      display: flex;
-    }
-    .navbar svg {
-      visibility: visible;
-    }
-    .logo {
-      position: relative;
-      transform: translateX(50px);
-    }
-  
+
     /* ***************************Footer**************************** */
     .footer {
-      flex-direction: column;
-      align-items: flex-start;
-      height: fit-content;
-      gap: 2rem;
+      background-color: black;
+      display: flex;
+      height: 7rem;
+      align-items: center;
+      gap: 10rem;
+      padding: 1rem;
     }
-  }
-    </style>
-</head>
-<nav class="navbar">
-    <svg id="menu" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" width="44"
-        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#5CB3FF" fill="none" stroke-linecap="round"
-        stroke-linejoin="round">
-        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-        <line x1="4" y1="6" x2="20" y2="6" />
-        <line x1="4" y1="12" x2="20" y2="12" />
-        <line x1="4" y1="18" x2="20" y2="18" />
-    </svg>
-    <!-- <a href="Index.html" class="logo"><img src="/images/SurelyLeads_Logo.svg" alt="" ></a> -->
-    <a href="Index.html" class="logo">Marketing Tool</a>
-    <div class="nav-links">
-    <a href="/" class="links">HOME</a>
-    <a href="services" class="links">SERVICES</a>
-    <a href="aboutus" class="links">ABOUT US</a>
-    <a href="career" class="links">CAREER</a>
-    <a href="contactus" class="links">CONTACT US</a>
-    </div>
-   
-    <a href="/signUpSelect" class="cta">SignUp</a>
-    <a href="/login" class="cta">Login</a>
-</nav>
 
-<section>
-    <div class="grid-flex">
-      <div class="col col-image" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/280406/seattle-botanical-gardens.jpg);">
-      </div>
-      <div class="col col-text">
-        <div class="Aligner-item">
-          <p>&ldquo;I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.&rdquo;
-            <cite>- Maya Angelou</cite>
-          </p>
-        </div>
-      </div>
-    </div>
-    
-    <div class="grid-flex">
-      <div class="col col-image" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/280406/seattle-library-sm.jpg);">
-        &nbsp;
-      </div>
-      <div class="col col-text col-left">
-        <div class="Aligner-item">
-          <p>&ldquo;Simple is good.&rdquo;
-            <cite>- Jim Henson</cite>
-          </p>
-        </div>
-      </div>
-    </div>
+    .social-icons svg {
+      width: 24px;
+    }
+
+    .footer h1,
+    .footer h3,
+    .footer p {
+      color: white;
+    }
+
+    .social-icons {
+      display: flex;
+    }
+
+    .left>img,
+    .right>img {
+      width: 35%;
+
+    }
+
+    .left,
+    .right {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      align-items: center;
+
+      margin: 2rem 0rem;
+    }
+
+
+    @media only screen and (max-width: 1050px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0px;
+        background-color: white;
+        width: 100vw;
+        padding-left: 30px;
+        padding-bottom: 10px;
+        z-index: 1;
+        border-bottom: 5px solid var(--primary-color);
+      }
+
+      .links {
+
+        padding: 10px;
+      }
+
+      .active-nav {
+        display: flex;
+      }
+
+      .navbar svg {
+        visibility: visible;
+      }
+
+      .logo {
+        position: relative;
+        transform: translateX(50px);
+      }
+
+
+      /* ***************************Footer**************************** */
+      .footer {
+        flex-direction: column;
+        align-items: flex-start;
+        height: fit-content;
+        gap: 2rem;
+      }
+    }
+
+    h1.about {
+      text-align: center;
+      padding: 20px;
+      font-size: 35px;
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span id="menuToggle" class="absolute -inset-0.5"></span>
+            <script>
+              document.getElementById("menuToggle").addEventListener("click", () => {
+                document.getElementById("mobileMenu").classList.toggle("show")
+              })
+            </script>
+            <style>
+              #mobileMenu,
+              #profiledropdown {
+                height: 0;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+              }
+
+              .show {
+                height: auto !important;
+
+                transition: all 1s ease-out;
+              }
+            </style>
+            <span class="sr-only">Open main menu</span>
+            <!--
+              Icon when menu is closed.
   
-    <div class="grid-flex">
-      <div class="col col-image" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/280406/seattle-skylight-sm.jpg);">
-        &nbsp;
-      </div>
-      <div class="col col-text">
-        <div class="Aligner-item">
-          <p>&ldquo;Everybody has a plan until they get punched in the mouth.&rdquo;
-            <cite>- Mike Tyson</cite>
-          </p>
+              Menu open: "hidden", Menu closed: "block"
+            -->
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
+              Icon when menu is open.
+  
+              Menu open: "block", Menu closed: "hidden"
+            -->
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="/"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
+              <a href="/services" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current="
+                page">Services</a>
+              <a href="/career"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
+              <a href="/aboutus"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
+            <a href=" /contactus"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+                Us</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <!-- Profile dropdown -->
+          <div class="relative ml-3">
+            <div>
+              <button type="button"
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img class="h-10 w-10 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt="">
+              </button>
+            </div>
+
+            <!--
+              Dropdown menu, show/hide based on menu state.
+  
+              Entering: "transition ease-out duration-100"
+                From: "transform opacity-0 scale-95"
+                To: "transform opacity-100 scale-100"
+              Leaving: "transition ease-in duration-75"
+                From: "transform opacity-100 scale-100"
+                To: "transform opacity-0 scale-95"
+            -->
+            <script>
+              document.getElementById("user-menu-button").addEventListener("click", () => {
+                document.getElementById("profiledropdown").classList.toggle("show")
+              })
+            </script>
+            <div id="profiledropdown"
+              class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-0">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-1">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                id="user-menu-item-2">Sign out</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  
-    <div class="grid-flex">
-      <div class="col col-image" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/280406/madison-overture.jpg);">
-        &nbsp;
-      </div>
-      <div class="col col-text col-left">
-        <div class="Aligner-item">
-          <p>&ldquo;We are what we pretend to be, so we must be careful about what we pretend to be&rdquo;
-            <cite>- Kurt Vonnegut, Jr.</cite>
-          </p>
-        </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
+        <a href="/services" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+          aria-current="page">Services</a>
+        <a href="/career"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
+        <a href="/aboutus"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
+          Us</a>
+        <a href="/contactus"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+          Us</a>
+
+
       </div>
     </div>
-  
-    <div class="grid-flex">
-      <div class="col col-image" style="background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/280406/madison-rainbow.jpg);">
-        &nbsp;
-      </div>
-      <div class="col col-text">
-        <div class="Aligner-item">
-          <p>&ldquo;Perfect is the enemy of good.&rdquo;
-            <cite> - Voltaire</cite>
+  </nav>
+  <section class="tab">
+    <h1 class="about">Our Services</h1>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Promoting Business For our client :-</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
           </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">All types of Marketing for our client :-</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Lead Generation for our client :-</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Sales for our client :-</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">franchises option :- </h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Information of companies which is listed:- </h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Direct companies :- </h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Super stockiest :-</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Distributers :-</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Wholesaler’s :-</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Retailers :-</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="left">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Suppliers :-</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti, ea sunt culpa quas facere sit ex velit
+            dolor nihil totam harum non dolorem numquam saepe voluptatum odit commodi reprehenderit enim?
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <img src="/images/IWD.png" alt="">
+      </div>
+
+    </div>
+    <div class="content">
+      <div class="right">
+        <img src="/images/th.jfif" alt="">
+        <div>
+          <h1 style="font-size: 20px; font-weight: 800;">Costumers :- </h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia laudantium quaerat earum ducimus dicta animi
+            iure at molestias, totam veniam maiores possimus deleniti, asperiores assumenda esse odit hic. Iste,
+            aperiam!
+          </p>
+          <video class="ourvideo" width="100%" controls>
+            <source src="/video/about1.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
     </div>
   </section>
-
-  
-
 </body>
 <footer class="footer">
-<div class="social-icons">
-    <a target="https://twitter.com/i/flow/login" href="https://twitter.com/login"><svg xmlns="http://www.w3.org/2000/svg"
-            class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44" viewBox="0 0 24 24"
-            stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-            <path
-                d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-        </svg></a>
-   <a target="https://www.facebook.com/login/" href="https://www.facebook.com/login/"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44"
-        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+  <div class="social-icons">
+    <a target="https://twitter.com/i/flow/login" href="https://twitter.com/login"><svg
+        xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path
+          d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+      </svg></a>
+    <a target="https://www.facebook.com/login/" href="https://www.facebook.com/login/"><svg
+        xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
         stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-    </svg></a>
-   <a target="https://www.instagram.com/" href="https://www.instagram.com/"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="44"
-        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
-        stroke-linejoin="round">
+      </svg></a>
+    <a target="https://www.instagram.com/" href="https://www.instagram.com/"> <svg xmlns="http://www.w3.org/2000/svg"
+        class="icon icon-tabler icon-tabler-brand-instagram" width="44" height="44" viewBox="0 0 24 24"
+        stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <rect x="4" y="4" width="16" height="16" rx="4" />
         <circle cx="12" cy="12" r="3" />
         <line x1="16.5" y1="7.5" x2="16.5" y2="7.501" />
-    </svg></a>
-    <a target="https://www.linkedin.com/login" href="https://www.linkedin.com/login"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44"
-        height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
+      </svg></a>
+    <a target="https://www.linkedin.com/login" href="https://www.linkedin.com/login"><svg
+        xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="44" height="44"
+        viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round"
         stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
         <rect x="4" y="4" width="16" height="16" rx="2" />
@@ -312,12 +496,18 @@
         <line x1="8" y1="8" x2="8" y2="8.01" />
         <line x1="12" y1="16" x2="12" y2="11" />
         <path d="M16 16v-3a2 2 0 0 0 -4 0" />
-    </svg></a>
-</div>
-<div>
-  <h1>xxxxxxxxxxxxx</h1>
-  <h3>info@xx.com</h3>
-</div>
-<p>Gold Field Plaza, 3 floor, Opp Dhole Patil Chowk / Wadia College, Pune, Maharashtra 411001 <br><span>Design By:TechTasa</span></p>
+      </svg></a>
+  </div>
+  <div class="foot">
+    <p>Gold Field Plaza, 3 floor, Opp Dhole Patil Chowk / Wadia College, Pune, Maharashtra 411001 <br></p>
+    <div style="text-align: center; color: white;">Design
+      By : TechTasa</div>
+  </div>
+  <div class="phone">
+    <h1>xxxxxxxxxxxxx</h1>
+    <h3>info@xx.com</h3>
+  </div>
 </footer>
+</body>
+
 </html>
