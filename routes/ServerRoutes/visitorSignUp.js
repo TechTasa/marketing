@@ -32,14 +32,14 @@ const path = require("path");
 
       // Hash the password
       const hashedPassword = await bcrypt.hash(data.password, 10);
-
       // Insert the data into the collection
+      data.cart = [];
+      console.log(data);
       const result = await userCollection.insertOne({
         ...data,
         password: hashedPassword,
-        cart: [{}],
       });
-      console.log(`Data inserted with _id: ${result}`);
+      console.log(`Data inserted with _id: ${result} ${data}`);
       res.redirect("/login");
     });
   } finally {

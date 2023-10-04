@@ -39,7 +39,7 @@ const upload = multer({ storage: storage });
       );
 
       if (result.modifiedCount === 1) {
-        res.send({ message: "Logo image uploaded successfully" });
+        res.redirect(`/logo/${id}`);
       } else {
         res.status(500).send({ message: "Failed to upload Logo image" });
       }
