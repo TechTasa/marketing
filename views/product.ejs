@@ -1,200 +1,245 @@
 <!DOCTYPE html>
-      <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Product</title>
-          <!-- Include Tailwind CSS via CDN -->
-          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-          <style>
-         body{
-          background-color: #374151;
-   }
-          input{
-            border:none
-          }
-          .mainPictureContainer{
-  
-  overflow:hidden;
-}
-         
-         
-          </style>
-          <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js"></script>
-      </head>
-      <body>
-      <nav class="bg-gray-800">
-  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex h-16 items-center justify-between">
-      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-        <!-- Mobile menu button-->
-        <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-          <span id="menuToggle" class="absolute -inset-0.5"></span>
-          <script>
-            document.getElementById("menuToggle").addEventListener("click",()=>{
-            document.getElementById("mobileMenu").classList.toggle("show")
-            })
-          </script>
-          <style>
-            #mobileMenu ,#profiledropdown{
-              height: 0;
-              margin: 0;
-              padding: 0;
-              overflow: hidden;
-            }
-            .show{
-             height: auto !important; 
-             
-             transition: all 1s ease-out;
-            }
-          </style>
-          <span class="sr-only">Open main menu</span>
-          <!--
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product</title>
+  <!-- Include Tailwind CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #374151;
+    }
+
+    input {
+      border: none
+    }
+
+    .mainPictureContainer {
+
+      overflow: hidden;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js"></script>
+</head>
+
+<body>
+  <nav class="bg-gray-800">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <!-- Mobile menu button-->
+          <button type="button"
+            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            aria-controls="mobile-menu" aria-expanded="false">
+            <span id="menuToggle" class="absolute -inset-0.5"></span>
+            <script>
+              document.getElementById("menuToggle").addEventListener("click", () => {
+                document.getElementById("mobileMenu").classList.toggle("show")
+              })
+            </script>
+            <style>
+              #mobileMenu,
+              #profiledropdown {
+                height: 0;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+              }
+
+              .show {
+                height: auto !important;
+
+                transition: all 1s ease-out;
+              }
+            </style>
+            <span class="sr-only">Open main menu</span>
+            <!--
             Icon when menu is closed.
 
             Menu open: "hidden", Menu closed: "block"
           -->
-          <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
-          <!--
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+            <!--
             Icon when menu is open.
 
             Menu open: "block", Menu closed: "hidden"
           -->
-          <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex flex-shrink-0 items-center">
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company">
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current="page">Home</a>
-            <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
-            <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
-            <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
-          <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact Us</a>
+        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div class="flex flex-shrink-0 items-center">
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              alt="Your Company">
+          </div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+              <a href="/" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current="
+                page">Home</a>
+              <a href="/services"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
+              <a href="/career"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
+              <a href="/aboutus"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
+          <a href=" /contactus"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+                Us</a>
 
+            </div>
           </div>
         </div>
-      </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
- <!-- Profile dropdown -->
-        
+        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+          <!-- Profile dropdown -->
 
-          
-          
+
+
+
         </div>
       </div>
     </div>
-  </div> 
-
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
-    <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
-      <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-      <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
-      <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
-      <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
-      <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About Us</a>
-      <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact Us</a>
-      
-      
     </div>
-  </div>
-      </nav>
-      
-      <div class="antialiased">
-        <div class="py-6">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
-            <div class="flex flex-col md:flex-row -mx-4">
-              <div class="md:flex-1 px-4">
-                <div x-data="{ image: 1 }" x-cloak>
-                  <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
-                    <div x-show="image === 1" class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-        <!--               <span class="text-5xl">1</span> -->
-                      <img class="rounded-lg" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>"  >
-                    </div>
-        
-                    <div x-show="image === 2" class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-        <img class="rounded-lg" src="<%= product.logo2 ? '/' + product.logo2 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
-                    </div>
-        
-                    <div x-show="image === 3" class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                        <img class="rounded-lg" src="<%= product.logo3 ? '/' + product.logo3 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
-                    </div>
-                  </div>
-        
-                  <div class="flex -mx-2 mb-4">
-                    <template x-for="i in 3">
-                      <div class="flex-1 px-2">
-                        <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }" class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
-                          <span x-text="i" class="text-2xl"></span>
-                        </button>
-                      </div>
-                    </template>
-                  </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+          aria-current="page">Home</a>
+        <a href="/services"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
+        <a href="/career"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
+        <a href="/aboutus"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
+          Us</a>
+        <a href="/contactus"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+          Us</a>
+
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="antialiased">
+    <div class="py-6">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
+        <div class="flex flex-col md:flex-row -mx-4">
+          <div class="md:flex-1 px-4">
+            <div x-data="{ image: 1 }" x-cloak>
+              <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
+                <div x-show="image === 1"
+                  class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                  <!--               <span class="text-5xl">1</span> -->
+                  <img class="rounded-lg"
+                    src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+                </div>
+
+                <div x-show="image === 2"
+                  class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                  <img class="rounded-lg"
+                    src="<%= product.logo2 ? '/' + product.logo2 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+                </div>
+
+                <div x-show="image === 3"
+                  class="mainPictureContainer h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
+                  <img class="rounded-lg"
+                    src="<%= product.logo3 ? '/' + product.logo3 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
                 </div>
               </div>
-              <div class="md:flex-1 px-4">
-                <h2 class="mb-2 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl"><%= product.name %></h2>
-                <p class="text-white text-sm">By <p class="text-yellow-600 hover:underline"><%= createdBy.name %></p></p>
-                <div class="flex items-center space-x-4 my-4">
-                  <div>
-                    <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                      <span class="text-indigo-400 mr-1 mt-1">₹</span>
-                      <span class="font-bold text-indigo-600 text-3xl"><%= product.offer %></span>
-                    </div>
+
+              <div class="flex -mx-2 mb-4">
+                <template x-for="i in 3">
+                  <div class="flex-1 px-2">
+                    <button x-on:click="image = i" :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
+                      class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
+                      <span x-text="i" class="text-2xl"></span>
+                    </button>
                   </div>
-                  <div class="flex-1">
-                    <p style="text-decoration: line-through;" class="text-green-500 text-xl font-semibold">₹<%= product.price %></p>
-                  
-                    <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
-                   
-                  </div>
-                  <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white" id="add-to-cart-button" data-product-id=<%= product._id %>>Add To Cart</button>
+                </template>
+              </div>
+            </div>
+          </div>
+          <div class="md:flex-1 px-4">
+            <h2 class="mb-2 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl">
+              <%= product.name %>
+            </h2>
+            <p class="text-white text-sm">By
+            <p class="text-yellow-600 hover:underline">
+              <%= createdBy.name %>
+            </p>
+            </p>
+            <div class="flex items-center space-x-4 my-4">
+              <div>
+                <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+                  <span class="text-indigo-400 mr-1 mt-1">₹</span>
+                  <span class="font-bold text-indigo-600 text-3xl">
+                    <%= product.offer %>
+                  </span>
                 </div>
-                <div class="flex items-center space-x-4 my-4">
-                  <div>
-                    <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %></p>
-                  <p class="mt-1 text-lg font-medium text-white">Website: <%= product.websitelink %></p>
-                  <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %></p>
-                  <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p>
-                  </div>
-                  
-                <div class="flex py-4 space-x-4">
-                 
-                  <script>
-                    document.getElementById('add-to-cart-button').addEventListener('click', function(event) {
-  const productId = event.target.getAttribute('data-product-id');
-  
-  fetch(`/add-to-cart/${productId}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.message) {
-      alert(data.message);
-    }
-  })
-  .catch((error) => {
-    console.error('Error:', error);
-  });
-});
-                  </script>
-                </div>
+              </div>
+              <div class="flex-1">
+                <p style="text-decoration: line-through;" class="text-green-500 text-xl font-semibold">₹<%=
+                    product.price %>
+                </p>
+
+                <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+
+              </div>
+              <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
+                id="add-to-cart-button" data-product-id=<%=product._id %>>Add To Cart</button>
+            </div>
+            <div class="flex items-center space-x-4 my-4">
+              <div>
+                <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %>
+                </p>
+                <p class="mt-1 text-lg font-medium text-white">Website: <%= product.websitelink %>
+                </p>
+                <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %>
+                </p>
+                <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %>
+                </p>
+              </div>
+
+              <div class="flex py-4 space-x-4">
+
+                <script>
+                  document.getElementById('add-to-cart-button').addEventListener('click', function (event) {
+                    const productId = event.target.getAttribute('data-product-id');
+
+                    fetch(`/add-to-cart/${productId}`, {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }
+                    })
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.message) {
+                          alert(data.message);
+                        }
+                      })
+                      .catch((error) => {
+                        console.error('Error:', error);
+                      });
+                  });
+                </script>
               </div>
             </div>
           </div>
         </div>
-          </div>
-      </body>
-      </html>
+      </div>
+    </div>
+</body>
+
+</html>

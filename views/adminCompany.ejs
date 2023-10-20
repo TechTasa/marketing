@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #374151;
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dashboard</h1>
+    <p>All Users
+    <ul role="list" class="divide-y divide-gray-100">
+        <% visitors.forEach(visitor=> { %>
+            <li class="flex justify-between gap-x-6 py-5">
+                <div class="flex min-w-0 gap-x-4">
+                    <img class="h-12 w-12 flex-none rounded-full bg-gray-50"
+                        src="<%= visitor.logo ? '/' + visitor.logo : 'https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png' %>"
+                        alt="">
+                    <div class="min-w-0 flex-auto">
+                        <p class="text-sm font-semibold leading-6 text-white">
+                            <%= visitor.name %>
+                        </p>
+                        <p class="mt-1 truncate text-xs leading-5 text-white">
+                            <%= visitor.email %>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <% }); %>
+    </ul>
+
+</body>
+
+</html>

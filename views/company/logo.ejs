@@ -7,8 +7,11 @@
   <title>Your Title</title>
   <!-- Include Tailwind CSS via CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/cropperjs/dist/cropper.css">
+
   <style>
     body {
+      padding: 1rem;
       background-color: #111827;
     }
 
@@ -84,7 +87,7 @@
                 py-2 text-sm font-medium">Profile</a>
               <a href="/cover/<%= user._id %>"
                 class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Cover
-                PIcture</a>
+                Picture</a>
               <a href="/logo/<%= user._id %>"
                 class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current=" page">Logo</a>
               <a href="/products/<%= user._id %>"
@@ -156,19 +159,77 @@
   </nav>
 
   <div class="container mx-auto px-4 ">
-    <img src="../<%= user.logo %>" alt="logoalt" class="w-full object-cover mt-4 rounded">
-    <form action="/logo/<%= user._id %>" method="post" enctype="multipart/form-data"
-      class=" bg-gray-800 flex flex-wrap justify-between mt-4 mx-0 rounded">
+    <img id="image" src="../<%= user.logo %>" alt="logoalt" class="w-1/4 object-cover mt-4 mx-auto rounded">
+    <div class=" bg-gray-800 flex flex-wrap justify-between mt-4 mx-0 rounded">
       <div>
-        <input type="file" name="logo"
+        <input type="file" name="logo" id="imageInput"
           class="bg-gray-900  border py-3 my-2 mx-3 px-5 text-grey-darkest text-white rounded hover:bg-gray-700" />
       </div>
       <div>
-        <input type="submit" id="uploadbtn" value="Upload"
+        <input type="submit" id="uploadBtn" value="Upload"
           class="bg-gray-900 text-white font-bold py-3 px-5 my-2 mx-3 hover:bg-gray-700 rounded" />
       </div>
-    </form>
+    </div>
+    <script>
+      let image = document.getElementById("image");
+      let cropper;
+
+      document.getElementById("imageInput").addEventListener("change", function (e) {
+        let files = e.target.files;
+        let done = function (url) {
+          image.src = url;
+          if (cropper) cropper.destroy();
+          cropper = new Cropper(image, { aspectRatio: 1 / 1 });
+        };
+        let reader;
+        let file;
+        let url;
+
+        if (files && files.length > 0) {
+          file = files[0];
+
+          if (url) {
+            done(URL.createObjectURL(file));
+          } else if (FileReader) {
+            reader = new FileReader();
+            reader.onload = function (e) {
+              done(reader.result);
+            };
+            reader.readAsDataURL(file);
+            console.log(file);
+            document.getElementById("uploadBtn").addEventListener("click", (e) => {
+              // e.preventDefault()
+              let croppedImage = cropper.getCroppedCanvas({
+                width: 500
+              });
+              // Convert the canvas to a blob
+              croppedImage.toBlob((blob) => {
+                let url = "/logo/<%= user._id %>";
+                let formData = new FormData();
+                blob.name = 'Logo_<%= user._id %>.jpeg'
+                formData.append('logo', blob, 'Logo_<%= user._id %>.jpeg');
+                fetch(url, {
+                  method: "POST",
+                  body: formData
+                })
+                  .then(response => { window.location.reload(); })
+                  .then(result => {
+                    console.log('Success:', result);
+                  })
+                  .catch(error => {
+                    console.error('Error:', error);
+                  });
+              }, 'image/jpeg');
+            });
+          }
+        }
+      });
+
+
+    </script>
+
   </div>
 </body>
+<script src="https://unpkg.com/cropperjs"></script>
 
 </html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.0.1/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 1rem;
+            background-color: #374151;
+        }
+
+        input {
+            border: none
+        }
+
+        .main {
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-family: sans-serif;
+        }
+
+        .topWrapper {
+            width: 95vw;
+            overflow: hidden;
+        }
+
+        .coverPicture {
+            width: 100%;
+
+            display: block;
+            border-radius: 10px;
+        }
+
+        .logoPicure {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            bottom: 5rem;
+            left: 1rem;
+            border-radius: 100%;
+        }
+
+        .companyName,
+        .companyBio,
+        .companyType,
+        .hr2,
+        #productBtn,
+        #servicesBtn {
+            position: relative !important;
+            bottom: 5rem !important;
+
+        }
+
+        .companyName,
+        .companyBio {
+            color: white;
+        }
+
+        .companyType {
+            color: rgb(175, 174, 173);
+        }
+
+        .bottomWrapper {
+            width: 95vw;
+        }
+
+        #productBtn,
+        #servicesBtn {
+            background-color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+        }
+
+        .companyName {
+            font-size: 3rem;
+        }
+
+        .bottomWrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 95vw;
+        }
+
+        .insideP {
+            width: 25rem;
+            height: 35rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button type="button"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span id="menuToggle" class="absolute -inset-0.5"></span>
+                        <script>
+                            document.getElementById("menuToggle").addEventListener("click", () => {
+                                document.getElementById("mobileMenu").classList.toggle("show")
+                            })
+                        </script>
+                        <style>
+                            #mobileMenu,
+                            #profiledropdown {
+                                height: 0;
+                                margin: 0;
+                                padding: 0;
+                                overflow: hidden;
+                            }
+
+                            .show {
+                                height: auto !important;
+
+                                transition: all 1s ease-out;
+                            }
+                        </style>
+                        <span class="sr-only">Open main menu</span>
+                        <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex flex-shrink-0 items-center">
+                        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                            alt="Your Company">
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                            <a href="/"
+                                class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current="
+                                page">Home</a>
+                            <a href="/services"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
+                            <a href="/career"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
+                            <a href="/aboutus"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
+              <a href=" /contactus"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+                                Us</a>
+
+                            <% if (loggedIn) { %>
+                                <a href="/logout"
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Log
+                                    Out</a>
+                                <% } else { %>
+                                    <a href="/login"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log
+                                        In</a>
+                                    <a href="/signupSelect"
+                                        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign
+                                        Up</a>
+                                    <% } %>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                    <% if (user.role !=undefined ) { %>
+                        <li
+                            class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
+                            <a href="/cart/<%= user.username %>" role="button" class="relative flex">
+                                <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                                    <path
+                                        d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+                                </svg>
+                                <span
+                                    class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                                    <%= cartCount %>
+                                </span>
+                            </a>
+                        </li>
+                        <% }%> <!-- Profile dropdown -->
+                            <% if (loggedIn) { %>
+                                <div class="relative ml-3">
+                                    <div>
+                                        <button type="button"
+                                            class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                            <span class="absolute -inset-1.5"></span>
+                                            <!-- <span class="sr-only">Open user menu</span> -->
+                                            <img class="h-10 w-10 rounded-full"
+                                                src="../<%= logo.logo ? '' + logo.logo : 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' %>"
+                                                alt="">
+                                        </button>
+                                    </div>
+
+                                    <script>
+                                        document.getElementById("user-menu-button").addEventListener("click", () => {
+                                            document.getElementById("profiledropdown").classList.toggle("show")
+                                        })
+                                    </script>
+                                    <div id="profiledropdown"
+                                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
+                                        tabindex="-1">
+                                        <!-- Active: "bg-gray-100", Not Active: "" -->
+                                        <% if (user.role=="company" ) { %>
+                                            <a href="/profile/<%= user.username %>"
+                                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                tabindex="-1" id="user-menu-item-0">Company Details</a>
+                                            <a href="/cover/<%= user.username %>"
+                                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                tabindex="-1" id="user-menu-item-1">Cover Picture</a>
+                                            <a href="/logo/<%= user.username %>"
+                                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                tabindex="-1" id="user-menu-item-2">Logo</a>
+                                            <a href="/products/<%= user.username %>"
+                                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                tabindex="-1" id="user-menu-item-3">My Products</a>
+                                            <% } else if(user.role=="visitor" ) { %>
+                                                <a href="/profile/<%= user.username %>"
+                                                    class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                    tabindex="-1" id="user-menu-item-0">Profile</a>
+                                                <a href="/cart/<%= user.username %>"
+                                                    class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                    tabindex="-1" id="user-menu-item-1">My Cart</a>
+                                                <% } else{%>
+                                                    <a href="/profile/<%= user.username %>"
+                                                        class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                        tabindex="-1" id="user-menu-item-0">Admin Profile</a>
+                                                    <a href="/dashboard/users"
+                                                        class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                                        tabindex="-1" id="user-menu-item-0">All Users</a>
+                                                    <% } %>
+
+
+                                    </div>
+                                </div>
+                                <% } else { %>
+
+                                    <% } %>
+
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden" id="mobile-menu">
+            <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+                    aria-current="page">Home</a>
+                <a href="/services"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
+                <a href="/career"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
+                <a href="/aboutus"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
+                    Us</a>
+                <a href="/contactus"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+                    Us</a>
+                <% if (loggedIn) { %>
+                    <a href="/logout"
+                        class="text-white bg-red-700 hover:bg-red-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+                        Out</a>
+                    <% } else { %>
+                        <a href="/signupSelect"
+                            class="text-white bg-green-700 hover:bg-green-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sign
+                            Up</a>
+                        <a href="/login"
+                            class="text-white bg-blue-700 hover:bg-blue-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+                            In</a>
+                        <% } %>
+
+
+
+
+            </div>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="topWrapper">
+            <img src="../<%=company.cover %>" class="coverPicture " alt="">
+            <img src="../<%=company.logo %>" class="logoPicure" alt="">
+            <h1 class="companyName">
+                <%=company.companyName %>
+            </h1>
+            <p class="companyBio">
+                <%=company.bio %>
+                    Bio
+            </p>
+            <p class="companyType">
+                <%=company.companyType%>
+                    CompanyType
+            </p>
+            <HR class="hr2">
+            </HR>
+            <button id="productBtn">Products</button>
+            <button id="servicesBtn">Services</button>
+        </div>
+
+        <div class="bottomWrapper">
+            <% if (!products || products.length===0) { %>
+                <h1 class="text-lg font-medium text-white m-10">You Have No Products</h1>
+                <% } else { %>
+                    <% products.forEach(function(product) { %>
+                        <a class="companyP" href="/product/<%= product._id %>">
+                            <div class="py-6 px-3 insideP">
+                                <div class="bg-white shadow-xl rounded-lg overflow-hidden">
+                                    <div class="bg-cover bg-center h-56 p-4" style="background-image: url('')">
+                                        <img style="width: 100%;"
+                                            src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>"
+                                            alt="">
+                                    </div>
+                                    <div class="p-4">
+                                        <p class="uppercase tracking-wide text-sm font-bold text-gray-700">
+                                            <%=product.name%>
+                                        </p>
+                                        <p class="text-3xl text-gray-900">
+                                            ₹<%=product.offer%>
+                                        </p>
+                                        <p class="text-gray-700" style="text-decoration: line-through;">₹
+                                            <%=product.price%>
+                                        </p>
+                                    </div>
+                                    <!-- <div class="flex p-4 border-t border-gray-300 text-gray-700">
+                                        <div class="flex-1 inline-flex items-center">
+                                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M0 16L3 5V1a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v4l3 11v5a1 1 0 0 1-1 1v2h-1v-2H2v2H1v-2a1 1 0 0 1-1-1v-5zM19 5h1V1H4v4h1V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1zm0 1v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V6h-2v2a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6H3.76L1.04 16h21.92L20.24 6H19zM1 17v4h22v-4H1zM6 4v4h4V4H6zm8 0v4h4V4h-4z">
+                                                </path>
+                                            </svg>
+                                            <p><span class="text-gray-900 font-bold">3</span> Bedrooms</p>
+                                        </div>
+                                        <div class="flex-1 inline-flex items-center">
+                                            <svg class="h-6 w-6 text-gray-600 fill-current mr-3"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                <path fill-rule="evenodd"
+                                                    d="M17.03 21H7.97a4 4 0 0 1-1.3-.22l-1.22 2.44-.9-.44 1.22-2.44a4 4 0 0 1-1.38-1.55L.5 11h7.56a4 4 0 0 1 1.78.42l2.32 1.16a4 4 0 0 0 1.78.42h9.56l-2.9 5.79a4 4 0 0 1-1.37 1.55l1.22 2.44-.9.44-1.22-2.44a4 4 0 0 1-1.3.22zM21 11h2.5a.5.5 0 1 1 0 1h-9.06a4.5 4.5 0 0 1-2-.48l-2.32-1.15A3.5 3.5 0 0 0 8.56 10H.5a.5.5 0 0 1 0-1h8.06c.7 0 1.38.16 2 .48l2.32 1.15a3.5 3.5 0 0 0 1.56.37H20V2a1 1 0 0 0-1.74-.67c.64.97.53 2.29-.32 3.14l-.35.36-3.54-3.54.35-.35a2.5 2.5 0 0 1 3.15-.32A2 2 0 0 1 21 2v9zm-5.48-9.65l2 2a1.5 1.5 0 0 0-2-2zm-10.23 17A3 3 0 0 0 7.97 20h9.06a3 3 0 0 0 2.68-1.66L21.88 14h-7.94a5 5 0 0 1-2.23-.53L9.4 12.32A3 3 0 0 0 8.06 12H2.12l3.17 6.34z">
+                                                </path>
+                                            </svg>
+                                            <p><span class="text-gray-900 font-bold">2</span> Bathrooms</p>
+                                        </div>
+                                    </div> -->
+                                    <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
+                                        <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">Owner
+                                        </div>
+                                        <div class="flex items-center pt-2">
+                                            <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3"
+                                                style="background-image: url(https://images.unsplash.com/photo-1500522144261-ea64433bbe27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80)">
+                                            </div>
+                                            <div>
+                                                <p class="font-bold text-gray-900">
+                                                    <%=company.name %>
+                                                </p>
+                                                <p class="text-sm text-gray-700">
+                                                    <%=company.phone %>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+
+                        <% }); %>
+                            <% } %>
+
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -22,6 +22,8 @@ const { ObjectId } = require("mongodb");
       const user = await userCollection.findOne({ _id: userId });
       if (!user) {
         return res.status(404).send({ message: "User not found" });
+      } else if (user.role != "visitor") {
+        return res.status(404).send({ message: "User is not a Visitor" });
       }
 
       // Initialize cart if it does not exist

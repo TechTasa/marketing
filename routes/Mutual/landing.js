@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const { connect, getCollection } = require("../../db");
 const { ObjectId } = require("mongodb");
 const multer = require("multer");
+const zlib = require("zlib");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -23,10 +24,15 @@ const upload = multer({ storage: storage });
     const productsCollection = await getCollection("products");
     router.get("/", async (req, res) => {
       const products = await productsCollection.find().toArray();
-      const users = await userCollection.find({}, { cover: 1 }).toArray();
+      const companyUsers = await userCollection.find({}).toArray();
+      const companies = companyUsers.filter((user) => user.role === "company");
+      const users = await userCollection
+        .find({}, { cover: 1, logo: 1 })
+        .toArray();
       const covers = users
         .filter((user) => user.cover)
         .map((user) => user.cover);
+      const logos = users.filter((user) => user.logo).map((user) => user.logo);
       let loggedInUser = await userCollection.findOne({
         _id: new ObjectId(req.session.username),
       });
@@ -35,11 +41,11 @@ const upload = multer({ storage: storage });
         cartItemCount = loggedInUser.cart.length;
       }
 
-      console.log(loggedInUser);
       res.render("landing", {
         loggedIn: req.session.username ? true : false,
         user: req.session,
-        products: products,
+        companies: companies,
+        logos: logos,
         covers: covers,
         logo: loggedInUser,
         cartCount: cartItemCount,

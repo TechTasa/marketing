@@ -17,6 +17,7 @@ const coverRouter = require("./routes/Company/coverPicture");
 const logoRouter = require("./routes/Company/logo");
 const productRouter = require("./routes/Mutual/product");
 const productsRouter = require("./routes/Company/products");
+const companyRouter = require("./routes/Company/company");
 const createproductsRouter = require("./routes/Company/createproduct");
 const editproductsRouter = require("./routes/Company/editproduct");
 const deleteproductsRouter = require("./routes/Company/deleteproduct");
@@ -83,6 +84,7 @@ app.use(logoRouter);
 app.use(productsRouter);
 
 app.use(productRouter);
+app.use(companyRouter);
 
 app.use(cartRouter);
 
@@ -129,5 +131,5 @@ app.use(contactusRouter);
 app.use(logoutRouter);
 
 app.listen(7000, () => {
-  console.log("Server listening on port 7000");
+  console.log("Server listening on port http://localhost:7000");
 });

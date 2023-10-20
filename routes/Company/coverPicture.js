@@ -1,10 +1,9 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const { connect, getCollection } = require("../../db");
+const { getCollection } = require("../../db");
 const { ObjectId } = require("mongodb");
 const multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,17 +31,16 @@ const upload = multer({ storage: storage });
       // Assuming 'cover' is the name of the form field in your client-side form
       const coverImage = req.file.path; // get the path of the uploaded file
 
-      // Update the user document with the cover image path
       const result = await userCollection.updateOne(
         { _id: new ObjectId(id) },
         { $set: { cover: coverImage } }
       );
-
-      if (result.modifiedCount === 1) {
-        res.redirect(`/cover/${id}`);
-      } else {
-        res.status(500).send({ message: "Failed to upload cover image" });
-      }
+      res.redirect(`/cover/${id}`);
+      // if (result.modifiedCount === 1) {
+      //
+      // } else {
+      //   res.status(500).send({ message: "Failed to upload cover image" });
+      // }
     });
 
     router.get("/cover/:id", async (req, res) => {

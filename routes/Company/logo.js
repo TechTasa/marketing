@@ -1,10 +1,10 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
 const router = express.Router();
-const bcrypt = require("bcrypt");
-const { connect, getCollection } = require("../../db");
+const { getCollection } = require("../../db");
 const { ObjectId } = require("mongodb");
 const multer = require("multer");
+const fs = require("fs");
+const zlib = require("zlib");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,27 +32,25 @@ const upload = multer({ storage: storage });
       // Assuming 'cover' is the name of the form field in your client-side form
       const logoImage = req.file.path; // get the path of the uploaded file
 
-      // Update the user document with the cover image path
+      // Convert image to base64
+      // const logoImageBase64 = fs.readFileSync(logoImage, {
+      //   encoding: "base64",
+      // });
+      // const compressedImage = zlib
+      //   .deflateSync(Buffer.from(logoImageBase64))
+      //   .toString("base64");
       const result = await userCollection.updateOne(
         { _id: new ObjectId(id) },
         { $set: { logo: logoImage } }
       );
-
-      if (result.modifiedCount === 1) {
-        res.redirect(`/logo/${id}`);
-      } else {
-        res.status(500).send({ message: "Failed to upload Logo image" });
-      }
+      res.redirect(`/logo/${id}`);
     });
 
     router.get("/logo/:id", async (req, res) => {
-      // Redirect to /
-      // Get the user id from the request parameters
       const id = req.params.id;
       let idString = id.toString();
       const user = await userCollection.findOne({ _id: new ObjectId(id) });
       user._id = idString;
-      // Render the 'cover' view and pass the user data and id to it
       res.render("company/logo", { user: user });
     });
   } finally {
