@@ -10,13 +10,47 @@ const { ObjectId } = require("mongodb");
     // Get a reference to the users collection
     const userCollection = await getCollection("users");
     const productCollection = await getCollection("products");
+    router.get("/dashboard", async (req, res) => {
+      if (req.session.isAuthenticated && req.session.role == "admin") {
+        const user = await userCollection.findOne({
+          _id: new ObjectId(req.session.username),
+        });
+
+        // Calculate number of users with different roles
+        const companyCount = await userCollection.countDocuments({
+          role: "company",
+        });
+        const visitorCount = await userCollection.countDocuments({
+          role: "visitor",
+        });
+        const adminCount = await userCollection.countDocuments({
+          role: "admin",
+        });
+
+        // Calculate number of products
+        const productCount = await productCollection.countDocuments();
+
+        res.render("adminDashboard", {
+          user: user,
+          companyCount: companyCount,
+          visitorCount: visitorCount,
+          adminCount: adminCount,
+          productCount: productCount,
+        });
+      } else {
+        // Redirect or handle unauthenticated access
+        res.redirect("/login");
+      }
+    });
     router.get("/dashboard/users", async (req, res) => {
       if (req.session.isAuthenticated && req.session.role == "admin") {
         const username = req.session.username;
         const users = await userCollection.find({}).toArray();
         const visitors = users.filter((user) => user.role === "visitor");
-        res.render("adminVisitors", { visitors: visitors });
-        //res.render("dashboard", { username });
+        const user = await userCollection.findOne({
+          _id: new ObjectId(req.session.username),
+        });
+        res.render("adminCompany", { user:user,visitors: visitors });
       } else {
         // Redirect or handle unauthenticated access
         res.redirect("/login");
@@ -27,8 +61,24 @@ const { ObjectId } = require("mongodb");
         const username = req.session.username;
         const users = await userCollection.find({}).toArray();
         const visitors = users.filter((user) => user.role === "company");
-        res.render("adminCompany", { visitors: visitors });
-        //res.render("dashboard", { username });
+        const user = await userCollection.findOne({
+          _id: new ObjectId(req.session.username),
+        });
+        res.render("adminCompany", { user:user,visitors: visitors });
+      } else {
+        // Redirect or handle unauthenticated access
+        res.redirect("/login");
+      }
+    });
+    router.get("/dashboard/admins", async (req, res) => {
+      if (req.session.isAuthenticated && req.session.role == "admin") {
+        const username = req.session.username;
+        const users = await userCollection.find({}).toArray();
+        const visitors = users.filter((user) => user.role === "admin");
+        const user = await userCollection.findOne({
+          _id: new ObjectId(req.session.username),
+        });
+        res.render("adminCompany", { user:user,visitors: visitors });
       } else {
         // Redirect or handle unauthenticated access
         res.redirect("/login");
@@ -47,20 +97,36 @@ const { ObjectId } = require("mongodb");
             product.CreatedByUser = user.name;
           }
         }
-        console.log(products);
-        res.render("adminProducts", { products: products });
-        //res.render("dashboard", { username });
+        
+        const user = await userCollection.findOne({
+          _id: new ObjectId(req.session.username),
+        });
+        res.render("adminProducts", { user:user,products: products });
       } else {
         // Redirect or handle unauthenticated access
         res.redirect("/login");
       }
     });
+
+
+    router.post("/dashboard/delete/:id", async (req, res) => {
+      if (req.session.isAuthenticated && req.session.role == "admin") {
+        const userId = req.params.id;
+        await userCollection.deleteOne({ _id: new ObjectId(userId) });
+        res.redirect('back');
+      } else {
+        // Redirect or handle unauthenticated access
+        res.redirect("/login");
+      }
+    });
+    
+
+
+
+
+
+
   } finally {
   }
 })();
 module.exports = router;
-//  <!-- <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-//                 <p class="text-sm leading-6 text-white">Co-Founder / CEO</p>
-//                 <p class="mt-1 text-xs leading-5 text-white">Last seen <time datetime="2023-01-23T13:23Z">3h
-//                         ago</time></p>
-//             </div> -->
