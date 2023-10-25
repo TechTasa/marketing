@@ -96,14 +96,14 @@
                           <a href=" /profile/<%=user._id %>"
                         class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm
                         font-medium"">Profile</a>
-                      <a href=" /dashboard" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm
-                            font-medium aria-current=" page">Overview</a>
-                            <a href=" /dashboard/users"
+                        <a href=" /dashboard"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm
+                        font-medium"">Overview</a>
+                              <a href=" /dashboard/users"
                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm
-                              font-medium"">All Visitors</a>
-                              <a href=" /dashboard/company"
-                              class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm
-                              font-medium"">All Companies</a>
+                              font-medium"">All Visitors </a>
+                              <a href=" /dashboard/company" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm
+                              font-medium aria-current=" page">All Companies</a>
                               <a href=" /dashboard/admins"
                               class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm
                               font-medium"">All Admins</a>
@@ -127,14 +127,15 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="sm:hidden" id="mobile-menu">
           <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="/"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
-            <a href="/profile/<%= user._id %>"
-              class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Profile</a>
-            <a href="/dashboard" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-              aria-current="page">Overview</a>
-    
+
+            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
+            <a href="/profile/<%= user._id %>" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Profile</a>
+            <a href="/dashboard" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Overview</a>
+            <a href="/dashboard/users" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">All Visitors</a>
+            <a href="/dashboard/company" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">All Companies</a>
+            <a href="/dashboard/admins" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">All Admins</a>
+            <a href="/dashboard/products" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">All Products</a>
+
           </div>
         </div>
       </nav>

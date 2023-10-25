@@ -50,7 +50,7 @@ const { ObjectId } = require("mongodb");
         const user = await userCollection.findOne({
           _id: new ObjectId(req.session.username),
         });
-        res.render("adminCompany", { user:user,visitors: visitors });
+        res.render("adminVisitors", { user:user,visitors: visitors });
       } else {
         // Redirect or handle unauthenticated access
         res.redirect("/login");
@@ -78,12 +78,56 @@ const { ObjectId } = require("mongodb");
         const user = await userCollection.findOne({
           _id: new ObjectId(req.session.username),
         });
-        res.render("adminCompany", { user:user,visitors: visitors });
+        res.render("adminAdmins", { user:user,visitors: visitors });
       } else {
         // Redirect or handle unauthenticated access
         res.redirect("/login");
       }
     });
+
+
+
+
+    router.get('/dashboard/admins/create',async function(req, res) {
+      const user = await userCollection.findOne({
+        _id: new ObjectId(req.session.username),
+      });
+      console.log(user.type);
+      if (user.type==="master") {
+        res.render('createAdmin',{user:user}); 
+      }
+      else{
+        res.send("unauthorized")
+      }
+     
+    });
+
+    router.post('/dashboard/admins/create', async function(req, res) {
+      
+      // Get the data from the request body
+      const data = req.body;
+      data.role="admin";
+      data.cart=[];
+      console.log(data);
+      // Hash the password
+      const hashedPassword = await bcrypt.hash(data.password, 10);
+      // Insert the data into the collection
+      const result = await userCollection.insertOne({
+        ...data,
+        password: hashedPassword,
+      });
+      console.log(`Data inserted with _id: ${result.insertedId}`);
+      res.redirect("/dashboard/admins");
+    });
+
+
+
+
+
+
+
+
+
     router.get("/dashboard/products", async (req, res) => {
       if (req.session.isAuthenticated && req.session.role == "admin") {
         const username = req.session.username;
