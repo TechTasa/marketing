@@ -23,7 +23,7 @@ const path = require("path");
     // Define the /login endpoint for POST requests
     router.post("/login", async (req, res) => {
       const data = req.body;
-      const user = await userCollection.findOne({ name: data.name });
+      const user = await userCollection.findOne({ email: data.email });
 
       if (!user) {
         return res.status(401).send("Invalid username or password");
@@ -38,7 +38,7 @@ const path = require("path");
         return res.status(401).send("Invalid username or password");
       }
 
-      console.log("Username and Password validated", data, user);
+      // console.log("Username and Password validated", data, user);
       req.session.isAuthenticated = true;
       req.session.username = user._id;
       req.session.role = user.role;
@@ -48,13 +48,13 @@ const path = require("path");
           console.log(err);
         } else {
           if (user.role == "admin") {
-            console.log(`Admin account redirected to dashboard ${user.role}`);
+            // console.log(`Admin account redirected to dashboard ${user.role}`);
             res.redirect("/dashboard");
           } else if (user.role == "visitor") {
-            console.log(`Visitor account redirected to landing ${user.role}`);
+            // // console.log(`Visitor account redirected to landing ${user.role}`);
             res.redirect("/");
           } else if (user.role == "company") {
-            console.log(`Company account redirected to landing ${user.role}`);
+            // console.log(`Company account redirected to landing ${user.role}`);
             res.redirect("/");
           }
         }
