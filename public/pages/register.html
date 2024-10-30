@@ -129,7 +129,7 @@
 
   <body>
     <main>
-      <div class="register-container">
+      <!-- <div class="register-container">
         <img src="/marketingtool.webp" alt="" style="width: 70%" />
         <h3>Register Company</h3>
         <form method="POST" action="/register">
@@ -150,8 +150,160 @@
           <input type="hidden" id="role" name="role" value="company">
           <button class="register-button" type="submit">Create Account</button>
         </form>
+      </div> -->
+      <!-- <div class="register-container">
+        <img src="/marketingtool.webp" alt="" style="width: 70%" />
+        <h3>Register Company</h3>
+        <form method="POST" action="/register">
+          <div class="input-field">
+            <label for="full-name">Full Name</label>
+            <input type="text" id="full-name" name="full_name" placeholder="Enter Full Name" required />
+          </div>
+          <div class="input-field">
+            <label for="business-name">Business Name</label>
+            <input type="text" id="business-name" name="business_name" placeholder="Enter Business Name" required />
+          </div>
+          <div class="input-field">
+            <label for="business-type">Business Type</label>
+            <select id="business-type" name="business_type" required>
+              <option value="">Select Business Type</option>
+              <option value="individual">Individual</option>
+              <option value="company">Company</option>
+              <option value="partnership">Partnership</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label for="registration-number">Business Registration Number</label>
+            <input type="text" id="registration-number" name="registration_number" placeholder="Enter Registration Number" required />
+          </div>
+          <div class="input-field">
+            <label for="address">Business Address</label>
+            <input type="text" id="address" name="address" placeholder="Street Address" required />
+          </div>
+          <div class="input-field">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Enter City" required />
+          </div>
+          <div class="input-field">
+            <label for="state">State/Province</label>
+            <input type="text" id="state" name="state" placeholder="Enter State/Province" required />
+          </div>
+          <div class="input-field">
+            <label for="postal-code">Postal Code</label>
+            <input type="text" id="postal-code" name="postal_code" placeholder="Enter Postal Code" required />
+          </div>
+          <div class="input-field">
+            <label for="country">Country</label>
+            <input type="text" id="country" name="country" placeholder="Enter Country" required />
+          </div>
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required />
+          </div>
+          <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required />
+          </div>
+          <div class="input-field">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required />
+          </div>
+          <div class="input-field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter Phone Number" required />
+          </div>
+          <div class="input-field">
+            <label for="bank-name">Bank Name</label>
+            <input type="text" id="bank-name" name="bank_name" placeholder="Enter Bank Name" required />
+          </div>
+          <div class="input-field">
+            <label for="account-holder-name">Account Holder Name</label>
+            <input type="text" id="account-holder-name" name="account_holder_name" placeholder="Enter Account Holder Name" required />
+          </div>
+          <div class="input-field">
+            <label for="account-number">Account Number</label>
+            <input type="text" id="account-number" name="account_number" placeholder="Enter Account Number" required />
+          </div>
+          <div class="input-field">
+            <label for="ifsc-code">IFSC Code</label>
+            <input type="text" id="ifsc-code" name="ifsc_code" placeholder="Enter IFSC Code" required />
+          </div>
+          <div class="input-field">
+            <label for="payment-method">Payment Method</label>
+            <select id="payment-method" name="payment_method" required>
+              <option value="">Select Payment Method</option>
+              <option value="bank_transfer">Bank Transfer</option>
+              <option value="paypal">PayPal</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <label for="product-categories">Product/Service Categories</label>
+            <input type="text" id="product-categories" name="product_categories" placeholder="Enter Categories" required />
+          </div>
+          <div class="input-field">
+            <label for="product-description">Product/Service Description</label>
+            <textarea id="product-description" name="product_description" placeholder="Brief Description" required></textarea>
+          </div>
+          <div class="input-field">
+            <label>
+              <input type="checkbox" name="terms" required />
+              Agree to Terms and Conditions
+            </label>
+          </div>
+          <div class="input-field">
+            <label>
+              <input type="checkbox" name="return_policy" required />
+              Agree to Return and Refund Policy
+            </label>
+          </div>
+          <input type="hidden" id="role" name="role" value="company">
+          <button class="register-button" type="submit">Create Account</button>
+        </form>
+      </div> -->
+      <div class="register-container">
+        <img src="/marketingtool.webp" alt="" style="width: 70%" />
+        <h3>Register Company</h3>
+        <form method="POST" action="/register">
+          <!-- Basic Information -->
+          <div class="input-field">
+            <label for="full-name">Company Name</label>
+            <input type="text" id="full-name" name="companyName" placeholder="Enter Company Name" required />
+          </div>
+  
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter Email" required />
+          </div>
+  
+          <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required />
+          </div>
+  
+          <!-- <div class="input-field">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required />
+          </div> -->
+  
+          <div class="input-field">
+            <label for="mobile">Phone Number</label>
+            <input type="number" id="mobile" name="phone" placeholder="Enter Phone Number" required />
+          </div>
+          <input type="hidden" id="role" name="role" value="company">
+          <!-- Agreements -->
+          <div class="input-field">
+            <label>
+              <input type="checkbox" name="terms" required /> I agree to the terms and conditions
+            </label>
+          </div>
+  
+          <button class="register-button" type="submit">Create Account</button>
+          <button class="register-button" type="button" style="background-color: #d9d9d9; color: #333;">Cancel</button>
+        </form>
       </div>
     </main>
+
+
 
     <footer class="footer">
       <!-- Footer content (social icons, address, and contact info) goes here -->

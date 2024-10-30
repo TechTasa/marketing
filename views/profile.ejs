@@ -68,7 +68,7 @@
         </div>
         <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+            <img class="h-8 w-auto" src="/marketingtool-logo2.png"
               alt="Your Company">
           </div>
           <div class="hidden sm:ml-6 sm:block">
@@ -162,83 +162,124 @@
     </div>
   </nav>
   <form id="edit-form" method="POST" action="/profile/<%= user._id %>">
-
     <div class="border-b border-white/10 pb-12">
       <h2 class="text-base font-semibold leading-7 text-white">Personal Information</h2>
       <p class="mt-1 text-sm leading-6 text-white">Use a permanent address where you can receive mail.</p>
-
+  
       <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <% if (user.role == "visitor") { %>
         <div class="sm:col-span-3">
-          <label for="first-name" class=" block text-sm font-medium leading-6 text-white">Name</label>
+          <label for="name" class="block text-sm font-medium leading-6 text-white">Full Name</label>
           <div class="mt-2">
-            <input type="text" name="name" id="name" value="<%= user.name %>" autocomplete="given-name"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input type="text" name="name" id="name" value="<%= user.name %>" autocomplete="name"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
         </div>
-
-        <div class="sm:col-span-3">
-          <label for="phone" class="block text-sm font-medium leading-6 text-white">Phone</label>
-          <div class="mt-2">
-            <input id="phone" name="phone" type="phone" value="<%= user.phone %>" autocomplete="phone"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-
-        <div class="sm:col-span-4">
-          <label for="email" class="block text-sm font-medium leading-6 text-white">Email address</label>
-          <div class="mt-2">
-            <input id="email" name="email" type="email" value="<%= user.email %>" autocomplete="email"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-          </div>
-        </div>
-
-
-
-        <!-- <div class="sm:col-span-3">
-            <label for="country" class="block text-sm font-medium leading-6 text-white">Country</label>
-            <div class="mt-2">
-              <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                <option>United States</option>
-                <option>Canada</option>
-                <option>Mexico</option>
-              </select>
-            </div>
-          </div> -->
-
+        <% } %>
+        <% if (user.role == "company") { %>
         <div class="sm:col-span-3">
           <label for="companyname" class="block text-sm font-medium leading-6 text-white">Company Name</label>
           <div class="mt-2">
-            <input id="text" name="companyname" type="companyname" value="<%= user.companyName %>" autocomplete="email"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input type="text" name="companyname" id="companyname" value="<%= user.companyName %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
         </div>
-
+        <% } %>
         <div class="sm:col-span-3">
+          <label for="phone" class="block text-sm font-medium leading-6 text-white">Phone Number</label>
+          <div class="mt-2">
+            <input type="text" name="phone" id="phone" value="<%= user.phone %>" autocomplete="tel"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        <div class="sm:col-span-4">
+          <label for="email" class="block text-sm font-medium leading-6 text-white">Email Address</label>
+          <div class="mt-2">
+            <input type="email" name="email" id="email" value="<%= user.email %>" autocomplete="email"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        
+  
+        <!-- <div class="sm:col-span-3">
           <label for="domainname" class="block text-sm font-medium leading-6 text-white">Domain Name</label>
           <div class="mt-2">
-            <input id="text" name="domainname" type="domainname" value="<%= user.domainName %>" autocomplete="email"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <input type="text" name="domainname" id="domainname" value="<%= user.domainName %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
           </div>
-        </div>
-
-        <div class="sm:col-span-2 sm:col-start-1">
-          <label for="password" class="block text-sm font-medium leading-6 text-white">Password</label>
+        </div> -->
+  
+        <div class="sm:col-span-3">
+          <label for="businessType" class="block text-sm font-medium leading-6 text-white">Business Type</label>
           <div class="mt-2">
-            <input id="password" name="password" type="password" autocomplete="email"
-              class="bg-gray-900 p-2 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+            <select name="businessType" id="businessType"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+              <option value="individual" <%= user.businessType === 'individual' ? 'selected' : '' %>>Individual</option>
+              <option value="company" <%= user.businessType === 'company' ? 'selected' : '' %>>Company</option>
+              <option value="partnership" <%= user.businessType === 'partnership' ? 'selected' : '' %>>Partnership</option>
+            </select>
           </div>
         </div>
-
-
-
+  
+        <div class="sm:col-span-3">
+          <label for="registrationNumber" class="block text-sm font-medium leading-6 text-white">Business Registration Number(GST)</label>
+          <div class="mt-2">
+            <input type="text" name="registrationNumber" id="registrationNumber" value="<%= user.registrationNumber %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        <div class="sm:col-span-6">
+          <label for="address" class="block text-sm font-medium leading-6 text-white">Business Address</label>
+          <div class="mt-2">
+            <textarea name="address" id="address" rows="3"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"><%= user.address %></textarea>
+          </div>
+        </div>
+  
+        <div class="sm:col-span-3">
+          <label for="bankName" class="block text-sm font-medium leading-6 text-white">Bank Name</label>
+          <div class="mt-2">
+            <input type="text" name="bankName" id="bankName" value="<%= user.bankName %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        <div class="sm:col-span-3">
+          <label for="accountHolder" class="block text-sm font-medium leading-6 text-white">Account Holder Name</label>
+          <div class="mt-2">
+            <input type="text" name="accountHolder" id="accountHolder" value="<%= user.accountHolder %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        <div class="sm:col-span-3">
+          <label for="accountNumber" class="block text-sm font-medium leading-6 text-white">Account Number</label>
+          <div class="mt-2">
+            <input type="text" name="accountNumber" id="accountNumber" value="<%= user.accountNumber %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
+  
+        <div class="sm:col-span-3">
+          <label for="ifscCode" class="block text-sm font-medium leading-6 text-white">IFSC Code</label>
+          <div class="mt-2">
+            <input type="text" name="ifscCode" id="ifscCode" value="<%= user.ifscCode %>"
+              class="bg-gray-900 p-2 block w-full rounded-md text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+          </div>
+        </div>
       </div>
     </div>
+  
     <div class="mt-6 flex items-center justify-end gap-x-6">
       <button type="button" class="text-sm font-semibold leading-6 text-white">Cancel</button>
       <button type="submit"
-        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+        class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus:ring-2 focus:ring-indigo-600">Save</button>
     </div>
   </form>
+  
 
 </body>
 

@@ -133,22 +133,41 @@
         <img src="/marketingtool.webp" alt="" style="width: 70%" />
         <h3>Register User</h3>
         <form method="POST" action="/visitorSignUp">
+           <!-- Basic Information -->
+           <div class="input-field">
+            <label for="full-name">Name</label>
+            <input type="text" id="full-name" name="name" placeholder="Enter Name" required />
+          </div>
+  
           <div class="input-field">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter Email" required />
           </div>
+  
           <div class="input-field">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter Password" required />
           </div>
-          
+  
+          <!-- <div class="input-field">
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required />
+          </div> -->
+  
           <div class="input-field">
             <label for="mobile">Phone Number</label>
-            <input type="tel" id="mobile" name="phone" placeholder="Enter Phone Number" required />
+            <input type="number" id="mobile" name="phone" placeholder="Enter Phone Number" required />
           </div>
-          
-          <input type="hidden" id="role" name="role" value="company">
+          <input type="hidden" id="role" name="role" value="visitor">
+          <!-- Agreements -->
+          <div class="input-field">
+            <label>
+              <input type="checkbox" name="terms" required /> I agree to the terms and conditions
+            </label>
+          </div>
+  
           <button class="register-button" type="submit">Create Account</button>
+          <button class="register-button" type="button" style="background-color: #d9d9d9; color: #333;">Cancel</button>
         </form>
       </div>
     </main>
