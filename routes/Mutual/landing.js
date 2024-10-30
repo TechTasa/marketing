@@ -6,6 +6,7 @@ const { connect, getCollection } = require("../../db");
 const { ObjectId } = require("mongodb");
 const multer = require("multer");
 const zlib = require("zlib");
+const { log } = require("console");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -41,6 +42,8 @@ const upload = multer({ storage: storage });
         cartItemCount = loggedInUser.cart.length;
       }
 
+      
+
       res.render("landing", {
         loggedIn: req.session.username ? true : false,
         user: req.session,
@@ -49,6 +52,7 @@ const upload = multer({ storage: storage });
         covers: covers,
         logo: loggedInUser,
         cartCount: cartItemCount,
+        products: products,
       });
     });
   } finally {

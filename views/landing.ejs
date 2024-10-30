@@ -296,7 +296,7 @@
   <div class="bg-gray-700 m-0">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 
-      <h2 class=" h-10 text-lg font-medium text-white">All companies</h2>
+      <h2 class=" h-10 text-lg font-medium text-white">Shop By Companies</h2>
       <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
           <% if (!companies || companies.length===0) { %>
@@ -308,6 +308,7 @@
 
                   <!-- Article -->
                   <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
+                    
 
                     <a href="/company/<%= company._id %>">
                       <img alt="Placeholder" class="block h-auto w-full"
@@ -352,6 +353,64 @@
 
       </div>
 
+    </div>
+  </div>
+  <div class="bg-gray-700 m-0">
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <h2 class="h-10 text-lg font-medium text-white">Featured Products</h2>
+      <div class="container my-12 mx-auto px-4 md:px-12">
+        <div class="flex flex-wrap -mx-1 lg:-mx-4">
+          <% if (!products || products.length === 0) { %>
+            <h1 class="text-lg font-medium text-white m-10">No Products Available</h1>
+          <% } else { %>
+            <% products.forEach(function(product) { %>
+              <!-- Column -->
+              <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
+                <!-- Article -->
+                <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
+                  <a href="/product/<%= product._id %>">
+                    <img alt="Product Image" class="block h-auto w-full p-4"
+                      src="../<%= product.logo1 ? '' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+                  </a>
+
+                  <header class="flex flex-col p-2 md:p-4">
+                    <h1 class="text-lg truncate w-full mb-2">
+                      <a class="no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
+                        <%= product.name.length > 20 ? product.name.substring(0, 20) + '...' : product.name %>
+                      </a>
+                    </h1>
+                    <div class="flex flex-col gap-1">
+                      <p class="text-2xl font-bold text-indigo-600">
+                        $<%= product.offer %>
+                      </p>
+                      <div class="flex items-center gap-2">
+                        <p class="text-sm text-gray-500 line-through">
+                          MRP: $<%= product.price %>
+                        </p>
+                        <% if (product.offer && product.price) { %>
+                          <span class="text-sm text-green-600 font-semibold">
+                            <%= Math.round((product.price - product.offer) / product.price * 100) %>% off
+                          </span>
+                        <% } %>
+                      </div>
+                    </div>
+                  </header>
+                  <HR>
+                  <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-gray-700" 
+                       href="/product/<%= product._id %>">
+                      <p class="ml-2 text-sm">
+                        Company: <%= product.createdBy.companyName %>
+                      </p>
+                    </a>
+                  </footer>
+                </article>
+                <!-- END Article -->
+              </div>
+            <% }); %>
+          <% } %>
+        </div>
+      </div>
     </div>
   </div>
 </body>
