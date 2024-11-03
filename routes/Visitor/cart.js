@@ -30,11 +30,23 @@ const { ObjectId } = require("mongodb");
 
       let total = 0;
       products.forEach((product) => (total += product.offer));
-      console.log(total);
+      // console.log(total);
+      let loggedInUser = await userCollection.findOne({
+        _id: new ObjectId(req.session.username),
+      });
+      let cartItemCount = 0;
+      if (req.session.role == "visitor") {
+        cartItemCount = loggedInUser.cart.length;
+      }
+      // console.log(user._id);
+      
       res.render("visitor/cart", {
         user: user,
         products: products,
         total: total,
+        loggedIn: req.session.username ? true : false,
+        logo: loggedInUser,
+        cartCount: cartItemCount,
       });
     });
 

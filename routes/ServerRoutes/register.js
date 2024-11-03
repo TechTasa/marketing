@@ -23,6 +23,12 @@ const path = require("path");
       // Get the data from the request body
       const data = req.body;
 
+      // Check if email already exists
+      const existingUser = await userCollection.findOne({ email: data.email });
+      if (existingUser) {
+        return res.status(400).send('Email already exists');
+      }
+
       // Hash the password
       const hashedPassword = await bcrypt.hash(data.password, 10);
 
