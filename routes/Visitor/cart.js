@@ -38,7 +38,7 @@ const { ObjectId } = require("mongodb");
       if (req.session.role == "visitor") {
         cartItemCount = loggedInUser.cart.length;
       }
-      // console.log(user._id);
+      // console.log(loggedInUser,req.session.role);
       
       res.render("visitor/cart", {
         user: user,

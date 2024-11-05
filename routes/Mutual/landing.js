@@ -31,9 +31,12 @@ const upload = multer({ storage: storage });
         .find({}, { cover: 1, logo: 1 })
         .toArray();
       const covers = users
-        .filter((user) => user.cover)
+        .filter((user) => user.role === 'company' && user.cover)
         .map((user) => user.cover);
-      const logos = users.filter((user) => user.logo).map((user) => user.logo);
+
+      const logos = users.
+      filter((user) => user.role === 'company' && user.logo)
+      .map((user) => user.logo);
       let loggedInUser = await userCollection.findOne({
         _id: new ObjectId(req.session.username),
       });
