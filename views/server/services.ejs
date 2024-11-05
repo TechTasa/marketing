@@ -262,13 +262,13 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
                         <% if (user.role=="company" ) { %>
-                          <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
+                          <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
                             role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
-                          <a href="/cover/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
+                          <a href="/cover/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
                             role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
-                          <a href="/logo/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                          <a href="/logo/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                             tabindex="-1" id="user-menu-item-2">Logo</a>
-                          <a href="/products/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
+                          <a href="/products/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
                             role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
                           <% } else if(user.role=="visitor" ) { %>
                             <a href="/profile/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700"
@@ -276,7 +276,7 @@
                             <a href="/cart/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700"
                               role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
                             <% } else{%>
-                              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
+                              <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
                                 role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
                               <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
