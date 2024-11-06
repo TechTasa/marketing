@@ -9,28 +9,19 @@ const { ObjectId } = require("mongodb");
     const userCollection = await getCollection("users");
     const productsCollection = await getCollection("products");
     router.get("/services", async (req, res) => {
-     
-      const id = req.session.username;
-      let idString = id.toString();
-      // Check if id is a valid 24-character hex string
-      if (!ObjectId.isValid(id)) {
-        return res.status(400).send("Invalid id");
-      }
-      const user = await userCollection.findOne({ _id: new ObjectId(id) });
-      user._id = idString;
-
-      if (!user.cart) {
-        user.cart = [];
-      }
-
-      // Fetch all products in the user's cart
-      const products = await productsCollection
-        .find({ _id: { $in: user.cart } })
+      const products = await productsCollection.find().toArray();
+      const companyUsers = await userCollection.find({}).toArray();
+      const companies = companyUsers.filter((user) => user.role === "company");
+      const users = await userCollection
+        .find({}, { cover: 1, logo: 1 })
         .toArray();
+      const covers = users
+        .filter((user) => user.role === 'company' && user.cover)
+        .map((user) => user.cover);
 
-      let total = 0;
-      products.forEach((product) => (total += product.offer));
-      // console.log(total);
+      const logos = users.
+      filter((user) => user.role === 'company' && user.logo)
+      .map((user) => user.logo);
       let loggedInUser = await userCollection.findOne({
         _id: new ObjectId(req.session.username),
       });
@@ -38,14 +29,19 @@ const { ObjectId } = require("mongodb");
       if (req.session.role == "visitor") {
         cartItemCount = loggedInUser.cart.length;
       }
-      // console.log(req.session.username);
-      // Display the About File
+
+      
+      
+
       res.render("server/services", {
-        user: user,
-        total: total,
         loggedIn: req.session.username ? true : false,
+        user: req.session,
+        companies: companies,
+        logos: logos,
+        covers: covers,
         logo: loggedInUser,
         cartCount: cartItemCount,
+        products: products,
       });
     });
   } finally {

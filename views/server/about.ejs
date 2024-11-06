@@ -177,12 +177,13 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current=page">Home</a>
+              <a href="/"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Home</a>
               <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
               <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
-              <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
-              <a href=" /contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
-                Us</a>
+              <a href="/aboutus" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+              aria-current="page">About Us</a>
+              <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact Us</a>
 
               <% if (loggedIn) { %>
               <a href="/logout" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Log Out</a>
@@ -200,7 +201,7 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <% if (user.role==="visitor" ) { %>
           <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-            <a href="/cart/<%= user._id %>" role="button" class="relative flex">
+            <a href="/cart/<%= user.username %>" role="button" class="relative flex">
               <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
                 <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
               </svg>
@@ -240,15 +241,15 @@
             <div id="profiledropdown" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
               <!-- Active: "bg-gray-100", Not Active: "" -->
               <% if (user.role=="company" ) { %>
-              <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
-              <a href="/cover/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
-              <a href="/logo/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logo</a>
-              <a href="/products/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
+              <a href="/cover/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
+              <a href="/logo/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logo</a>
+              <a href="/products/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
               <% } else if(user.role=="visitor" ) { %>
-              <a href="/profile/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
-              <a href="/cart/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
+              <a href="/profile/<%= user.username  %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+              <a href="/cart/<%= user.username  %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
               <% } else{%>
-              <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
               <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
               <% } %>
 
@@ -270,11 +271,13 @@
     <div class="sm:hidden" id="mobile-menu">
       <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+        <a href="/"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Home</a>
         <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
         <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
-        <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
-          Us</a>
+        <a href=" /aboutus" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current="
+        page">About
+        Us</a>
         <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
           Us</a>
         <% if (loggedIn) { %>
