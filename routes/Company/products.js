@@ -35,6 +35,9 @@ const upload = multer({ storage: storage });
 
       //   console.log(products);
       user._id = idString;
+      // console.log(user);
+      // console.log(user._id);
+      
 
       res.render("products", { user: user, products: products });
     });

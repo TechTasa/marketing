@@ -24,6 +24,8 @@ const upload = multer({ storage: storage });
 
     router.get("/product/create/:userId", async (req, res) => {
       const userId = req.params.userId;
+      // console.log(userId);
+      
       res.render("createProduct", { user: userId });
     });
 

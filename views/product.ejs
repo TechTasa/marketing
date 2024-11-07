@@ -240,6 +240,30 @@
         </div>
       </div>
     </div>
+    
+    
+    <script>
+      document.getElementById('add-to-cart-button').addEventListener('click', function (event) {
+        const productId = event.target.getAttribute('data-product-id');
+    
+        fetch(`/add-to-cart/${productId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.message) {
+              alert(data.message);
+            }
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      });
+    </script>
+    </div>
 </body>
 
 </html>
