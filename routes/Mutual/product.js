@@ -22,9 +22,12 @@ const { ObjectId } = require("mongodb");
         if (!product) {
           return res.status(404).send({ message: "Product not found" });
         }
+        console.log(req.session.username);
+        
         res.render("product", {
           product: product,
           createdBy: createdByName,
+          user: req.session,
         });
       } catch (error) {
         res.status(500).send({ message: "Server error" });

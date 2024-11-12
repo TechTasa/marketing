@@ -196,8 +196,20 @@
                 <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
 
               </div>
-              <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
-                id="add-to-cart-button" data-product-id=<%=product._id %>>Add To Cart</button>
+              <!-- <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
+                id="add-to-cart-button" data-user-id=<%=user.username %> data-product-id=<%=product._id %>>Add To Cart</button> -->
+                <button 
+  class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
+  id="add-to-cart-button"
+  <% if (locals.user && user.username) { %>
+    data-user-id="<%= user.username %>"
+  <% } %>
+  <% if (locals.product && product._id) { %>
+    data-product-id="<%= product._id %>"
+  <% } %>
+>
+  Add To Cart
+</button>
             </div>
             <div class="flex items-center space-x-4 my-4">
               <div>
@@ -216,6 +228,7 @@
                 <script>
                   document.getElementById('add-to-cart-button').addEventListener('click', function (event) {
                     const productId = event.target.getAttribute('data-product-id');
+                    const userId = event.target.getAttribute('data-user-id');
 
                     fetch(`/add-to-cart/${productId}`, {
                       method: 'POST',
@@ -227,6 +240,13 @@
                       .then(data => {
                         if (data.message) {
                           alert(data.message);
+                          if (userId && data.message!='User is not a Visitor') {
+                            window.location.href = `/cart/${userId}`;
+                          }
+                          else{
+                            window.location.href = `/login`;
+                          }
+                          
                         }
                       })
                       .catch((error) => {
@@ -242,27 +262,7 @@
     </div>
     
     
-    <script>
-      document.getElementById('add-to-cart-button').addEventListener('click', function (event) {
-        const productId = event.target.getAttribute('data-product-id');
-    
-        fetch(`/add-to-cart/${productId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.message) {
-              alert(data.message);
-            }
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
-      });
-    </script>
+     
     </div>
 </body>
 
