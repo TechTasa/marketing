@@ -37,9 +37,7 @@
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button type="button"
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            aria-controls="mobile-menu" aria-expanded="false">
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
             <span id="menuToggle" class="absolute -inset-0.5"></span>
             <script>
               document.getElementById("menuToggle").addEventListener("click", () => {
@@ -67,8 +65,7 @@
 
             Menu open: "hidden", Menu closed: "block"
           -->
-            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-              aria-hidden="true">
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
             <!--
@@ -76,8 +73,7 @@
 
             Menu open: "block", Menu closed: "hidden"
           -->
-            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-              aria-hidden="true">
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -89,35 +85,28 @@
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/"
-                class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current=page">Home</a>
-              <a href="/services"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
-              <a href="/career"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
-              <a href="/aboutus"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
-          <a href=" /contactus"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+              <a href="/" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current=page">Home</a>
+              <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
+              <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
+              <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
+          <a href=" /contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
                 Us</a>
 
               <% if (loggedIn) { %>
-                <a class="logoutContainer" href="/logout">
-                  <button class="Btn">
-                    <div class="sign"><svg viewBox="0 0 512 512">
-                        <path
-                          d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
-                        </path>
-                      </svg></div>
-                    <div class="text">Logout</div>
-                  </button>
-                </a>
-                <% } else { %>
-                  <a href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log
-                    In</a>
-                  <a href="/signupSelect"
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign Up</a>
-                  <% } %>
+              <a class="logoutContainer" href="/logout">
+                <button class="Btn">
+                  <div class="sign"><svg viewBox="0 0 512 512">
+                      <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                      </path>
+                    </svg></div>
+                  <div class="text">Logout</div>
+                </button>
+              </a>
+              <% } else { %>
+              <a href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log
+                In</a>
+              <a href="/signupSelect" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign Up</a>
+              <% } %>
 
 
 
@@ -126,84 +115,65 @@
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <% if (user.role==="visitor" ) { %>
-            <li
-              class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-              <a href="/cart/<%= user.username %>" role="button" class="relative flex">
-                <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-                  <path
-                    d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
-                </svg>
-                <span
-                  class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-                  <%= cartCount %>
-                </span>
-              </a>
-            </li>
-            <% } else if (!user.role) { %>
-              <li
-                class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-                <a href="/login" role="button" class="relative flex">
-                  <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-                    <path
-                      d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
-                  </svg>
-                  <span
-                    class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-                    <%= cartCount %>
-                  </span>
-                </a>
-              </li>
+          <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
+            <a href="/cart/<%= user.username %>" role="button" class="relative flex">
+              <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+              </svg>
+              <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                <%= cartCount %>
+              </span>
+            </a>
+          </li>
+          <% } else if (!user.role) { %>
+          <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
+            <a href="/login" role="button" class="relative flex">
+              <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+              </svg>
+              <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                <%= cartCount %>
+              </span>
+            </a>
+          </li>
+          <% } %>
+          <!-- Profile dropdown -->
+          <% if (loggedIn) { %>
+          <div class="relative ml-3">
+            <div>
+              <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img class="h-10 w-10 rounded-full" src="<%= logo.logo ? '' + logo.logo : 'https://picsum.photos/64/64/?random' %>" alt="">
+              </button>
+            </div>
+
+            <script>
+              document.getElementById("user-menu-button").addEventListener("click", () => {
+                document.getElementById("profiledropdown").classList.toggle("show")
+              })
+            </script>
+            <div id="profiledropdown" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <% if (user.role=="company" ) { %>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
+              <a href="/cover/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
+              <a href="/logo/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logo</a>
+              <a href="/products/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
+              <% } else if(user.role=="visitor" ) { %>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+              <a href="/cart/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
+              <% } else{%>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
+              <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
               <% } %>
-                <!-- Profile dropdown -->
-                <% if (loggedIn) { %>
-                  <div class="relative ml-3">
-                    <div>
-                      <button type="button"
-                        class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                        <span class="absolute -inset-1.5"></span>
-                        <span class="sr-only">Open user menu</span>
-                        <img class="h-10 w-10 rounded-full"
-                          src="<%= logo.logo ? '' + logo.logo : 'https://picsum.photos/64/64/?random' %>" alt="">
-                      </button>
-                    </div>
-
-                    <script>
-                      document.getElementById("user-menu-button").addEventListener("click", () => {
-                        document.getElementById("profiledropdown").classList.toggle("show")
-                      })
-                    </script>
-                    <div id="profiledropdown"
-                      class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                      role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                      <!-- Active: "bg-gray-100", Not Active: "" -->
-                      <% if (user.role=="company" ) { %>
-                        <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
-                        <a href="/cover/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
-                        <a href="/logo/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-2">Logo</a>
-                        <a href="/products/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
-                        <% } else if(user.role=="visitor" ) { %>
-                          <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
-                          <a href="/cart/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
-                          <% } else{%>
-                            <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700"
-                              role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
-                            <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                              tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
-                            <% } %>
 
 
-                    </div>
-                  </div>
-                  <% } else { %>
+            </div>
+          </div>
+          <% } else { %>
 
-                    <% } %>
+          <% } %>
 
 
 
@@ -216,30 +186,22 @@
     <div class="sm:hidden" id="mobile-menu">
       <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          aria-current="page">Home</a>
-        <a href="/services"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
-        <a href="/career"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
-        <a href="/aboutus"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
+        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+        <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
+        <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
+        <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
           Us</a>
-        <a href="/contactus"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+        <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
           Us</a>
         <% if (loggedIn) { %>
-          <a href="/logout"
-            class="text-white bg-red-700 hover:bg-red-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
-            Out</a>
-          <% } else { %>
-            <a href="/signupSelect"
-              class="text-white bg-green-700 hover:bg-green-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sign
-              Up</a>
-            <a href="/login"
-              class="text-white bg-blue-700 hover:bg-blue-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
-              In</a>
-            <% } %>
+        <a href="/logout" class="text-white bg-red-700 hover:bg-red-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+          Out</a>
+        <% } else { %>
+        <a href="/signupSelect" class="text-white bg-green-700 hover:bg-green-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sign
+          Up</a>
+        <a href="/login" class="text-white bg-blue-700 hover:bg-blue-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+          In</a>
+        <% } %>
 
 
 
@@ -249,14 +211,14 @@
   </nav>
   <div id="coverContainer">
     <% if(covers.length> 0) { %>
-      <% covers.forEach(function(cover, index) { %>
-        <img class="coverSlideShow" src="../<%= cover %>" alt="Cover image" style='display: <%=index===0 ? ' block'
+    <% covers.forEach(function(cover, index) { %>
+    <img class="coverSlideShow" src="../<%= cover %>" alt="Cover image" style='display: <%=index===0 ? ' block'
           : 'none' %>'>
 
-        <% }); %>
-          <% } else { %>
-            <img src="/uploads/COVERPCSLIDE.png" alt="Default image">
-            <% } %>
+    <% }); %>
+    <% } else { %>
+    <img src="/uploads/COVERPCSLIDE.png" alt="Default image">
+    <% } %>
   </div>
   <script>
     let currentCoverIndex = 0;
@@ -306,16 +268,153 @@
   <div class="marquee">
     <div class="marquee-content">
       <% if(logos.length> 0) { %>
-        <% logos.forEach(function(logo, index) { %>
-          <div class="marquee-item">
-            <img src="../<%= logo %>" alt="">
-          </div>
-          <% }); %>
-            <% } else { %>
-              <img src="/uploads/COVERPCSLIDE.png" alt="Default image">
-              <% } %>
+      <% logos.forEach(function(logo, index) { %>
+      <div class="marquee-item">
+        <img src="../<%= logo %>" alt="">
+      </div>
+      <% }); %>
+      <% } else { %>
+      <img src="/uploads/COVERPCSLIDE.png" alt="Default image">
+      <% } %>
     </div>
   </div>
+  
+  <div class="bg-gray-700 m-0">
+    <div class="container mx-auto px-4 py-16">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filter -->
+        <div class="w-full lg:w-1/4">
+          <div class="bg-gray-200 rounded-lg p-6 space-y-6">
+            <!-- Categories -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Categories</h4>
+              <ul class="space-y-2">
+                <% categories.forEach(category => { %>
+                <li>
+                  <a href="/?category=<%= category %>" class="text-gray-600 hover:text-indigo-600 transition-colors">
+                    <%= category %>
+                  </a>
+                </li>
+                <% }); %>
+
+              </ul>
+            </div>
+
+            <!-- Price Range -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Price Range</h4>
+              <div class="space-y-4">
+                <input type="range" min="0" max="5000" class="w-full" id="priceRange">
+                <div class="flex justify-between">
+                  <input type="number" placeholder="Min" class="w-20 p-2 border rounded" id="minPrice">
+                  <input type="number" placeholder="Max" class="w-20 p-2 border rounded" id="maxPrice">
+                </div>
+                <button id="applyPriceFilter" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Apply</button>
+              </div>
+            </div>
+
+
+            <!-- Colors -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Colors</h4>
+              <div class="flex flex-wrap gap-2">
+                <% const colors = ['white', 'gray', 'red', 'black', 'blue', 'green']; %>
+                <% colors.forEach(color => { %>
+                <label class="inline-flex items-center">
+                  <input type="checkbox" class="form-checkbox text-indigo-600" value="<%= color %>">
+                  <span class="ml-2 capitalize"><%= color %></span>
+                </label>
+                <% }); %>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div>
+              <h4 class="text-lg font-semibold mb-4">Size</h4>
+              <div class="grid grid-cols-2 gap-2">
+                <% const sizes = ['Large', 'Medium', 'Small', 'Tiny']; %>
+                <% sizes.forEach(size => { %>
+                <label class="inline-flex items-center">
+                  <input type="radio" name="size" class="form-radio text-indigo-600" value="<%= size.toLowerCase() %>">
+                  <span class="ml-2"><%= size %></span>
+                </label>
+                <% }); %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="w-full lg:w-3/4">
+          <!-- Filter Options -->
+          <div class="bg-gray-200 rounded-lg p-4 mb-6 flex flex-wrap items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <span>Sort By:</span>
+              <select id="sortSelect" class="border rounded p-2">
+                <option value="">Default</option>
+                <option value="price_asc">Price: Low to High</option>
+                <option value="price_desc">Price: High to Low</option>
+                <option value="newest">Newest</option>
+              </select>
+              
+            </div>
+            <div class="text-sm text-gray-600">
+              <span class="font-semibold"><%= products ? products.length : 0 %></span> Products found
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="flex flex-wrap -mx-1 lg:-mx-4">
+            <% if (!products || products.length === 0) { %>
+            <h1 class="text-lg font-medium text-white m-10">No Products Available</h1>
+            <% } else { %>
+            <% products.forEach(function(product) { %>
+            <div class="my-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/3">
+              <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
+                <a href="/product/<%= product._id %>">
+                  <img alt="Product Image" class="block h-auto w-full p-4" src="../<%= product.logo1 ? '' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+                </a>
+
+                <header class="flex flex-col p-2 md:p-4">
+                  <h1 class="text-lg truncate w-full mb-2">
+                    <a class="no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
+                      <%= product.productName.length > 20 ? product.productName.substring(0, 20) + '...' : product.productName %>
+                    </a>
+                  </h1>
+                  <div class="flex flex-col gap-1">
+                    <p class="text-2xl font-bold text-indigo-600">
+                      $<%= product.offer %>
+                    </p>
+                    <div class="flex items-center gap-2">
+                      <p class="text-sm text-gray-500 line-through">
+                        MRP: $<%= product.price %>
+                      </p>
+                      <% if (product.offer && product.price) { %>
+                      <span class="text-sm text-green-600 font-semibold">
+                        <%= Math.round((product.price - product.offer) / product.price * 100) %>% off
+                      </span>
+                      <% } %>
+                    </div>
+                  </div>
+                </header>
+                <hr>
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                  <a class="flex items-center no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
+                    <p class="ml-2 text-sm">
+                      Company: <%= product.createdBy.companyName %>
+                    </p>
+                  </a>
+                </footer>
+              </article>
+            </div>
+            <% }); %>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="bg-gray-700 m-0">
     <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
 
@@ -323,53 +422,51 @@
       <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
           <% if (!companies || companies.length===0) { %>
-            <h1 class="text-lg font-medium text-white m-10">You Have No companies</h1>
-            <% } else { %>
-              <% companies.forEach(function(company) { %>
-                <!-- Column -->
-                <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4 ">
+          <h1 class="text-lg font-medium text-white m-10">You Have No companies</h1>
+          <% } else { %>
+          <% companies.forEach(function(company) { %>
+          <!-- Column -->
+          <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4 ">
 
-                  <!-- Article -->
-                  <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
 
 
-                    <a href="/company/<%= company._id %>">
-                      <img alt="Placeholder" class="block h-auto w-full"
-                        src="../<%= company.logo ? '' + company.logo : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
-                    </a>
+              <a href="/company/<%= company._id %>">
+                <img alt="Placeholder" class="block h-auto w-full" src="../<%= company.logo ? '' + company.logo : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+              </a>
 
-                    <header class="flex items-center justify-between leading-tight p-2 md:p-4">
-                      <h1 class="text-lg">
-                        <a class="no-underline hover:underline text-gray-700" href="/company/<%= company._id %>">
-                          <%= company.companyName %>
-                        </a>
-                      </h1>
-                      <!-- <p class="text-white text-sm">
+              <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                <h1 class="text-lg">
+                  <a class="no-underline hover:underline text-gray-700" href="/company/<%= company._id %>">
+                    <%= company.companyName %>
+                  </a>
+                </h1>
+                <!-- <p class="text-white text-sm">
                         <%= company.phone %>
                       </p> -->
-                    </header>
-                    <HR>
-                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                      <a class="flex items-center no-underline hover:underline text-gray-700"
-                        href="/company/<%= company._id %>">
-                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
-                        <p class="ml-2 text-sm">
-                          Owner: <%= company.name %>
-                        </p>
-                      </a>
-                      <a class="no-underline text-grey-darker hover:text-red-dark" href="/company/<%= company._id %>">
-                        <span class="hidden">Like</span>
-                        <i class="fa fa-heart"></i>
-                      </a>
-                    </footer>
+              </header>
+              <HR>
+              <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                <a class="flex items-center no-underline hover:underline text-gray-700" href="/company/<%= company._id %>">
+                  <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                  <p class="ml-2 text-sm">
+                    Owner: <%= company.name %>
+                  </p>
+                </a>
+                <a class="no-underline text-grey-darker hover:text-red-dark" href="/company/<%= company._id %>">
+                  <span class="hidden">Like</span>
+                  <i class="fa fa-heart"></i>
+                </a>
+              </footer>
 
-                  </article>
-                  <!-- END Article -->
+            </article>
+            <!-- END Article -->
 
 
-                </div>
-                <% }); %>
-                  <% } %>
+          </div>
+          <% }); %>
+          <% } %>
         </div>
         <!-- END Column -->
 
@@ -378,65 +475,40 @@
 
     </div>
   </div>
-  <div class="bg-gray-700 m-0">
-    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-      <h2 class="h-10 text-lg font-medium text-white">Featured Products</h2>
-      <div class="container my-12 mx-auto px-4 md:px-12">
-        <div class="flex flex-wrap -mx-1 lg:-mx-4">
-          <% if (!products || products.length===0) { %>
-            <h1 class="text-lg font-medium text-white m-10">No Products Available</h1>
-            <% } else { %>
-              <% products.forEach(function(product) { %>
-                <!-- Column -->
-                <div class="my-1 px-1 w-full md:w-1/4 lg:my-4 lg:px-4 lg:w-1/4">
-                  <!-- Article -->
-                  <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
-                    <a href="/product/<%= product._id %>">
-                      <img alt="Product Image" class="block h-auto w-full p-4"
-                        src="../<%= product.logo1 ? '' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
-                    </a>
 
-                    <header class="flex flex-col p-2 md:p-4">
-                      <h1 class="text-lg truncate w-full mb-2">
-                        <a class="no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
-                          <%= product.productName.length> 20 ? product.productName.substring(0, 20) + '...' :
-                            product.productName %>
-                        </a>
-                      </h1>
-                      <div class="flex flex-col gap-1">
-                        <p class="text-2xl font-bold text-indigo-600">
-                          $<%= product.offer %>
-                        </p>
-                        <div class="flex items-center gap-2">
-                          <p class="text-sm text-gray-500 line-through">
-                            MRP: $<%= product.price %>
-                          </p>
-                          <% if (product.offer && product.price) { %>
-                            <span class="text-sm text-green-600 font-semibold">
-                              <%= Math.round((product.price - product.offer) / product.price * 100) %>% off
-                            </span>
-                            <% } %>
-                        </div>
-                      </div>
-                    </header>
-                    <HR>
-                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                      <a class="flex items-center no-underline hover:underline text-gray-700"
-                        href="/product/<%= product._id %>">
-                        <p class="ml-2 text-sm">
-                          Company: <%= product.createdBy.companyName %>
-                        </p>
-                      </a>
-                    </footer>
-                  </article>
-                  <!-- END Article -->
-                </div>
-                <% }); %>
-                  <% } %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <script>
+    document.getElementById('sortSelect').addEventListener('change', function() {
+  const url = new URL(window.location);
+  url.searchParams.set('sort', this.value);
+  window.location = url;
+});
+
+   document.addEventListener('DOMContentLoaded', function() {
+  const priceRange = document.getElementById('priceRange');
+  const minPrice = document.getElementById('minPrice');
+  const maxPrice = document.getElementById('maxPrice');
+  const applyButton = document.getElementById('applyPriceFilter');
+
+  function updatePriceFilter() {
+    const url = new URL(window.location);
+    if (minPrice.value) url.searchParams.set('minPrice', minPrice.value);
+    if (maxPrice.value) url.searchParams.set('maxPrice', maxPrice.value);
+    window.location = url;
+  }
+
+  applyButton.addEventListener('click', updatePriceFilter);
+
+  priceRange.addEventListener('input', function() {
+    maxPrice.value = this.value;
+  });
+
+  // Optional: Initialize the range slider with the max price value if it exists
+  if (maxPrice.value) {
+    priceRange.value = maxPrice.value;
+  }
+});
+
+  </script>
 </body>
 
 </html>

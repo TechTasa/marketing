@@ -24,7 +24,45 @@ const upload = multer({ storage: storage });
     const userCollection = await getCollection("users");
     const productsCollection = await getCollection("products");
     router.get("/", async (req, res) => {
-      const products = await productsCollection.find().toArray();
+      const { category, minPrice, maxPrice,sort } = req.query;
+    let filter = {};
+    let sortOption = {};
+
+  // ... (existing category and price filter logic)
+
+  // Apply sorting
+  if (sort) {
+    switch (sort) {
+      case 'price_asc':
+        sortOption = { offer: 1 };
+        break;
+      case 'price_desc':
+        sortOption = { offer: -1 };
+        break;
+      case 'newest':
+        sortOption = { createdAt: -1 };
+        break;
+      default:
+        sortOption = {};
+    }
+  }
+
+    // Apply category filter if provided
+    if (category) {
+      filter.category = category;
+    }
+
+    // Apply price range filter if provided
+    if (minPrice || maxPrice) {
+      filter.offer = {};
+      if (minPrice) filter.offer.$gte = parseFloat(minPrice);
+      if (maxPrice) filter.offer.$lte = parseFloat(maxPrice);
+    }
+    let products = await productsCollection.find().toArray();
+    const categories = [...new Set(products.map(product => product.category))];
+    products = await productsCollection.find(filter).sort(sortOption).toArray()
+    // Extract unique categories from products
+
       const companyUsers = await userCollection.find({}).toArray();
       const companies = companyUsers.filter((user) => user.role === "company");
       const users = await userCollection
@@ -57,6 +95,7 @@ const upload = multer({ storage: storage });
         logo: loggedInUser,
         cartCount: cartItemCount,
         products: products,
+        categories: categories,
       });
     });
   } finally {
