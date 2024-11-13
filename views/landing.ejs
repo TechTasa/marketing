@@ -289,6 +289,10 @@
             <div>
               <h4 class="text-lg font-semibold mb-4">Categories</h4>
               <ul class="space-y-2">
+                <li>
+                  <a href="/" class="text-gray-600 hover:text-indigo-600 transition-colors">
+                    All</a>
+                </li>
                 <% categories.forEach(category => { %>
                 <li>
                   <a href="/?category=<%= category %>" class="text-gray-600 hover:text-indigo-600 transition-colors">
@@ -304,8 +308,25 @@
             <div>
               <h4 class="text-lg font-semibold mb-4">Price Range</h4>
               <div class="space-y-4">
-                <input type="range" min="0" max="5000" class="w-full" id="priceRange">
-                <div class="flex justify-between">
+                <div class="relative h-2">
+                  <div id="slider-track" class="absolute w-full h-full bg-gray-300 rounded"></div>
+                  <div id="slider-range" class="absolute h-full bg-indigo-600 rounded"></div>
+                  <input type="range" 
+                    min="0" 
+                    max="5000" 
+                    value="0" 
+                    class="range-min absolute w-full" 
+                    id="minRange"
+                    style="z-index: 3">
+                  <input type="range" 
+                    min="0" 
+                    max="5000" 
+                    value="5000" 
+                    class="range-max absolute w-full" 
+                    id="maxRange"
+                    style="z-index: 2">
+                </div>
+                <div class="flex justify-between mt-6">
                   <input type="number" placeholder="Min" class="w-20 p-2 border rounded" id="minPrice">
                   <input type="number" placeholder="Max" class="w-20 p-2 border rounded" id="maxPrice">
                 </div>
@@ -370,12 +391,12 @@
             <% } else { %>
             <% products.forEach(function(product) { %>
             <div class="my-1 px-1 w-full md:w-1/3 lg:my-4 lg:px-4 lg:w-1/3">
-              <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200">
-                <a href="/product/<%= product._id %>">
-                  <img alt="Product Image" class="block h-auto w-full p-4" src="../<%= product.logo1 ? '' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
+              <article class="overflow-hidden rounded-lg shadow-lg bg-gray-200 h-full flex flex-col">
+                <a href="/product/<%= product._id %>" class="h-64 overflow-hidden">
+                  <img alt="Product Image" class="block w-full h-full object-contain p-4" src="../<%= product.logo1 ? '' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>">
                 </a>
 
-                <header class="flex flex-col p-2 md:p-4">
+                <header class="flex flex-col p-2 md:p-4 flex-grow">
                   <h1 class="text-lg truncate w-full mb-2">
                     <a class="no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
                       <%= product.productName.length > 20 ? product.productName.substring(0, 20) + '...' : product.productName %>
@@ -399,11 +420,20 @@
                 </header>
                 <hr>
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                  <a class="flex items-center no-underline hover:underline text-gray-700" href="/product/<%= product._id %>">
+                  <a class="flex items-center no-underline hover:underline text-gray-700" href="/company/<%= product.createdBy %>">
                     <p class="ml-2 text-sm">
-                      Company: <%= product.createdBy.companyName %>
+                      Seller
                     </p>
                   </a>
+                  <button 
+                    class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm add-to-cart-button"
+                    data-product-id="<%= product._id %>"
+                    <% if (locals.user && user.username) { %>
+                      data-user-id="<%= user.username %>"
+                    <% } %>
+                  >
+                    Add To Cart
+                  </button>
                 </footer>
               </article>
             </div>
@@ -484,31 +514,172 @@
 });
 
    document.addEventListener('DOMContentLoaded', function() {
-  const priceRange = document.getElementById('priceRange');
-  const minPrice = document.getElementById('minPrice');
-  const maxPrice = document.getElementById('maxPrice');
-  const applyButton = document.getElementById('applyPriceFilter');
+    const minRange = document.getElementById('minRange');
+    const maxRange = document.getElementById('maxRange');
+    const minPrice = document.getElementById('minPrice');
+    const maxPrice = document.getElementById('maxPrice');
+    const sliderTrack = document.getElementById('slider-track');
+    const sliderRange = document.getElementById('slider-range');
+    const applyButton = document.getElementById('applyPriceFilter');
 
-  function updatePriceFilter() {
-    const url = new URL(window.location);
-    if (minPrice.value) url.searchParams.set('minPrice', minPrice.value);
-    if (maxPrice.value) url.searchParams.set('maxPrice', maxPrice.value);
-    window.location = url;
-  }
+    // Initialize values
+    minPrice.value = minRange.value;
+    maxPrice.value = maxRange.value;
 
-  applyButton.addEventListener('click', updatePriceFilter);
+    function updateSliderRange() {
+      const min = parseInt(minRange.value);
+      const max = parseInt(maxRange.value);
+      const percent1 = (min / minRange.max) * 100;
+      const percent2 = (max / maxRange.max) * 100;
+      sliderRange.style.left = percent1 + '%';
+      sliderRange.style.width = (percent2 - percent1) + '%';
+    }
 
-  priceRange.addEventListener('input', function() {
-    maxPrice.value = this.value;
+    // Update range slider and inputs
+    minRange.addEventListener('input', function() {
+      const minVal = parseInt(minRange.value);
+      const maxVal = parseInt(maxRange.value);
+      
+      if (minVal > maxVal) {
+        minRange.value = maxVal;
+      }
+      
+      minPrice.value = minRange.value;
+      updateSliderRange();
+    });
+
+    maxRange.addEventListener('input', function() {
+      const minVal = parseInt(minRange.value);
+      const maxVal = parseInt(maxRange.value);
+      
+      if (maxVal < minVal) {
+        maxRange.value = minVal;
+      }
+      
+      maxPrice.value = maxRange.value;
+      updateSliderRange();
+    });
+
+    // Update from number inputs
+    minPrice.addEventListener('change', function() {
+      const value = Math.min(parseInt(this.value) || 0, parseInt(maxPrice.value));
+      minRange.value = value;
+      this.value = value;
+      updateSliderRange();
+    });
+
+    maxPrice.addEventListener('change', function() {
+      const value = Math.max(parseInt(this.value) || 5000, parseInt(minPrice.value));
+      maxRange.value = value;
+      this.value = value;
+      updateSliderRange();
+    });
+
+    // Apply filter
+    applyButton.addEventListener('click', function() {
+      const url = new URL(window.location);
+      url.searchParams.set('minPrice', minPrice.value);
+      url.searchParams.set('maxPrice', maxPrice.value);
+      window.location = url;
+    });
+
+    // Initialize slider range
+    updateSliderRange();
+
+    // Set initial values
+    minPrice.value = minRange.value;
+    maxPrice.value = maxRange.value;
   });
 
-  // Optional: Initialize the range slider with the max price value if it exists
-  if (maxPrice.value) {
-    priceRange.value = maxPrice.value;
-  }
-});
-
   </script>
+  <script>
+    document.querySelectorAll('.add-to-cart-button').forEach(button => {
+      button.addEventListener('click', function(event) {
+        const productId = event.target.getAttribute('data-product-id');
+        const userId = event.target.getAttribute('data-user-id');
+
+        fetch(`/add-to-cart/${productId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.message) {
+            alert(data.message);
+            if (userId && data.message != 'User is not a Visitor') {
+              window.location.href = `/cart/${userId}`;
+            } else {
+              window.location.href = `/login`;
+            }
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
+  <style>
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 2px;
+      background: transparent;
+      pointer-events: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #4f46e5;
+      cursor: pointer;
+      pointer-events: auto;
+      margin-top: -7px;
+      border: 2px solid white;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #4f46e5;
+      cursor: pointer;
+      pointer-events: auto;
+      border: 2px solid white;
+    }
+
+    #slider-range {
+      z-index: 1;
+    }
+
+    .range-min, .range-max {
+      position: absolute;
+      top: 0;
+    }
+
+    /* Ensure the minimum range thumb appears above the maximum range thumb */
+    .range-min::-webkit-slider-thumb {
+      z-index: 3;
+    }
+    
+    .range-min::-moz-range-thumb {
+      z-index: 3;
+    }
+
+    .range-max::-webkit-slider-thumb {
+      z-index: 2;
+    }
+    
+    .range-max::-moz-range-thumb {
+      z-index: 2;
+    }
+  </style>
 </body>
 
 </html>
