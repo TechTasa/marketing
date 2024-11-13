@@ -17,8 +17,34 @@
     }
 
     .mainPictureContainer {
-
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mainPictureContainer img {
+      max-height: 100%;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .product-badge {
+      background-color: #4F46E5;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .discount-badge {
+      background-color: #059669;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
     }
   </style>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js"></script>
@@ -171,61 +197,85 @@
             </div>
           </div>
           <div class="md:flex-1 px-4">
-            <h2 class="mb-2 leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl">
-              <%= product.name %>
-            </h2>
-            <p class="text-white text-sm">By
-            <p class="text-yellow-600 hover:underline">
-              <%= createdBy.name %>
+            <div class="flex items-center gap-2 mb-4">
+              <h2 class="leading-tight tracking-tight font-bold text-white text-2xl md:text-3xl">
+                <%= product.productName %>
+              </h2>
+              <span class="product-badge"><%= product.brand %></span>
+            </div>
+            
+            <p class="text-white text-sm mb-4">By 
+              <span class="text-yellow-600 hover:underline"><%= createdBy.name %></span>
             </p>
-            </p>
-            <div class="flex items-center space-x-4 my-4">
+
+            <div class="flex items-center space-x-4 my-6">
               <div>
                 <div class="rounded-lg bg-gray-100 flex py-2 px-3">
                   <span class="text-indigo-400 mr-1 mt-1">₹</span>
-                  <span class="font-bold text-indigo-600 text-3xl">
-                    <%= product.offer %>
-                  </span>
+                  <span class="font-bold text-indigo-600 text-3xl"><%= product.offer %></span>
                 </div>
               </div>
               <div class="flex-1">
-                <p style="text-decoration: line-through;" class="text-green-500 text-xl font-semibold">₹<%=
-                    product.price %>
-                </p>
-
-                <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
-
+                <p class="text-gray-400 text-xl font-semibold line-through">₹<%= product.price %></p>
+                <div class="flex items-center gap-2">
+                  <span class="discount-badge">
+                    <%= Math.round((product.price - product.offer) / product.price * 100) %>% OFF
+                  </span>
+                  <p class="text-gray-400 text-sm">Inclusive of all Taxes</p>
+                </div>
               </div>
-              <!-- <button class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
-                id="add-to-cart-button" data-user-id=<%=user.username %> data-product-id=<%=product._id %>>Add To Cart</button> -->
-                <button 
-  class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
-  id="add-to-cart-button"
-  <% if (locals.user && user.username) { %>
-    data-user-id="<%= user.username %>"
-  <% } %>
-  <% if (locals.product && product._id) { %>
-    data-product-id="<%= product._id %>"
-  <% } %>
->
-  Add To Cart
-</button>
             </div>
-            <div class="flex items-center space-x-4 my-4">
-              <div>
-                <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %>
-                </p>
-                <p class="mt-1 text-lg font-medium text-white">Website: <%= product.websitelink %>
-                </p>
-                <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %>
-                </p>
-                <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %>
-                </p>
+
+            <!-- Product details -->
+            <div class="space-y-4 mb-6">
+              <div class="bg-gray-800 rounded-lg p-4">
+                <h3 class="text-white font-semibold mb-2">Product Details</h3>
+                <div class="space-y-2 text-gray-300">
+                  <p><%= product.description %></p>
+                  <% if (product.category) { %>
+                    <p><span class="text-gray-400">Category:</span> <%= product.category %></p>
+                  <% } %>
+                  <% if (product.tags) { %>
+                    <div class="flex flex-wrap gap-2">
+                      <% product.tags.split(',').forEach(tag => { %>
+                        <span class="bg-gray-700 px-2 py-1 rounded-md text-sm"><%= tag.trim() %></span>
+                      <% }) %>
+                    </div>
+                  <% } %>
+                </div>
               </div>
+            </div>
 
-              <div class="flex py-4 space-x-4">
+            <!-- Add to Cart Button -->
+            <div class="mt-6">
+              <button 
+                class="w-full h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition-colors flex items-center justify-center gap-2"
+                id="add-to-cart-button"
+                <% if (locals.user && user.username) { %>
+                  data-user-id="<%= user.username %>"
+                <% } %>
+                <% if (locals.product && product._id) { %>
+                  data-product-id="<%= product._id %>"
+                <% } %>
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+     
+    </div>
 
-                <script>
+    <!-- Add to Cart Script -->
+
+    <script>
                   document.getElementById('add-to-cart-button').addEventListener('click', function (event) {
                     const productId = event.target.getAttribute('data-product-id');
                     const userId = event.target.getAttribute('data-user-id');
@@ -254,16 +304,6 @@
                       });
                   });
                 </script>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    
-     
-    </div>
 </body>
 
 </html>
