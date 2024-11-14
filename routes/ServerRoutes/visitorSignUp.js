@@ -45,7 +45,7 @@ const path = require("path");
         ...data,
         password: hashedPassword,
       });
-      console.log(`Data inserted with _id: ${result} ${data}`);
+      // console.log(`Data inserted with _id: ${result} ${data}`);
       res.redirect("/login");
     });
   } finally {

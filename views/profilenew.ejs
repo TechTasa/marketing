@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #86868b;
+      --accent: #0071e3;
+      --border: #d2d2d7;
+      --input-bg: #fbfbfd;
+    }
+
+    body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--background);
+      color: var(--text);
+      line-height: 1.47059;
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 22px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 44px;
+      padding: 0;
+      margin: 20px 0 40px;
+    }
+
+    .nav-logo img {
+      height: 44px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .section-title {
+      font-size: 40px;
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: 0;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 21px;
+      line-height: 1.381;
+      font-weight: 400;
+      letter-spacing: .011em;
+      margin-bottom: 40px;
+      color: var(--text-secondary);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 17px;
+      line-height: 1.23536;
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      margin-bottom: 8px;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 17px;
+      line-height: 1.23536;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background-color: var(--input-bg);
+      color: var(--text);
+      transition: border-color 0.2s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3csvg width='16' height='16' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M8 12.5l-6-6h12l-6 6z' fill='%2386868b'/%3e%3c/svg%3e");
+      background-position: right 12px center;
+      background-repeat: no-repeat;
+      padding-right: 40px;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .button {
+      display: inline-block;
+      font-size: 17px;
+      line-height: 1.17648;
+      font-weight: 400;
+      letter-spacing: -0.022em;
+      min-width: 28px;
+      padding: 8px 16px;
+      border-radius: 980px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .button-primary {
+      background-color: var(--accent);
+      color: white;
+      border: none;
+    }
+
+    .button-secondary {
+      background-color: var(--input-bg);
+      color: var(--accent);
+      border: none;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 734px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        margin: 20px 0;
+      }
+
+      .nav-links {
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .section-subtitle {
+        font-size: 19px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <div class="nav-logo">
+        <img src="/marketingtool-logo2.png" alt="Your Company">
+      </div>
+      <div class="nav-links">
+        <% if (user.role == "company") { %>
+          <a href="/">Home</a>
+          <a href="/profile/<%= user._id %>">Profile</a>
+          <a href="/cover/<%= user._id %>">Cover Picture</a>
+          <a href="/logo/<%= user._id %>">Logo</a>
+          <a href="/products/<%= user._id %>">My Products</a>
+        <% } else if (user.role == "visitor") { %>
+          <a href="/">Home</a>
+          <a href="/profile/<%= user._id %>">Profile</a>
+          <a href="/cart/<%= user._id %>">Cart</a>
+        <% } else { %>
+          <a href="/">Home</a>
+          <a href="/profile/<%= user._id %>">Profile</a>
+          <a href="/dashboard">Overview</a>
+        <% } %>
+      </div>
+    </nav>
+
+    <main>
+      <h1 class="section-title">Personal Information</h1>
+      <p class="section-subtitle">Use a permanent address where you can receive mail.</p>
+
+      <form method="POST" action="/profile/<%= user._id %>">
+        <% if (user.role == "visitor") { %>
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name</label>
+            <input type="text" name="name" id="name" value="<%= user.name %>" autocomplete="name" class="form-input">
+          </div>
+        <% } %>
+        <% if (user.role == "company") { %>
+          <div class="form-group">
+            <label for="companyname" class="form-label">Company Name</label>
+            <input type="text" name="companyname" id="companyname" value="<%= user.companyName %>" class="form-input">
+          </div>
+        <% } %>
+        <div class="form-group">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input type="tel" name="phone" id="phone" value="<%= user.phone %>" autocomplete="tel" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input type="email" name="email" id="email" value="<%= user.email %>" autocomplete="email" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="businessType" class="form-label">Business Type</label>
+          <select name="businessType" id="businessType" class="form-select">
+            <option value="individual" <%= user.businessType === 'individual' ? 'selected' : '' %>>Individual</option>
+            <option value="company" <%= user.businessType === 'company' ? 'selected' : '' %>>Company</option>
+            <option value="partnership" <%= user.businessType === 'partnership' ? 'selected' : '' %>>Partnership</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="registrationNumber" class="form-label">Business Registration Number (GST)</label>
+          <input type="text" name="registrationNumber" id="registrationNumber" value="<%= user.registrationNumber %>" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="address" class="form-label">Business Address</label>
+          <textarea name="address" id="address" rows="3" class="form-textarea"><%= user.address %></textarea>
+        </div>
+        <div class="form-group">
+          <label for="bankName" class="form-label">Bank Name</label>
+          <input type="text" name="bankName" id="bankName" value="<%= user.bankName %>" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="accountHolder" class="form-label">Account Holder Name</label>
+          <input type="text" name="accountHolder" id="accountHolder" value="<%= user.accountHolder %>" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="accountNumber" class="form-label">Account Number</label>
+          <input type="text" name="accountNumber" id="accountNumber" value="<%= user.accountNumber %>" class="form-input">
+        </div>
+        <div class="form-group">
+          <label for="ifscCode" class="form-label">IFSC Code</label>
+          <input type="text" name="ifscCode" id="ifscCode" value="<%= user.ifscCode %>" class="form-input">
+        </div>
+        
+        <div class="form-actions">
+          <button type="button" class="button button-secondary">Cancel</button>
+          <button type="submit" class="button button-primary">Save</button>
+        </div>
+      </form>
+    </main>
+  </div>
+</body>
+</html>

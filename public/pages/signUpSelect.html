@@ -3,118 +3,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Include Tailwind CSS via CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sign Up Selection</title>
     <style>
-        @import url(https://fonts.googleapis.com/css?family=Andika);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*
-{
-margin:0px;
-padding:0px;
-outline:none;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
-html{height:100%}
- 
-body{
-    background-color:  #374151;
-width: 100vw;
-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: grid;
+            place-items: center;
+            padding: 1rem;
+        }
 
+        .signup-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            width: min(90%, 1000px);
+            display: flex;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
 
-#menu
-{
-width: 280px;
-margin: 5% auto;
-position: relative;
-}
+        .image-section {
+            flex: 1;
+            background: #f8fafc;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 1px solid #e5e7eb;
+        }
 
-#menu:before
-{
-width: 294px;
-padding: 31.5px 0px;
-border-radius: 30px;
-position: absolute;
-background: #fff;
-content: "";
-left: -7px;
-top: -6px;
-z-index: -1;
-opacity: 0.3;
-}
+        .logo-container {
+            margin-bottom: 2rem;
+        }
 
-#menu:after
-{
-width: 12px;
-height: 20px;
-padding:0px 4px 0px 4px;
-border-radius: 50%;
-position: absolute;
-background-color: #374151;
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d01768', endColorstr='#ea2a72',GradientType=0 ); /* IE6-9 */
-content: "OR";
-left: 46%;
-top: 15px;
-border:1px solid #374151;
-font-size:0.5em;
-color:#374151;
-line-height:20px;
-letter-spacing:-1px;
-}
+        .logo-container a {
+            display: block;
+            text-decoration: none;
+        }
 
-a{
-font-size:0.7em;
-text-decoration:none;
-display:block;
-float:left;
-padding: 17px 0px;
-width:49.6%;
-text-align:center;
-color:#efdcdc;
-background-color: #374151;
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f73c82', endColorstr='#c21063',GradientType=0 ); /* IE6-9 */
--webkit-transition:0.5s;
--moz-transition:0.5s;
--ms-transition:0.5s;
--o-transition:0.5s;
-transition:0.5s;
-}
-a:hover
-{
-box-shadow:inset 0px 0px 10px 1px #5a677e;
--webkit-transition:0.5s;
--moz-transition:0.5s;
--ms-transition:0.5s;
--o-transition:0.5s;
-transition:0.5s;
-}
+        .logo-container img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+        }
 
-#menu a:first-child{border-radius: 25px 0px 0px 25px;border-right:1px solid #374151;}
-#menu a:last-child{border-radius: 0px 25px 25px 0px;border-left:1px solid #374151;}
+        .selection-section {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
 
-.heading{
-    font-size: large;
-    font-weight: 700;
-    color: white;
-}
+        h1 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .signup-options {
+            display: flex;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .signup-option {
+            flex: 1;
+            padding: 2rem;
+            background: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #4f46e5;
+            transition: all 0.3s ease;
+        }
+
+        .signup-option:hover {
+            border-color: #4f46e5;
+            background: #4f46e5;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .signup-option h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-option p {
+            font-size: 0.875rem;
+            color: inherit;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                flex-direction: column;
+                width: min(90%, 420px);
+            }
+
+            .image-section {
+                padding: 2rem;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .selection-section {
+                padding: 2rem;
+            }
+
+            .signup-options {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .logo-container img {
+                max-width: 150px;
+            }
+            .logo-container {
+               margin-bottom: 0px;
+            }
+
+            .contact-info {
+                font-size: 0.7rem;
+                margin-top: 0rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
-
 <body>
-    
-    <div>
-        <h1 class="heading">Choose A SignUp Type</h1>
-        <div id="menu">
-            <a href="/visitorSignUp">Visitor</a>
-            <a href="/register">Company</a>
+    <div class="signup-container">
+        <div class="image-section">
+            <div class="logo-container">
+                <a href="/">
+                    <img src="/marketingtool.webp" alt="Logo">
+                </a>
+            </div>
+            <div class="contact-info">
+                <p>Gold Field Plaza, 3rd floor, Opp Dhole Patil Chowk / Wadia College,<br>
+                Pune, Maharashtra 411001</p>
+                <p>Contact: xxxxxxxxxxxxx | info@xx.com</p>
+                <p>Design By: TechTasa</p>
+            </div>
+        </div>
+
+        <div class="selection-section">
+            <h1>Choose Your Account Type</h1>
+            <div class="signup-options">
+                <a href="/visitorSignUp" class="signup-option">
+                    <h2>Visitor</h2>
+                    <p>Sign up as a visitor to explore our Products & Services</p>
+                </a>
+                <a href="/register" class="signup-option">
+                    <h2>Company</h2>
+                    <p>Register your company to start selling with us</p>
+                </a>
+            </div>
         </div>
     </div>
-    
 </body>
 </html>

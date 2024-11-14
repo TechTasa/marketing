@@ -3,178 +3,252 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Visitor Sign Up</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
       * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
-        font-family: "Roboto", sans-serif;
+        font-family: 'Inter', sans-serif;
       }
 
       body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        background-color: #fff;
-        margin: 0;
         min-height: 100vh;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        display: grid;
+        place-items: center;
+        padding: 0.5rem;
       }
 
-      .register-container {
-        background-color: #FDFDFD;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 48px;
-        width: 400px;
-        margin-top: 4em;
+      .signup-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        width: min(95%, 900px);
+        display: flex;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-section {
+        flex: 1;
+        background: #f8fafc;
+        padding: 1.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        border-right: 1px solid #e5e7eb;
       }
 
-      .register-container h1 {
-        text-align: center;
-        font-size: 36px;
-        font-weight: 700;
-        margin-bottom: 32px;
-        color: #1c1c1c;
+      .logo-container {
+        margin-bottom: 1.5rem;
       }
 
-      .input-field {
+      .logo-container a {
+        display: block;
+        text-decoration: none;
+      }
+
+      .logo-container img {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+      }
+
+      .form-section {
+        flex: 1;
+        padding: 1.5rem 2rem;
         display: flex;
         flex-direction: column;
-        margin-bottom: 24px;
-        width: 100%;
       }
 
-      .input-field label {
-        font-size: 16px;
+      h1 {
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+      }
+
+      .input-group {
+        margin-bottom: 1rem;
+      }
+
+      .input-group label {
+        display: block;
+        font-size: 0.875rem;
         font-weight: 500;
-        margin-bottom: 12px;
-        color: #4a4a4a;
+        color: #374151;
+        margin-bottom: 0.5rem;
       }
 
-      .input-field input {
-        padding: 14px 18px;
-        font-size: 18px;
-        border: 1px solid #d9d9d9;
+      .input-group input {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        border: 2px solid #e5e7eb;
         border-radius: 8px;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+      }
+
+      .input-group input:focus {
+        border-color: #4f46e5;
+        box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
         outline: none;
-        transition: border-color 0.3s ease;
       }
 
-      .input-field input:focus {
-        border-color: #007aff;
+      .checkbox-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
       }
 
-      .register-button {
-        background-color: #007aff;
+      .checkbox-group input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .button {
+        width: 100%;
+        padding: 0.7rem;
         border: none;
         border-radius: 8px;
-        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
         cursor: pointer;
-        font-size: 18px;
-        font-weight: 500;
-        padding: 14px 24px;
-        width: 100%;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease;
+        margin-bottom: 0.75rem;
       }
 
-      .register-button:hover {
-        background-color: #0056b3;
+      .primary-button {
+        background: #4f46e5;
+        color: white;
       }
 
-      .footer {
-        background-color: #000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        width: 100%;
-        margin-top: 60px;
+      .primary-button:hover {
+        background: #4338ca;
+        transform: translateY(-1px);
       }
 
-      .footer .social-icons svg {
-        width: 24px;
-        fill: #fff;
+      .secondary-button {
+        background: #e5e7eb;
+        color: #374151;
       }
 
-      .footer h1,
-      .footer h3,
-      .footer p {
-        color: #fff;
-        margin: 0;
+      .secondary-button:hover {
+        background: #d1d5db;
+        transform: translateY(-1px);
       }
 
-      @media only screen and (max-width: 500px) {
-        .register-container {
-          width: 100%;
-        }
+      .contact-info {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.75rem;
+        color: #666;
+        line-height: 1.3;
+      }
 
-        .footer {
+      @media (max-width: 768px) {
+        .signup-container {
           flex-direction: column;
-          align-items: flex-start;
-          padding: 1rem;
+          width: min(95%, 400px);
+          margin: 1rem auto;
         }
 
-        .footer .social-icons {
-          margin-bottom: 1rem;
+        .image-section {
+          padding: 1.5rem;
+          border-right: none;
+          border-bottom: 1px solid #e5e7eb;
         }
+
+        .form-section {
+          padding: 1.5rem;
+        }
+
+        body {
+          padding: 1rem;
+          min-height: 100%;
+          height: auto;
+        }
+
+        .logo-container img {
+          max-width: 200px;
+        }
+
+        h1 {
+          font-size: 1.25rem;
+        }
+
+        .contact-info {
+          font-size: 0.7rem;
+          margin-top: 0rem;
+        }
+
+        .logo-container {
+          margin-bottom: 0px;
+        }
+      }
+
+      /* Add button container for better spacing */
+      .button-group {
+        margin-top: 1rem;
       }
     </style>
   </head>
 
   <body>
-    <main>
-      <div class="register-container">
-        <img src="/marketingtool.webp" alt="" style="width: 70%" />
-        <h3>Register User</h3>
+    <div class="signup-container">
+      <div class="image-section">
+        <div class="logo-container">
+          <a href="/">
+            <img src="/marketingtool.webp" alt="Logo">
+          </a>
+        </div>
+        <div class="contact-info">
+          <p>Gold Field Plaza, 3rd floor, Opp Dhole Patil Chowk / Wadia College,<br>
+          Pune, Maharashtra 411001</p>
+          <p>Contact: xxxxxxxxxxxxx | info@xx.com</p>
+          <p>Design By: TechTasa</p>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h1>Create Visitor Account</h1>
         <form method="POST" action="/visitorSignUp">
-           <!-- Basic Information -->
-           <div class="input-field">
+          <div class="input-group">
             <label for="full-name">Name</label>
-            <input type="text" id="full-name" name="name" placeholder="Enter Name" required />
+            <input type="text" id="full-name" name="name" placeholder="Enter your name" required />
           </div>
-  
-          <div class="input-field">
+
+          <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter Email" required />
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
           </div>
-  
-          <div class="input-field">
+
+          <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter Password" required />
+            <input type="password" id="password" name="password" placeholder="Enter your password" required />
           </div>
-  
-          <!-- <div class="input-field">
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm Password" required />
-          </div> -->
-  
-          <div class="input-field">
+
+          <div class="input-group">
             <label for="mobile">Phone Number</label>
-            <input type="number" id="mobile" name="phone" placeholder="Enter Phone Number" required />
+            <input type="tel" id="mobile" name="phone" placeholder="Enter your phone number" required />
           </div>
+
           <input type="hidden" id="role" name="role" value="visitor">
-          <!-- Agreements -->
-          <div class="input-field">
-            <label>
-              <input type="checkbox" name="terms" required /> I agree to the terms and conditions
-            </label>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms" name="terms" required />
+            <label for="terms">I agree to the terms and conditions</label>
           </div>
-  
-          <button class="register-button" type="submit">Create Account</button>
-          <button class="register-button" type="button" style="background-color: #d9d9d9; color: #333;">Cancel</button>
+
+          <div class="button-group">
+            <button type="submit" class="button primary-button">Create Account</button>
+            <button type="button" class="button secondary-button">Cancel</button>
+          </div>
         </form>
       </div>
-    </main>
-
-    <footer class="footer">
-      <!-- Footer content (social icons, address, and contact info) goes here -->
-      <!-- You can copy the footer content from the login template -->
-    </footer>
+    </div>
   </body>
 </html>
