@@ -6,6 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Cart</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/logoutbtn.css"> 
+  <style>
+    body {
+      padding: 1rem;
+      background-color: #374151;
+    }
+
+  </style>
 </head>
 
 <body class="bg-gray-100">
@@ -14,9 +22,7 @@
       <div class="relative flex h-16 items-center justify-between">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <button type="button"
-            class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-            aria-controls="mobile-menu" aria-expanded="false">
+          <button type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
             <span id="menuToggle" class="absolute -inset-0.5"></span>
             <script>
               document.getElementById("menuToggle").addEventListener("click", () => {
@@ -44,8 +50,7 @@
 
             Menu open: "hidden", Menu closed: "block"
           -->
-            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-              aria-hidden="true">
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
             <!--
@@ -53,39 +58,40 @@
 
             Menu open: "block", Menu closed: "hidden"
           -->
-            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-              aria-hidden="true">
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div class="flex flex-1 items-center justify-center sm:items-center sm:justify-center flex-wrap">
           <div class="flex flex-shrink-0 items-center">
-            <img class="h-8 w-auto" src="/marketingtool-logo2.png"
-              alt="Your Company">
+            <img class="h-8 w-auto" src="/marketingtool-logo2.png" alt="Your Company">
           </div>
           <div class="hidden sm:ml-6 sm:block">
             <div class="flex space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
               <a href="/" class=" bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium aria-current=page">Home</a>
-              <a href="/services"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
-              <a href="/career"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
-              <a href="/aboutus"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
-          <a href=" /contactus"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+              <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Services</a>
+              <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Career</a>
+              <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"">About Us</a>
+          <a href=" /contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
                 Us</a>
 
               <% if (loggedIn) { %>
-                <a href="/logout" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Log Out</a>
-                <% } else { %>
-                  <a href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log
-                    In</a>
-                  <a href="/signupSelect"
-                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign Up</a>
-                  <% } %>
+              <a class="logoutContainer" href="/logout">
+                <button class="Btn">
+                  <div class="sign"><svg viewBox="0 0 512 512">
+                      <path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                      </path>
+                    </svg></div>
+                  <div class="text">Logout</div>
+                </button>
+              </a>
+              <% } else { %>
+              <a href="/login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Log
+                In</a>
+              <a href="/signupSelect" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Sign Up</a>
+              <% } %>
 
 
 
@@ -94,85 +100,65 @@
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <% if (user.role==="visitor" ) { %>
-            <li
-              class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-              <a href="/cart/<%= user._id %>" role="button" class="relative flex">
-                <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-                  <path
-                    d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
-                </svg>
-                <span
-                  class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-                  <%= cartCount %>
-                </span>
-              </a>
-            </li>
+          <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
+            <a href="/cart/<%= user.username %>" role="button" class="relative flex">
+              <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+              </svg>
+              <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                <%= cartCount %>
+              </span>
+            </a>
+          </li>
           <% } else if (!user.role) { %>
-            <li
-              class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
-              <a href="/login" role="button" class="relative flex">
-                <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
-                  <path
-                    d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
-                </svg>
-                <span
-                  class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
-                  <%= cartCount %>
-                </span>
-              </a>
-            </li>
+          <li class="font-sans block mt-4 lg:inline-block lg:mt-0 lg:ml-6 align-middle text-black hover:text-gray-700">
+            <a href="/login" role="button" class="relative flex">
+              <svg class="flex-1 w-8 h-8 fill-current" viewbox="0 0 24 24">
+                <path d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75C7.17,14.7 7.18,14.66 7.2,14.63L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2M7,18C5.89,18 5,18.89 5,20A2,2 0 0,0 7,22A2,2 0 0,0 9,20C9,18.89 8.1,18 7,18Z" />
+              </svg>
+              <span class="absolute right-0 top-0 rounded-full bg-red-600 w-4 h-4 top right p-0 m-0 text-white font-mono text-sm  leading-tight text-center">
+                <%= cartCount %>
+              </span>
+            </a>
+          </li>
           <% } %>
-             <!-- Profile dropdown -->
-              <% if (loggedIn) { %>
-                <div class="relative ml-3">
-                  <div>
-                    <button type="button"
-                      class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                      <span class="absolute -inset-1.5"></span>
-                      <span class="sr-only">Open user menu</span>
-                      <img class="h-10 w-10 rounded-full"
-                        src="<%= logo.logo ? '' + logo.logo : 'https://picsum.photos/64/64/?random' %>"
-                        alt="">
-                    </button>
-                  </div>
+          <!-- Profile dropdown -->
+          <% if (loggedIn) { %>
+          <div class="relative ml-3">
+            <div>
+              <button type="button" class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                <span class="absolute -inset-1.5"></span>
+                <span class="sr-only">Open user menu</span>
+                <img class="h-10 w-10 rounded-full" src="<%= logo.logo ? '' + logo.logo : 'https://picsum.photos/64/64/?random' %>" alt="">
+              </button>
+            </div>
 
-                  <script>
-                    document.getElementById("user-menu-button").addEventListener("click", () => {
-                      document.getElementById("profiledropdown").classList.toggle("show")
-                    })
-                  </script>
-                  <div id="profiledropdown"
-                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                    <!-- Active: "bg-gray-100", Not Active: "" -->
-                    <% if (user.role=="company" ) { %>
-                      <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
-                      <a href="/cover/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
-                      <a href="/logo/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                        tabindex="-1" id="user-menu-item-2">Logo</a>
-                      <a href="/products/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
-                      <% } else if(user.role=="visitor" ) { %>
-                        <a href="/profile/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
-                        <a href="/cart/<%= user._id  %>" class="block px-4 py-2 text-sm text-gray-700"
-                          role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
-                        <% } else{%>
-                          <a href="/profile/<%= user._id %>" class="block px-4 py-2 text-sm text-gray-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
-                          <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                            tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
-                          <% } %>
+            <script>
+              document.getElementById("user-menu-button").addEventListener("click", () => {
+                document.getElementById("profiledropdown").classList.toggle("show")
+              })
+            </script>
+            <div id="profiledropdown" class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <% if (user.role=="company" ) { %>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Company Details</a>
+              <a href="/cover/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Cover Picture</a>
+              <a href="/logo/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logo</a>
+              <a href="/products/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-3">My Products</a>
+              <% } else if(user.role=="visitor" ) { %>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Profile</a>
+              <a href="/cart/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">My Cart</a>
+              <% } else{%>
+              <a href="/profile/<%= user.username %>" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Profile</a>
+              <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Admin Dashboard</a>
+              <% } %>
 
 
-                  </div>
-                </div>
-                <% } else { %>
+            </div>
+          </div>
+          <% } else { %>
 
-                  <% } %>
+          <% } %>
 
 
 
@@ -185,30 +171,22 @@
     <div class="sm:hidden" id="mobile-menu">
       <div id="mobileMenu" class="space-y-1 px-2 pb-3 pt-2 ">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
-          aria-current="page">Home</a>
-        <a href="/services"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
-        <a href="/career"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
-        <a href="/aboutus"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
+        <a href="/" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+        <a href="/services" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Services</a>
+        <a href="/career" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Career</a>
+        <a href="/aboutus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About
           Us</a>
-        <a href="/contactus"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
+        <a href="/contactus" class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Contact
           Us</a>
         <% if (loggedIn) { %>
-          <a href="/logout"
-            class="text-white bg-red-700 hover:bg-red-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
-            Out</a>
-          <% } else { %>
-            <a href="/signupSelect"
-              class="text-white bg-green-700 hover:bg-green-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sign
-              Up</a>
-            <a href="/login"
-              class="text-white bg-blue-700 hover:bg-blue-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
-              In</a>
-            <% } %>
+        <a href="/logout" class="text-white bg-red-700 hover:bg-red-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+          Out</a>
+        <% } else { %>
+        <a href="/signupSelect" class="text-white bg-green-700 hover:bg-green-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Sign
+          Up</a>
+        <a href="/login" class="text-white bg-blue-700 hover:bg-blue-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">Log
+          In</a>
+        <% } %>
 
 
 
@@ -216,104 +194,75 @@
       </div>
     </div>
   </nav>
-  <div class="container mx-auto mt-10">
-    <div class="flex shadow-md my-10">
-      <div class="w-3/4 bg-white px-10 py-10">
-        <div class="flex justify-between border-b pb-8">
-          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-        </div>
-        <div class="flex mt-10 mb-5">
-          <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">
-            Product Details
-          </h3>
-          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-            Quantity
-          </h3>
-          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-            Price
-          </h3>
-          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">
-            Total
-          </h3>
-        </div>
-
-        <% if (products.length> 0) { %> <% products.forEach(function(product) { %>
-            <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-              <div class="flex w-2/5">
-                <div class="w-128">
-                  <img class="w-full"
-                    src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="" />
+  <main class="flex-grow container mx-auto px-4 py-8">
+    <div class="card">
+      <div class="p-6">
+        <h1 class="text-2xl font-semibold mb-6">Shopping Cart</h1>
+        <% if (products.length > 0) { %>
+          <div class="space-y-6">
+            <% products.forEach(function(product) { %>
+              <div class="flex flex-col sm:flex-row items-center border-b pb-4">
+                <div class="w-full sm:w-1/4 mb-4 sm:mb-0">
+                  <img class="w-full h-32 object-cover rounded-lg" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="<%= product.name %>">
                 </div>
-                <div class="flex flex-col justify-between ml-4 flex-grow">
-                  <span class="font-bold text-sm">
-                    <%= product.name %>
-                  </span>
-                  <span class="text-red-500 text-xs">
-                    <%= product.slogan %>
-                  </span>
-                  <a href="<%= product.websitelink %>"
-                    class="font-semibold hover:text-red-500 text-gray-500 text-xs">Website Link</a>
-                  <form action="/cart/<%= user._id %>/<%= product._id %>/delete" method="POST">
-                    <button class="font-semibold hover:text-red-500 text-gray-500 text-xs" type="submit">Delete</button>
-                  </form>
-
+                <div class="w-full sm:w-3/4 sm:pl-6">
+                  <h2 class="text-lg font-semibold"><%= product.name %></h2>
+                  <p class="text-sm text-gray-500"><%= product.slogan %></p>
+                  <div class="mt-2 flex justify-between items-center">
+                    <span class="text-lg font-bold">₹<%= product.offer %></span>
+                    <div class="flex items-center">
+                      <button class="btn btn-secondary text-sm px-2 py-1">-</button>
+                      <input type="text" value="1" class="w-12 text-center mx-2 border rounded">
+                      <button class="btn btn-secondary text-sm px-2 py-1">+</button>
+                    </div>
+                  </div>
+                  <div class="mt-4 flex justify-between items-center">
+                    <a href="<%= product.websitelink %>" class="text-blue-500 hover:underline text-sm">Visit Website</a>
+                    <form action="/cart/<%= user._id %>/<%= product._id %>/delete" method="POST">
+                      <button type="submit" class="text-red-500 hover:underline text-sm">Remove</button>
+                    </form>
+                  </div>
                 </div>
               </div>
-              <div class="flex justify-center w-1/5">
-                <!-- Quantity input -->
-                <input class="quantity-input mx-2 border text-center w-8" type="text" value="1">
-              </div>
-              <!-- Price -->
-              <span class="product-price text-center w-1/5 font-semibold text-sm">₹<%= product.offer %></span>
-              <!-- Total -->
-              <span class="product-total text-center w-1/5 font-semibold text-sm">₹<%= product.offer %></span>
-            </div>
             <% }); %>
-              <% } else { %>
-                <p>Your cart is empty.</p>
-                <% } %>
-
-                  <!-- Continue Shopping Button -->
-                  <a href="/" class="flex font-semibold text-indigo-600 text-sm mt-10">
-                    Continue Shopping
-                  </a>
-      </div>
-
-      <!-- Order Summary -->
-      <div id="summary" class="w- 1/4 px- 8 py- 10">
-        <!-- Order Summary Title -->
-        <h1 class="font-semibold text- 2xl border-b pb- 8">Order Summary</h1>
-
-        <!-- Items Count and Total Price -->
-        <div class="flex justify-between mt- 10 mb- 5">
-          <!-- Items Count -->
-          <span class="font-semibold text-sm uppercase">Items <%= products.length %></span>
-
-
-          <span class="font-semibold text-sm">₹<%= total %></span>
-        </div>
-
-        <!-- Promo Code Input -->
-        <div class="py- 10">
-          <label for="promo" class="font-semibold inline-block mb- 3 text-sm uppercase">Promo Code</label>
-          <input type="text" id="promo" placeholder="Enter your code" class="p- 2 text-sm w-full" />
-        </div>
-
-        <!-- Apply Promo Code Button -->
-        <button class="bg-red-500 hover:bg-red-600 px- 5 py- 2 text-sm text-white uppercase">
-          Apply
-        </button>
-
-        <!-- Total Cost -->
-        <div class="border-t mt- 8">
-          <div class="flex font-semibold justify-between py- 6 text-sm uppercase">
-            <span>Total cost</span>
-            <span>₹<%= total %></span>
           </div>
-        </div>
+          <div class="mt-8">
+            <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+            <div class="flex justify-between mb-2">
+              <span>Items (<%= products.length %>)</span>
+              <span>₹<%= total %></span>
+            </div>
+            <div class="flex justify-between mb-4">
+              <span>Total</span>
+              <span class="text-xl font-bold">₹<%= total %></span>
+            </div>
+            <button class="btn btn-primary w-full">Proceed to Checkout</button>
+          </div>
+        <% } else { %>
+          <p class="text-center py-8">Your cart is empty.</p>
+          <a href="/" class="btn btn-primary w-full text-center">Continue Shopping</a>
+        <% } %>
       </div>
     </div>
-  </div>
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 mt-12">
+    <div class="container mx-auto px-4">
+      <p class="text-center">&copy; 2023 Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('[aria-controls="mobile-menu"]');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+      mobileMenuButton.setAttribute('aria-expanded', !expanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
 </body>
 
 </html>
