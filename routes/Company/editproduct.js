@@ -25,7 +25,7 @@ const upload = multer({ storage: storage });
     router.get("/product/:userId/:productId", async (req, res) => {
       const userId = req.params.userId;
       const productId = req.params.productId;
-      console.log(userId, productId);
+      // console.log(userId, productId);
       // Find the product in the database
       const product = await productsCollection.findOne({
         _id: new ObjectId(productId),

@@ -153,10 +153,10 @@
                   <img id="productimage" src="<%= product.logo1 ? '/' + product.logo1 : 'https://i.ibb.co/kSZwvxX/addLogo.png' %>" alt="LOGO/Thumbnail">
 
                 </div>
-                <h3 class="mt-4 text-sm text-white"><%= product.name %></h3>
-                <p class="mt-1 text-lg font-medium text-white">Slogan: <%= product.slogan %></p>
-                <p class="mt-1 text-lg font-medium text-white">Website: <%= product.websitelink %></p>
-                <p class="mt-1 text-lg font-medium text-white">Address: <%= product.address %></p>
+                <h3 class="mt-4 text-sm text-white"><%= product.productName %></h3>
+                <p class="mt-1 text-lg font-medium text-white">Price: <%= product.offer %></p>
+                <p class="mt-1 text-lg font-medium text-white">Category: <%= product.category %></p>
+                <p class="mt-1 text-lg font-medium text-white">Brand: <%= product.brand %></p>
                 <!-- <p class="mt-1 text-lg font-medium text-white">Description: <%= product.discription %></p> -->
               </a>
               <form action="/product/delete/<%= user._id %>/<%= product._id %>" method="post" onsubmit="return confirm('Are you sure you want to delete this product?')">
