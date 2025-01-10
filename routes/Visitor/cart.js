@@ -29,7 +29,7 @@ const { ObjectId } = require("mongodb");
         .toArray();
 
       let total = 0;
-      products.forEach((product) => (total += product.offer));
+      products.forEach((product) => (total += Number(product.offer))); // Modified line
       // console.log(total);
       let loggedInUser = await userCollection.findOne({
         _id: new ObjectId(req.session.username),
